@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  # 后端API服务
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    # 从专用 env 文件注入后端所需密钥与配置
+    # 建议路径：./backend/.env（复制自 backend/env.example 并填写实际值）
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./results:/app/results
+    networks:
+      - travel-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # 前端Streamlit服务
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8501:8501"
+    environment:
+      # 注意：容器内不要使用 http://localhost:8080 访问后端
+      # 前端应通过 Compose 内部服务名访问后端：http://backend:8080
+      - API_BASE_URL=http://backend:8080
+    depends_on:
+      - backend
+    networks:
+      - travel-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  travel-network:
+    driver: bridge
+
+volumes:
+  results:
+    driver: local

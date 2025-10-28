@@ -1,0 +1,216 @@
+<svg viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: 'SimSun', serif; font-size: 28px; font-weight: bold; fill: #1a1a1a; }
+      .subtitle { font-family: 'SimSun', serif; font-size: 16px; fill: #333; }
+      .label-cn { font-family: 'SimSun', serif; font-size: 14px; fill: #2c3e50; }
+      .label-en { font-family: 'Times New Roman', serif; font-size: 12px; fill: #555; font-style: italic; }
+      .formula { font-family: 'Times New Roman', serif; font-size: 13px; fill: #c0392b; font-style: italic; }
+      .box { fill: #ecf0f1; stroke: #34495e; stroke-width: 2; }
+      .box-primary { fill: #3498db; stroke: #2980b9; stroke-width: 2; }
+      .box-secondary { fill: #e74c3c; stroke: #c0392b; stroke-width: 2; }
+      .box-success { fill: #2ecc71; stroke: #27ae60; stroke-width: 2; }
+      .box-warning { fill: #f39c12; stroke: #d68910; stroke-width: 2; }
+      .arrow { stroke: #34495e; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .arrow-data { stroke: #e74c3c; stroke-width: 2; fill: none; marker-end: url(#arrowhead-red); stroke-dasharray: 5,5; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#34495e" />
+    </marker>
+    <marker id="arrowhead-red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#e74c3c" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="700" y="40" text-anchor="middle" class="title">AI旅行规划智能体系统架构</text>
+  <text x="700" y="65" text-anchor="middle" class="subtitle">AI Travel Planning Agent System Architecture</text>
+
+  <!-- Layer 1: Frontend -->
+  <rect x="50" y="100" width="280" height="120" class="box-primary" rx="8"/>
+  <text x="190" y="130" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">前端层 (Presentation Layer)</text>
+  <text x="190" y="150" text-anchor="middle" class="label-en" fill="white">Streamlit Web UI</text>
+  <text x="190" y="180" text-anchor="middle" class="label-cn" fill="white">• 表单收集与验证</text>
+  <text x="190" y="200" text-anchor="middle" class="label-cn" fill="white">• 任务状态轮询</text>
+
+  <!-- Layer 2: API Gateway -->
+  <rect x="420" y="100" width="280" height="120" class="box-secondary" rx="8"/>
+  <text x="560" y="130" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">API服务层 (API Service)</text>
+  <text x="560" y="150" text-anchor="middle" class="label-en" fill="white">FastAPI Server</text>
+  <text x="560" y="180" text-anchor="middle" class="label-cn" fill="white">• RESTful接口</text>
+  <text x="560" y="200" text-anchor="middle" class="label-cn" fill="white">• 异步任务管理</text>
+
+  <!-- Layer 3: Agent System -->
+  <rect x="790" y="100" width="280" height="120" class="box-success" rx="8"/>
+  <text x="930" y="130" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">智能体层 (Agent Layer)</text>
+  <text x="930" y="150" text-anchor="middle" class="label-en" fill="white">LangGraph Multi-Agent</text>
+  <text x="930" y="180" text-anchor="middle" class="label-cn" fill="white">• 协调员 (Coordinator)</text>
+  <text x="930" y="200" text-anchor="middle" class="label-cn" fill="white">• 专家智能体群</text>
+
+  <!-- Layer 4: Tools And Services -->
+  <rect x="1120" y="100" width="230" height="120" class="box-warning" rx="8"/>
+  <text x="1235" y="130" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">工具层 (Tools)</text>
+  <text x="1235" y="150" text-anchor="middle" class="label-en" fill="white">External Services</text>
+  <text x="1235" y="180" text-anchor="middle" class="label-cn" fill="white">• DuckDuckGo搜索</text>
+  <text x="1235" y="200" text-anchor="middle" class="label-cn" fill="white">• MCP天气服务器</text>
+
+  <!-- Core Agents Detail -->
+  <rect x="50" y="280" width="200" height="280" class="box" rx="8"/>
+  <text x="150" y="310" text-anchor="middle" class="label-cn" font-weight="bold">智能体协作图</text>
+  <text x="150" y="330" text-anchor="middle" class="label-en">Agent Collaboration</text>
+  
+  <circle cx="150" cy="370" r="30" fill="#3498db" stroke="#2980b9" stroke-width="2"/>
+  <text x="150" y="377" text-anchor="middle" class="label-cn" fill="white" font-size="12">协调员</text>
+  
+  <circle cx="90" cy="450" r="25" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+  <text x="90" y="455" text-anchor="middle" class="label-cn" fill="white" font-size="11">旅行顾问</text>
+  
+  <circle cx="150" cy="450" r="25" fill="#f39c12" stroke="#d68910" stroke-width="2"/>
+  <text x="150" y="455" text-anchor="middle" class="label-cn" fill="white" font-size="11">天气分析</text>
+  
+  <circle cx="210" cy="450" r="25" fill="#2ecc71" stroke="#27ae60" stroke-width="2"/>
+  <text x="210" y="455" text-anchor="middle" class="label-cn" fill="white" font-size="11">预算优化</text>
+  
+  <circle cx="90" cy="520" r="25" fill="#9b59b6" stroke="#8e44ad" stroke-width="2"/>
+  <text x="90" y="525" text-anchor="middle" class="label-cn" fill="white" font-size="11">当地专家</text>
+  
+  <circle cx="210" cy="520" r="25" fill="#1abc9c" stroke="#16a085" stroke-width="2"/>
+  <text x="210" y="525" text-anchor="middle" class="label-cn" fill="white" font-size="11">行程规划</text>
+
+  <!-- LangGraph State Flow -->
+  <rect x="290" y="280" width="420" height="280" class="box" rx="8"/>
+  <text x="500" y="310" text-anchor="middle" class="label-cn" font-weight="bold">LangGraph状态流转</text>
+  <text x="500" y="330" text-anchor="middle" class="label-en">State Graph Execution Flow</text>
+  
+  <!-- State formula -->
+  <text x="310" y="360" class="formula">State = {messages, agent_outputs, context}</text>
+  
+  <!-- Flow diagram -->
+  <rect x="310" y="380" width="100" height="50" fill="#3498db" stroke="#2980b9" stroke-width="2" rx="5"/>
+  <text x="360" y="410" text-anchor="middle" class="label-cn" fill="white" font-size="12">START</text>
+  
+  <rect x="310" y="460" width="100" height="50" fill="#e74c3c" stroke="#c0392b" stroke-width="2" rx="5"/>
+  <text x="360" y="485" text-anchor="middle" class="label-cn" fill="white" font-size="11">协调节点</text>
+  
+  <rect x="450" y="460" width="100" height="50" fill="#f39c12" stroke="#d68910" stroke-width="2" rx="5"/>
+  <text x="500" y="485" text-anchor="middle" class="label-cn" fill="white" font-size="11">工具节点</text>
+  
+  <rect x="590" y="460" width="100" height="50" fill="#2ecc71" stroke="#27ae60" stroke-width="2" rx="5"/>
+  <text x="640" y="485" text-anchor="middle" class="label-cn" fill="white" font-size="11">专家节点</text>
+  
+  <rect x="450" y="540" width="100" height="50" fill="#9b59b6" stroke="#8e44ad" stroke-width="2" rx="5"/>
+  <text x="500" y="570" text-anchor="middle" class="label-cn" fill="white" font-size="12">END</text>
+
+  <!-- Data Flow -->
+  <rect x="750" y="280" width="600" height="280" class="box" rx="8"/>
+  <text x="1050" y="310" text-anchor="middle" class="label-cn" font-weight="bold">数据流与持久化</text>
+  <text x="1050" y="330" text-anchor="middle" class="label-en">Data Flow And Persistence</text>
+  
+  <!-- Data entities -->
+  <rect x="770" y="350" width="160" height="80" fill="#ecf0f1" stroke="#95a5a6" stroke-width="2" rx="5"/>
+  <text x="850" y="375" text-anchor="middle" class="label-cn" font-weight="bold">TravelRequest</text>
+  <text x="850" y="395" text-anchor="middle" class="label-cn" font-size="11">• destination</text>
+  <text x="850" y="410" text-anchor="middle" class="label-cn" font-size="11">• date_range</text>
+  <text x="850" y="425" text-anchor="middle" class="label-cn" font-size="11">• budget</text>
+  
+  <rect x="970" y="350" width="160" height="80" fill="#ecf0f1" stroke="#95a5a6" stroke-width="2" rx="5"/>
+  <text x="1050" y="375" text-anchor="middle" class="label-cn" font-weight="bold">TripSummary</text>
+  <text x="1050" y="395" text-anchor="middle" class="label-cn" font-size="11">• itinerary[]</text>
+  <text x="1050" y="410" text-anchor="middle" class="label-cn" font-size="11">• total_cost</text>
+  <text x="1050" y="425" text-anchor="middle" class="label-cn" font-size="11">• hotels[]</text>
+  
+  <rect x="1170" y="350" width="160" height="80" fill="#ecf0f1" stroke="#95a5a6" stroke-width="2" rx="5"/>
+  <text x="1250" y="375" text-anchor="middle" class="label-cn" font-weight="bold">PlanningTask</text>
+  <text x="1250" y="395" text-anchor="middle" class="label-cn" font-size="11">• task_id</text>
+  <text x="1250" y="410" text-anchor="middle" class="label-cn" font-size="11">• status</text>
+  <text x="1250" y="425" text-anchor="middle" class="label-cn" font-size="11">• result</text>
+
+  <!-- Storage -->
+  <rect x="820" y="460" width="460" height="80" fill="#f8f9fa" stroke="#95a5a6" stroke-width="2" rx="5"/>
+  <text x="1050" y="485" text-anchor="middle" class="label-cn" font-weight="bold">持久化存储</text>
+  <text x="900" y="510" text-anchor="middle" class="label-cn" font-size="11">tasks_state.json</text>
+  <text x="1050" y="510" text-anchor="middle" class="label-cn" font-size="11">results/*.json</text>
+  <text x="1200" y="510" text-anchor="middle" class="label-cn" font-size="11">Redis (可选扩展)</text>
+  <text x="1050" y="530" text-anchor="middle" class="formula">Persistence_Rate = 1 - e^(-t/τ)</text>
+
+  <!-- Deployment Layer -->
+  <rect x="50" y="620" width="1300" height="240" class="box" rx="8"/>
+  <text x="700" y="650" text-anchor="middle" class="label-cn" font-weight="bold">容器化部署架构</text>
+  <text x="700" y="670" text-anchor="middle" class="label-en">Containerized Deployment Architecture</text>
+  
+  <!-- Docker containers -->
+  <rect x="100" y="690" width="200" height="140" fill="#0db7ed" stroke="#0a8ec2" stroke-width="2" rx="5"/>
+  <text x="200" y="715" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">Frontend容器</text>
+  <text x="200" y="735" text-anchor="middle" class="label-cn" fill="white" font-size="11">Streamlit:8501</text>
+  <text x="200" y="755" text-anchor="middle" class="label-en" fill="white" font-size="10">python:3.10-slim</text>
+  <text x="200" y="775" text-anchor="middle" class="label-cn" fill="white" font-size="11">健康检查: /_stcore/health</text>
+  <text x="200" y="800" text-anchor="middle" class="formula" fill="white">Memory: 512MB</text>
+  <text x="200" y="820" text-anchor="middle" class="formula" fill="white">CPU: 0.5 core</text>
+  
+  <rect x="350" y="690" width="200" height="140" fill="#0db7ed" stroke="#0a8ec2" stroke-width="2" rx="5"/>
+  <text x="450" y="715" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">Backend容器</text>
+  <text x="450" y="735" text-anchor="middle" class="label-cn" fill="white" font-size="11">FastAPI:8080</text>
+  <text x="450" y="755" text-anchor="middle" class="label-en" fill="white" font-size="10">python:3.10-slim</text>
+  <text x="450" y="775" text-anchor="middle" class="label-cn" fill="white" font-size="11">健康检查: /health</text>
+  <text x="450" y="800" text-anchor="middle" class="formula" fill="white">Memory: 1GB</text>
+  <text x="450" y="820" text-anchor="middle" class="formula" fill="white">CPU: 1.0 core</text>
+  
+  <rect x="600" y="690" width="200" height="140" fill="#2ecc71" stroke="#27ae60" stroke-width="2" rx="5"/>
+  <text x="700" y="715" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">Docker Compose</text>
+  <text x="700" y="740" text-anchor="middle" class="label-cn" fill="white" font-size="11">服务编排</text>
+  <text x="700" y="760" text-anchor="middle" class="label-cn" fill="white" font-size="11">• 依赖管理</text>
+  <text x="700" y="780" text-anchor="middle" class="label-cn" fill="white" font-size="11">• 网络配置</text>
+  <text x="700" y="800" text-anchor="middle" class="label-cn" fill="white" font-size="11">• 卷挂载</text>
+  
+  <rect x="850" y="690" width="230" height="140" fill="#f39c12" stroke="#d68910" stroke-width="2" rx="5"/>
+  <text x="965" y="715" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">外部服务集成</text>
+  <text x="965" y="740" text-anchor="middle" class="label-cn" fill="white" font-size="11">DuckDuckGo (无需Key)</text>
+  <text x="965" y="760" text-anchor="middle" class="label-cn" fill="white" font-size="11">QWeather API</text>
+  <text x="965" y="780" text-anchor="middle" class="label-cn" fill="white" font-size="11">OpenAI API</text>
+  <text x="965" y="805" text-anchor="middle" class="formula" fill="white">Rate: 100 req/hour</text>
+  
+  <rect x="1130" y="690" width="190" height="140" fill="#9b59b6" stroke="#8e44ad" stroke-width="2" rx="5"/>
+  <text x="1225" y="715" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">CI/CD流水线</text>
+  <text x="1225" y="740" text-anchor="middle" class="label-cn" fill="white" font-size="11">• Git Push</text>
+  <text x="1225" y="760" text-anchor="middle" class="label-cn" fill="white" font-size="11">• Build Image</text>
+  <text x="1225" y="780" text-anchor="middle" class="label-cn" fill="white" font-size="11">• Run Tests</text>
+  <text x="1225" y="800" text-anchor="middle" class="label-cn" fill="white" font-size="11">• Deploy</text>
+
+  <!-- Arrows -->
+  <path d="M 330 160 L 420 160" class="arrow"/>
+  <path d="M 700 160 L 790 160" class="arrow"/>
+  <path d="M 1070 160 L 1120 160" class="arrow"/>
+  
+  <path d="M 150 400 L 90 425" class="arrow"/>
+  <path d="M 150 400 L 150 425" class="arrow"/>
+  <path d="M 150 400 L 210 425" class="arrow"/>
+  <path d="M 150 400 L 90 495" class="arrow"/>
+  <path d="M 150 400 L 210 495" class="arrow"/>
+  
+  <path d="M 360 430 L 360 460" class="arrow"/>
+  <path d="M 410 485 L 450 485" class="arrow"/>
+  <path d="M 550 485 L 590 485" class="arrow"/>
+  <path d="M 500 510 L 500 540" class="arrow"/>
+  
+  
+  <path d="M 1050 430 L 1050 460" class="arrow-data"/>
+
+  <!-- Legend -->
+  <rect x="50" y="875" width="15" height="15" fill="#3498db"/>
+  <text x="75" y="887" class="label-cn" font-size="12">核心层</text>
+  
+  <rect x="150" y="875" width="15" height="15" fill="#e74c3c"/>
+  <text x="175" y="887" class="label-cn" font-size="12">API层</text>
+  
+  <rect x="250" y="875" width="15" height="15" fill="#2ecc71"/>
+  <text x="275" y="887" class="label-cn" font-size="12">智能体</text>
+  
+  <rect x="350" y="875" width="15" height="15" fill="#f39c12"/>
+  <text x="375" y="887" class="label-cn" font-size="12">工具层</text>
+  
+  <line x1="470" y1="882" x2="500" y2="882" class="arrow"/>
+  <text x="510" y="887" class="label-cn" font-size="12">控制流</text>
+  
+  <line x1="600" y1="882" x2="630" y2="882" class="arrow-data"/>
+  <text x="640" y="887" class="label-cn" font-size="12">数据流</text>
+</svg>

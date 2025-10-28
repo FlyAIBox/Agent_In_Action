@@ -1,0 +1,291 @@
+<svg viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title-text { font-family: 'SimSun', serif; font-size: 28px; font-weight: bold; fill: #1a1a1a; }
+      .subtitle-text { font-family: 'SimSun', serif; font-size: 19px; font-weight: bold; fill: #2c3e50; }
+      .label-text { font-family: 'SimSun', serif; font-size: 13px; fill: #34495e; }
+      .english-text { font-family: 'Times New Roman', serif; font-size: 11px; fill: #7f8c8d; font-style: italic; }
+      .node-text { font-family: 'SimSun', serif; font-size: 12px; fill: white; font-weight: bold; }
+      .formula-text { font-family: 'Times New Roman', serif; font-size: 11px; fill: #e74c3c; }
+      .feature-text { font-family: 'SimSun', serif; font-size: 12px; fill: #2c3e50; }
+      .arrow { fill: none; stroke-width: 2; marker-end: url(#arrowhead); }
+      .state-arrow { fill: none; stroke: #27ae60; stroke-width: 2; marker-end: url(#state-arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#3498db" />
+    </marker>
+    <marker id="state-arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#27ae60" />
+    </marker>
+    <marker id="graph-arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#9b59b6" />
+    </marker>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- 标题 -->
+  <text x="700" y="40" text-anchor="middle" class="title-text">状态管理演进：从链式到图状态</text>
+  <text x="700" y="65" text-anchor="middle" class="english-text">Evolution: From Chain to Graph State Management</text>
+
+  <!-- ========== 左侧：LangChain 链式架构 ========== -->
+  <g transform="translate(50, 100)">
+    <text x="300" y="0" text-anchor="middle" class="subtitle-text">LangChain 链式架构</text>
+    <text x="300" y="22" text-anchor="middle" class="english-text">Linear Chain Architecture</text>
+    
+    <!-- 背景框 -->
+    <rect x="0" y="40" width="600" height="320" rx="10" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2"/>
+    
+    <!-- 链式流程 - 水平布局 -->
+    <g transform="translate(60, 100)">
+      <!-- 输入节点 -->
+      <circle cx="40" cy="40" r="30" fill="#3498db" filter="url(#shadow)"/>
+      <text x="40" y="45" text-anchor="middle" class="node-text">输入</text>
+      <text x="40" y="85" text-anchor="middle" class="label-text">Input</text>
+      
+      <!-- 箭头1 -->
+      <path d="M 75 40 L 135 40" class="arrow" stroke="#3498db"/>
+      <text x="105" y="30" text-anchor="middle" class="formula-text" font-size="10">t₁</text>
+      
+      <!-- Prompt节点 -->
+      <rect x="135" y="10" width="70" height="60" rx="5" fill="#16a085" filter="url(#shadow)"/>
+      <text x="170" y="35" text-anchor="middle" class="node-text" font-size="11">Prompt</text>
+      <text x="170" y="50" text-anchor="middle" class="node-text" font-size="10">模板</text>
+      <text x="170" y="92" text-anchor="middle" class="label-text">P(x)</text>
+      
+      <!-- 箭头2 -->
+      <path d="M 210 40 L 270 40" class="arrow" stroke="#3498db"/>
+      <text x="240" y="30" text-anchor="middle" class="formula-text" font-size="10">t₂</text>
+      
+      <!-- LLM节点 -->
+      <rect x="270" y="10" width="70" height="60" rx="5" fill="#2980b9" filter="url(#shadow)"/>
+      <text x="305" y="35" text-anchor="middle" class="node-text" font-size="11">LLM</text>
+      <text x="305" y="50" text-anchor="middle" class="node-text" font-size="10">处理</text>
+      <text x="305" y="92" text-anchor="middle" class="label-text">f(P(x))</text>
+      
+      <!-- 箭头3 -->
+      <path d="M 345 40 L 405 40" class="arrow" stroke="#3498db"/>
+      <text x="375" y="30" text-anchor="middle" class="formula-text" font-size="10">t₃</text>
+      
+      <!-- 输出节点 -->
+      <circle cx="435" cy="40" r="30" fill="#27ae60" filter="url(#shadow)"/>
+      <text x="435" y="45" text-anchor="middle" class="node-text">输出</text>
+      <text x="435" y="85" text-anchor="middle" class="label-text">Output</text>
+      
+      <!-- Memory节点（独立显示在下方） -->
+      <g transform="translate(185, 130)">
+        <rect x="0" y="0" width="90" height="55" rx="5" fill="#95a5a6" filter="url(#shadow)"/>
+        <text x="45" y="25" text-anchor="middle" class="node-text" font-size="11">Memory</text>
+        <text x="45" y="40" text-anchor="middle" class="node-text" font-size="9">窗口记忆</text>
+        <text x="45" y="75" text-anchor="middle" class="label-text">M[0:n]</text>
+      </g>
+      
+      <!-- 向上的箭头连接 -->
+      <path d="M 230 130 L 230 75" class="arrow" stroke="#95a5a6" stroke-dasharray="3,2"/>
+    </g>
+    
+    <!-- 特点描述 -->
+    <g transform="translate(30, 270)">
+      <text x="0" y="0" class="label-text" font-weight="bold">架构特点 (Characteristics):</text>
+      
+      <g transform="translate(0, 20)">
+        <circle cx="5" cy="-3" r="3" fill="#3498db"/>
+        <text x="15" y="0" class="feature-text">线性处理流程 (Linear Process)</text>
+      </g>
+      
+      <g transform="translate(0, 40)">
+        <circle cx="5" cy="-3" r="3" fill="#3498db"/>
+        <text x="15" y="0" class="feature-text">简单窗口记忆 (Window Memory)</text>
+      </g>
+      
+      <g transform="translate(300, 20)">
+        <circle cx="5" cy="-3" r="3" fill="#e74c3c"/>
+        <text x="15" y="0" class="feature-text">状态易丢失 (State Loss)</text>
+      </g>
+      
+      <g transform="translate(300, 40)">
+        <circle cx="5" cy="-3" r="3" fill="#e74c3c"/>
+        <text x="15" y="0" class="feature-text">并发能力有限 (Limited Concurrency)</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ========== 右侧：LangGraph 图状态架构 ========== -->
+  <g transform="translate(700, 100)">
+    <text x="325" y="0" text-anchor="middle" class="subtitle-text">LangGraph 图状态架构</text>
+    <text x="325" y="22" text-anchor="middle" class="english-text">Graph State Architecture</text>
+    
+    <!-- 背景框 -->
+    <rect x="0" y="40" width="650" height="320" rx="10" fill="#f8f9fa" stroke="#9b59b6" stroke-width="2"/>
+    
+    <!-- 全局状态 - 顶部中央 -->
+    <g transform="translate(240, 60)">
+      <rect x="0" y="0" width="140" height="75" rx="8" fill="#9b59b6" filter="url(#shadow)"/>
+      <text x="70" y="25" text-anchor="middle" class="node-text" font-size="13">全局状态 S</text>
+      <text x="70" y="42" text-anchor="middle" class="english-text" fill="white" font-size="10">Global State</text>
+      <text x="70" y="60" text-anchor="middle" class="formula-text" fill="white" font-size="10">S = {s₁, s₂, ..., sₙ}</text>
+    </g>
+    
+    <!-- 图节点网络 - 清晰布局 -->
+    <g transform="translate(80, 160)">
+      <!-- 第一行：3个节点 -->
+      <!-- Node A -->
+      <circle cx="70" cy="30" r="28" fill="#16a085" filter="url(#shadow)"/>
+      <text x="70" y="32" text-anchor="middle" class="node-text" font-size="11">Node A</text>
+      <text x="70" y="45" text-anchor="middle" class="node-text" font-size="9">处理</text>
+      
+      <!-- Node B -->
+      <circle cx="240" cy="30" r="28" fill="#2980b9" filter="url(#shadow)"/>
+      <text x="240" y="32" text-anchor="middle" class="node-text" font-size="11">Node B</text>
+      <text x="240" y="45" text-anchor="middle" class="node-text" font-size="9">分析</text>
+      
+      <!-- Node C -->
+      <circle cx="410" cy="30" r="28" fill="#8e44ad" filter="url(#shadow)"/>
+      <text x="410" y="32" text-anchor="middle" class="node-text" font-size="11">Node C</text>
+      <text x="410" y="45" text-anchor="middle" class="node-text" font-size="9">决策</text>
+      
+      <!-- 第二行：2个节点 -->
+      <!-- Node D -->
+      <circle cx="155" cy="120" r="28" fill="#c0392b" filter="url(#shadow)"/>
+      <text x="155" y="122" text-anchor="middle" class="node-text" font-size="11">Node D</text>
+      <text x="155" y="135" text-anchor="middle" class="node-text" font-size="9">验证</text>
+      
+      <!-- Node E -->
+      <circle cx="325" cy="120" r="28" fill="#27ae60" filter="url(#shadow)"/>
+      <text x="325" y="122" text-anchor="middle" class="node-text" font-size="11">Node E</text>
+      <text x="325" y="135" text-anchor="middle" class="node-text" font-size="9">输出</text>
+      
+      <!-- ===== 工作流箭头（紫色） ===== -->
+      <!-- A → B -->
+      <path d="M 100 30 L 210 30" stroke="#9b59b6" stroke-width="2.5" fill="none" marker-end="url(#graph-arrowhead)"/>
+      
+      <!-- B → C -->
+      <path d="M 270 30 L 380 30" stroke="#9b59b6" stroke-width="2.5" fill="none" marker-end="url(#graph-arrowhead)"/>
+      
+      <!-- A → D -->
+      <path d="M 85 56 L 142 95" stroke="#9b59b6" stroke-width="2.5" fill="none" marker-end="url(#graph-arrowhead)"/>
+      
+      <!-- B → D -->
+      <path d="M 225 56 L 168 95" stroke="#9b59b6" stroke-width="2.5" fill="none" marker-end="url(#graph-arrowhead)"/>
+      
+      <!-- D → E -->
+      <path d="M 185 120 L 295 120" stroke="#9b59b6" stroke-width="2.5" fill="none" marker-end="url(#graph-arrowhead)"/>
+      
+      <!-- ===== 特殊箭头 ===== -->
+      <!-- 条件边：C → E (橙色虚线) -->
+      <path d="M 395 56 Q 370 88 340 100" stroke="#e67e22" stroke-width="2" stroke-dasharray="5,3" fill="none" marker-end="url(#graph-arrowhead)"/>
+      <text x="380" y="70" class="formula-text" font-size="10" fill="#e67e22">if(cond)</text>
+      
+      <!-- 循环边：A 自循环 (红色虚线) -->
+      <path d="M 50 18 Q 25 5 45 5 Q 65 5 70 18" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,3" fill="none" marker-end="url(#graph-arrowhead)"/>
+      <text x="45" y="0" class="formula-text" font-size="10" fill="#e74c3c">loop</text>
+      
+      
+      
+      <!-- 状态说明 -->
+      <text x="470" y="85" class="label-text" fill="#27ae60" font-size="11" font-weight="bold">状态读写</text>
+      <text x="470" y="100" class="english-text" fill="#27ae60">State R/W</text>
+      <text x="470" y="115" class="formula-text" fill="#27ae60" font-size="10">↓ 虚线</text>
+    </g>
+    
+    <!-- 特点描述 -->
+    <g transform="translate(30, 270)">
+      <text x="0" y="0" class="label-text" font-weight="bold">架构特点 (Characteristics):</text>
+      
+      <g transform="translate(0, 20)">
+        <circle cx="5" cy="-3" r="3" fill="#9b59b6"/>
+        <text x="15" y="0" class="feature-text">图状态结构 G=(V,E)</text>
+      </g>
+      
+      <g transform="translate(0, 40)">
+        <circle cx="5" cy="-3" r="3" fill="#9b59b6"/>
+        <text x="15" y="0" class="feature-text">全局状态共享 (Shared State)</text>
+      </g>
+      
+      <g transform="translate(320, 20)">
+        <circle cx="5" cy="-3" r="3" fill="#27ae60"/>
+        <text x="15" y="0" class="feature-text">并行节点执行 (Parallel Exec)</text>
+      </g>
+      
+      <g transform="translate(320, 40)">
+        <circle cx="5" cy="-3" r="3" fill="#27ae60"/>
+        <text x="15" y="0" class="feature-text">条件路由与循环 (Dynamic Routing)</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ========== 底部对比表 ========== -->
+  <g transform="translate(50, 480)">
+    <text x="650" y="0" text-anchor="middle" class="subtitle-text">状态管理能力对比表</text>
+    <text x="650" y="22" text-anchor="middle" class="english-text">State Management Comparison Table</text>
+    
+    <!-- 表格 -->
+    <rect x="0" y="40" width="1300" height="380" rx="8" fill="#ffffff" stroke="#34495e" stroke-width="2"/>
+    
+    <!-- 表头 -->
+    <rect x="0" y="40" width="1300" height="50" fill="#34495e"/>
+    <line x1="280" y1="40" x2="280" y2="400" stroke="#bdc3c7" stroke-width="2"/>
+    <line x1="790" y1="40" x2="790" y2="400" stroke="#bdc3c7" stroke-width="2"/>
+    
+    <text x="140" y="72" text-anchor="middle" class="label-text" fill="white" font-weight="bold" font-size="15">对比维度</text>
+    <text x="535" y="72" text-anchor="middle" class="label-text" fill="white" font-weight="bold" font-size="15">LangChain 链式架构</text>
+    <text x="1045" y="72" text-anchor="middle" class="label-text" fill="white" font-weight="bold" font-size="15">LangGraph 图状态架构</text>
+    
+    <!-- 行1：状态存储 -->
+    <line x1="0" y1="90" x2="1300" y2="90" stroke="#ecf0f1" stroke-width="1"/>
+    <text x="20" y="125" class="label-text" font-weight="bold" font-size="14">状态存储</text>
+    <text x="20" y="145" class="english-text">Storage</text>
+    
+    <text x="535" y="125" text-anchor="middle" class="label-text">窗口记忆（临时）</text>
+    <text x="535" y="145" text-anchor="middle" class="formula-text">M = queue(size=n)</text>
+    
+    <text x="1045" y="125" text-anchor="middle" class="label-text">持久化状态（永久）</text>
+    <text x="1045" y="145" text-anchor="middle" class="formula-text">S = DB.persist()</text>
+    
+    <!-- 行2：状态访问 -->
+    <line x1="0" y1="160" x2="1300" y2="160" stroke="#ecf0f1" stroke-width="1"/>
+    <text x="20" y="195" class="label-text" font-weight="bold" font-size="14">状态访问</text>
+    <text x="20" y="215" class="english-text">Access Pattern</text>
+    
+    <text x="535" y="195" text-anchor="middle" class="label-text">顺序访问</text>
+    <text x="535" y="215" text-anchor="middle" class="formula-text">O(1) sequential</text>
+    
+    <text x="1045" y="195" text-anchor="middle" class="label-text">随机访问 + 索引</text>
+    <text x="1045" y="215" text-anchor="middle" class="formula-text">O(1) random access</text>
+    
+    <!-- 行3：并发控制 -->
+    <line x1="0" y1="230" x2="1300" y2="230" stroke="#ecf0f1" stroke-width="1"/>
+    <text x="20" y="265" class="label-text" font-weight="bold" font-size="14">并发控制</text>
+    <text x="20" y="285" class="english-text">Concurrency</text>
+    
+    <text x="535" y="265" text-anchor="middle" class="label-text">单线程（无锁）</text>
+    <text x="535" y="285" text-anchor="middle" class="formula-text">No lock needed</text>
+    
+    <text x="1045" y="265" text-anchor="middle" class="label-text">乐观锁 + 版本控制</text>
+    <text x="1045" y="285" text-anchor="middle" class="formula-text">Lock(S) if v_conflict</text>
+    
+    <!-- 行4：状态恢复 -->
+    <line x1="0" y1="300" x2="1300" y2="300" stroke="#ecf0f1" stroke-width="1"/>
+    <text x="20" y="335" class="label-text" font-weight="bold" font-size="14">状态恢复</text>
+    <text x="20" y="355" class="english-text">Recovery</text>
+    
+    <text x="535" y="335" text-anchor="middle" class="label-text">不支持</text>
+    <text x="535" y="355" text-anchor="middle" class="formula-text">No rollback</text>
+    
+    <text x="1045" y="335" text-anchor="middle" class="label-text">快照 + 回滚</text>
+    <text x="1045" y="355" text-anchor="middle" class="formula-text">S_t = Snapshot(t).restore()</text>
+    
+    <!-- 行5：时间复杂度 -->
+    <line x1="0" y1="370" x2="1300" y2="370" stroke="#ecf0f1" stroke-width="1"/>
+    <text x="20" y="390" class="label-text" font-weight="bold" font-size="14">时间复杂度</text>
+    
+    <text x="535" y="390" text-anchor="middle" class="label-text">O(n) 线性执行</text>
+    <text x="535" y="390" dy="18" text-anchor="middle" class="formula-text">T = n × t_step</text>
+    
+    <text x="1045" y="390" text-anchor="middle" class="label-text">O(log n) 并行优化</text>
+    <text x="1045" y="390" dy="18" text-anchor="middle" class="formula-text">T = log(n) × t_step + overhead</text>
+  </g>
+
+  
+</svg>

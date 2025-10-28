@@ -1,0 +1,309 @@
+<svg viewBox="0 0 1400 1100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: 'SimSun', serif; font-size: 26px; font-weight: bold; fill: #1a1a1a; }
+      .subtitle { font-family: 'SimSun', serif; font-size: 14px; fill: #333; }
+      .label-cn { font-family: 'SimSun', serif; font-size: 12px; fill: #2c3e50; }
+      .label-en { font-family: 'Times New Roman', serif; font-size: 10px; fill: #555; font-style: italic; }
+      .formula { font-family: 'Times New Roman', serif; font-size: 11px; fill: #c0392b; font-style: italic; }
+      .entity-box { fill: #fff; stroke: #34495e; stroke-width: 2; }
+      .api-box { fill: #3498db; stroke: #2980b9; stroke-width: 2; }
+      .storage-box { fill: #f39c12; stroke: #d68910; stroke-width: 2; }
+      .process-box { fill: #2ecc71; stroke: #27ae60; stroke-width: 2; }
+      .arrow { stroke: #34495e; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .arrow-data { stroke: #e74c3c; stroke-width: 2; fill: none; marker-end: url(#arrowhead-red); }
+      .code-bg { fill: #f8f9fa; stroke: #dee2e6; stroke-width: 1; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#34495e" />
+    </marker>
+    <marker id="arrowhead-red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#e74c3c" />
+    </marker>
+    <filter id="shadow">
+      <feDropShadow dx="1.5" dy="1.5" stdDeviation="1.5" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="700" y="35" text-anchor="middle" class="title">数据模型与API交互流程</text>
+  <text x="700" y="57" text-anchor="middle" class="subtitle">Data Models and API Interaction Flow</text>
+
+  <!-- Data Entities Section -->
+  <rect x="30" y="80" width="650" height="450" class="code-bg" rx="8" filter="url(#shadow)"/>
+  <text x="50" y="105" class="label-cn" font-weight="bold" font-size="15">核心数据实体 (Core Data Entities)</text>
+
+  <!-- TravelRequest Entity -->
+  <rect x="50" y="120" width="290" height="190" class="entity-box" rx="6" filter="url(#shadow)"/>
+  <text x="195" y="140" text-anchor="middle" class="label-cn" font-weight="bold">TravelRequest</text>
+  <text x="195" y="156" text-anchor="middle" class="label-en">User Input Model</text>
+  <line x1="60" y1="165" x2="330" y2="165" stroke="#dee2e6" stroke-width="1"/>
+  <text x="70" y="182" class="label-cn" font-size="11">• destination: str</text>
+  <text x="70" y="197" class="label-cn" font-size="11">• start_date: date</text>
+  <text x="70" y="212" class="label-cn" font-size="11">• end_date: date</text>
+  <text x="70" y="227" class="label-cn" font-size="11">• budget: float</text>
+  <text x="70" y="242" class="label-cn" font-size="11">• group_size: int</text>
+  <text x="70" y="257" class="label-cn" font-size="11">• interests: List[str]</text>
+  <text x="70" y="272" class="label-cn" font-size="11">• accommodation_pref: str</text>
+  <text x="70" y="290" class="formula" font-size="10">Validation: budget > 0 ∧ dates valid</text>
+
+  <!-- DayPlan Entity -->
+  <rect x="370" y="120" width="290" height="190" class="entity-box" rx="6" filter="url(#shadow)"/>
+  <text x="515" y="140" text-anchor="middle" class="label-cn" font-weight="bold">DayPlan</text>
+  <text x="515" y="156" text-anchor="middle" class="label-en">Daily Itinerary Model</text>
+  <line x1="380" y1="165" x2="650" y2="165" stroke="#dee2e6" stroke-width="1"/>
+  <text x="390" y="182" class="label-cn" font-size="11">• day: int</text>
+  <text x="390" y="197" class="label-cn" font-size="11">• date: str</text>
+  <text x="390" y="212" class="label-cn" font-size="11">• weather: Weather</text>
+  <text x="390" y="227" class="label-cn" font-size="11">• attractions: List[Attraction]</text>
+  <text x="390" y="242" class="label-cn" font-size="11">• restaurants: List[Attraction]</text>
+  <text x="390" y="257" class="label-cn" font-size="11">• transportation: List[Transport]</text>
+  <text x="390" y="272" class="label-cn" font-size="11">• daily_cost: float</text>
+  <text x="390" y="290" class="formula" font-size="10">Cost_day = Σ(activities + meals + transport)</text>
+
+  <!-- TripSummary Entity -->
+  <rect x="50" y="325" width="290" height="190" class="entity-box" rx="6" filter="url(#shadow)"/>
+  <text x="195" y="345" text-anchor="middle" class="label-cn" font-weight="bold">TripSummary</text>
+  <text x="195" y="361" text-anchor="middle" class="label-en">Complete Trip Output</text>
+  <line x1="60" y1="370" x2="330" y2="370" stroke="#dee2e6" stroke-width="1"/>
+  <text x="70" y="387" class="label-cn" font-size="11">• destination: str</text>
+  <text x="70" y="402" class="label-cn" font-size="11">• total_days: int</text>
+  <text x="70" y="417" class="label-cn" font-size="11">• itinerary: List[DayPlan]</text>
+  <text x="70" y="432" class="label-cn" font-size="11">• hotels: List[Hotel]</text>
+  <text x="70" y="447" class="label-cn" font-size="11">• total_cost: float</text>
+  <text x="70" y="462" class="label-cn" font-size="11">• travel_tips: List[str]</text>
+  <text x="70" y="477" class="label-cn" font-size="11">• weather_summary: Dict</text>
+  <text x="70" y="495" class="formula" font-size="10">Total_Cost = Σ(day_costs) + hotel_costs</text>
+
+  <!-- PlanningTaskStatus Entity -->
+  <rect x="370" y="325" width="290" height="190" class="entity-box" rx="6" filter="url(#shadow)"/>
+  <text x="515" y="345" text-anchor="middle" class="label-cn" font-weight="bold">PlanningTaskStatus</text>
+  <text x="515" y="361" text-anchor="middle" class="label-en">Task State Management</text>
+  <line x1="380" y1="370" x2="650" y2="370" stroke="#dee2e6" stroke-width="1"/>
+  <text x="390" y="387" class="label-cn" font-size="11">• task_id: UUID</text>
+  <text x="390" y="402" class="label-cn" font-size="11">• status: TaskStatus</text>
+  <text x="390" y="417" class="label-cn" font-size="11">• request: TravelRequest</text>
+  <text x="390" y="432" class="label-cn" font-size="11">• result: TripSummary | None</text>
+  <text x="390" y="447" class="label-cn" font-size="11">• progress: int (0-100)</text>
+  <text x="390" y="462" class="label-cn" font-size="11">• created_at: datetime</text>
+  <text x="390" y="477" class="label-cn" font-size="11">• completed_at: datetime | None</text>
+  <text x="390" y="495" class="formula" font-size="10">Status ∈ {started, processing, completed, failed}</text>
+
+  <!-- API Flow Section -->
+  <rect x="710" y="80" width="660" height="450" class="code-bg" rx="8" filter="url(#shadow)"/>
+  <text x="730" y="105" class="label-cn" font-weight="bold" font-size="15">API交互流程 (API Interaction Flow)</text>
+
+  <!-- Frontend -->
+  <rect x="730" y="130" width="160" height="70" class="api-box" rx="6" filter="url(#shadow)"/>
+  <text x="810" y="155" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">Streamlit前端</text>
+  <text x="810" y="172" text-anchor="middle" class="label-en" fill="white" font-size="9">Frontend UI</text>
+  <text x="810" y="188" text-anchor="middle" class="label-cn" fill="white" font-size="10">:8501</text>
+
+  <!-- POST /plan -->
+  <rect x="950" y="130" width="180" height="70" class="process-box" rx="6" filter="url(#shadow)"/>
+  <text x="1040" y="152" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">POST /plan</text>
+  <text x="1040" y="169" text-anchor="middle" class="label-en" fill="white" font-size="9">Create Planning Task</text>
+  <text x="1040" y="186" text-anchor="middle" class="label-cn" fill="white" font-size="9">返回: task_id</text>
+
+  <!-- Backend Service -->
+  <rect x="1170" y="130" width="180" height="70" class="api-box" rx="6" filter="url(#shadow)"/>
+  <text x="1260" y="155" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">FastAPI后端</text>
+  <text x="1260" y="172" text-anchor="middle" class="label-en" fill="white" font-size="9">Backend Service</text>
+  <text x="1260" y="188" text-anchor="middle" class="label-cn" fill="white" font-size="10">:8080</text>
+
+  <!-- Polling Status -->
+  <rect x="730" y="240" width="160" height="70" class="process-box" rx="6" filter="url(#shadow)"/>
+  <text x="810" y="262" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">状态轮询</text>
+  <text x="810" y="279" text-anchor="middle" class="label-en" fill="white" font-size="9">Poll Status</text>
+  <text x="810" y="296" text-anchor="middle" class="label-cn" fill="white" font-size="9">每2秒查询一次</text>
+
+  <!-- GET /status/{task_id} -->
+  <rect x="950" y="240" width="180" height="70" class="process-box" rx="6" filter="url(#shadow)"/>
+  <text x="1040" y="262" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">GET /status/:id</text>
+  <text x="1040" y="279" text-anchor="middle" class="label-en" fill="white" font-size="9">Query Task Status</text>
+  <text x="1040" y="296" text-anchor="middle" class="label-cn" fill="white" font-size="9">返回: 进度+结果</text>
+
+  <!-- Agent Processing -->
+  <rect x="1170" y="240" width="180" height="70" class="storage-box" rx="6" filter="url(#shadow)"/>
+  <text x="1260" y="262" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">智能体处理</text>
+  <text x="1260" y="279" text-anchor="middle" class="label-en" fill="white" font-size="9">Agent Processing</text>
+  <text x="1260" y="296" text-anchor="middle" class="label-cn" fill="white" font-size="9">异步执行</text>
+
+  <!-- Download Result -->
+  <rect x="730" y="350" width="160" height="70" class="process-box" rx="6" filter="url(#shadow)"/>
+  <text x="810" y="372" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">下载报告</text>
+  <text x="810" y="389" text-anchor="middle" class="label-en" fill="white" font-size="9">Download Report</text>
+  <text x="810" y="406" text-anchor="middle" class="label-cn" fill="white" font-size="9">JSON文件</text>
+
+  <!-- GET /download/{task_id} -->
+  <rect x="950" y="350" width="180" height="70" class="process-box" rx="6" filter="url(#shadow)"/>
+  <text x="1040" y="372" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">GET /download/:id</text>
+  <text x="1040" y="389" text-anchor="middle" class="label-en" fill="white" font-size="9">Download Endpoint</text>
+  <text x="1040" y="406" text-anchor="middle" class="label-cn" fill="white" font-size="9">FileResponse</text>
+
+  <!-- Storage -->
+  <rect x="1170" y="350" width="180" height="70" class="storage-box" rx="6" filter="url(#shadow)"/>
+  <text x="1260" y="372" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">结果存储</text>
+  <text x="1260" y="389" text-anchor="middle" class="label-en" fill="white" font-size="9">Result Storage</text>
+  <text x="1260" y="406" text-anchor="middle" class="label-cn" fill="white" font-size="9">results/*.json</text>
+
+  <!-- Health Check -->
+  <rect x="730" y="450" width="300" height="60" class="api-box" rx="6" filter="url(#shadow)"/>
+  <text x="880" y="472" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">GET /health</text>
+  <text x="880" y="489" text-anchor="middle" class="label-en" fill="white" font-size="9">System Health Check</text>
+  <text x="880" y="503" text-anchor="middle" class="label-cn" fill="white" font-size="9">检查配置与系统状态</text>
+
+  <!-- API Docs -->
+  <rect x="1070" y="450" width="280" height="60" class="process-box" rx="6" filter="url(#shadow)"/>
+  <text x="1210" y="472" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">GET /docs</text>
+  <text x="1210" y="489" text-anchor="middle" class="label-en" fill="white" font-size="9">Interactive API Documentation</text>
+  <text x="1210" y="503" text-anchor="middle" class="label-cn" fill="white" font-size="9">Swagger UI 交互式文档</text>
+
+  <!-- Arrows for API flow -->
+  <path d="M 890 165 L 950 165" class="arrow"/>
+  <path d="M 1130 165 L 1170 165" class="arrow"/>
+  <path d="M 810 200 L 810 240" class="arrow-data"/>
+  <path d="M 890 275 L 950 275" class="arrow"/>
+  <path d="M 1130 275 L 1170 275" class="arrow"/>
+  <path d="M 810 310 L 810 350" class="arrow-data"/>
+  <path d="M 890 385 L 950 385" class="arrow"/>
+  <path d="M 1130 385 L 1170 385" class="arrow"/>
+
+  <!-- Data Persistence Section -->
+  <rect x="30" y="560" width="650" height="250" class="code-bg" rx="8" filter="url(#shadow)"/>
+  <text x="50" y="585" class="label-cn" font-weight="bold" font-size="15">数据持久化策略 (Data Persistence)</text>
+
+  <!-- In-Memory State -->
+  <rect x="50" y="605" width="280" height="110" class="storage-box" rx="6" filter="url(#shadow)"/>
+  <text x="190" y="625" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">内存状态</text>
+  <text x="190" y="641" text-anchor="middle" class="label-en" fill="white" font-size="9">In-Memory State</text>
+  <line x1="60" y1="650" x2="320" y2="650" stroke="white" stroke-width="1"/>
+  <text x="70" y="667" class="label-cn" fill="white" font-size="10">planning_tasks: Dict[UUID, Task]</text>
+  <text x="70" y="685" class="label-cn" fill="white" font-size="10">运行时快速访问</text>
+  <text x="70" y="703" class="formula" fill="white" font-size="10">Access Time: O(1)</text>
+
+  <!-- File Storage -->
+  <rect x="370" y="605" width="280" height="110" class="storage-box" rx="6" filter="url(#shadow)"/>
+  <text x="510" y="625" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">文件存储</text>
+  <text x="510" y="641" text-anchor="middle" class="label-en" fill="white" font-size="9">File Storage</text>
+  <line x1="380" y1="650" x2="640" y2="650" stroke="white" stroke-width="1"/>
+  <text x="390" y="667" class="label-cn" fill="white" font-size="10">tasks_state.json (状态快照)</text>
+  <text x="390" y="685" class="label-cn" fill="white" font-size="10">results/*.json (规划结果)</text>
+  <text x="390" y="703" class="formula" fill="white" font-size="10">Retention: 30 days (configurable)</text>
+
+  <!-- Future: Database -->
+  <rect x="50" y="730" width="600" height="70" fill="#d5f4e6" stroke="#27ae60" stroke-width="2" stroke-dasharray="5,3" rx="6" filter="url(#shadow)"/>
+  <text x="350" y="752" text-anchor="middle" class="label-cn" font-weight="bold">🔮 未来扩展: 数据库持久化</text>
+  <text x="350" y="769" text-anchor="middle" class="label-en" font-size="9">Future Enhancement: Database Persistence</text>
+  <text x="70" y="788" class="label-cn" font-size="10">• PostgreSQL / MySQL: 结构化存储任务与结果</text>
+  <text x="430" y="788" class="label-cn" font-size="10">• Redis: 分布式状态共享</text>
+
+  <!-- External Services Section -->
+  <rect x="710" y="560" width="660" height="250" class="code-bg" rx="8" filter="url(#shadow)"/>
+  <text x="730" y="585" class="label-cn" font-weight="bold" font-size="15">外部服务集成 (External Services Integration)</text>
+
+  <!-- DuckDuckGo -->
+  <rect x="730" y="605" width="190" height="95" fill="#a29bfe" stroke="#341f97" stroke-width="2" rx="6" filter="url(#shadow)"/>
+  <text x="825" y="627" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">DuckDuckGo</text>
+  <text x="825" y="643" text-anchor="middle" class="label-en" fill="white" font-size="9">Web Search Engine</text>
+  <text x="745" y="663" class="label-cn" fill="white" font-size="10">• 无需API密钥</text>
+  <text x="745" y="678" class="label-cn" fill="white" font-size="10">• 实时信息检索</text>
+  <text x="745" y="693" class="formula" fill="white" font-size="9">Rate: Unlimited (throttled)</text>
+
+  <!-- MCP Weather Server -->
+  <rect x="950" y="605" width="190" height="95" fill="#00b894" stroke="#00a383" stroke-width="2" rx="6" filter="url(#shadow)"/>
+  <text x="1045" y="627" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">MCP天气服务器</text>
+  <text x="1045" y="643" text-anchor="middle" class="label-en" fill="white" font-size="9">MCP Weather Server</text>
+  <text x="965" y="663" class="label-cn" fill="white" font-size="10">• QWeather API集成</text>
+  <text x="965" y="678" class="label-cn" fill="white" font-size="10">• 结构化天气数据</text>
+  <text x="965" y="693" class="formula" fill="white" font-size="9">API Key: QWEATHER_API_KEY</text>
+
+  <!-- OpenAI API -->
+  <rect x="1170" y="605" width="180" height="95" fill="#e17055" stroke="#d63031" stroke-width="2" rx="6" filter="url(#shadow)"/>
+  <text x="1260" y="627" text-anchor="middle" class="label-cn" fill="white" font-weight="bold">OpenAI API</text>
+  <text x="1260" y="643" text-anchor="middle" class="label-en" fill="white" font-size="9">LLM Service</text>
+  <text x="1180" y="663" class="label-cn" fill="white" font-size="10">• claude-sonnet-4</text>
+  <text x="1180" y="678" class="label-cn" fill="white" font-size="10">• 智能体推理</text>
+  <text x="1180" y="693" class="formula" fill="white" font-size="9">Required: OPENAI_API_KEY</text>
+
+  <!-- Error Handling -->
+  <rect x="730" y="720" width="620" height="80" fill="#fdcb6e" stroke="#f39c12" stroke-width="2" rx="6" filter="url(#shadow)"/>
+  <text x="1040" y="742" text-anchor="middle" class="label-cn" font-weight="bold">⚠️ 容错机制 (Error Handling)</text>
+  <text x="745" y="762" class="label-cn" font-size="10">• API失败重试: exponential backoff (2^n × base_delay)</text>
+  <text x="745" y="778" class="label-cn" font-size="10">• 超时降级: SimpleTravelAgent 快速方案 (timeout > 300s)</text>
+  <text x="745" y="794" class="label-cn" font-size="10">• Mock数据回退: 确保99%可用性 (Availability = 1 - Σ(failure_rate_i))</text>
+
+  <!-- Request/Response Flow -->
+  <rect x="30" y="840" width="1340" height="240" class="code-bg" rx="8" filter="url(#shadow)"/>
+  <text x="700" y="865" text-anchor="middle" class="label-cn" font-weight="bold" font-size="15">完整请求响应流程 (End-to-End Request Flow)</text>
+
+  <!-- Step 1 -->
+  <rect x="50" y="885" width="150" height="80" fill="#74b9ff" stroke="#0984e3" stroke-width="2" rx="6"/>
+  <text x="125" y="905" text-anchor="middle" class="label-cn" font-weight="bold" font-size="11">① 用户提交</text>
+  <text x="125" y="920" text-anchor="middle" class="label-en" font-size="9">User Submit</text>
+  <text x="60" y="938" class="label-cn" font-size="9">填写表单</text>
+  <text x="60" y="952" class="label-cn" font-size="9">TravelRequest</text>
+
+  <!-- Step 2 -->
+  <rect x="230" y="885" width="150" height="80" fill="#a29bfe" stroke="#6c5ce7" stroke-width="2" rx="6"/>
+  <text x="305" y="905" text-anchor="middle" class="label-cn" font-weight="bold" font-size="11">② API接收</text>
+  <text x="305" y="920" text-anchor="middle" class="label-en" font-size="9">API Receive</text>
+  <text x="240" y="938" class="label-cn" font-size="9">校验数据</text>
+  <text x="240" y="952" class="label-cn" font-size="9">生成task_id</text>
+
+  <!-- Step 3 -->
+  <rect x="410" y="885" width="150" height="80" fill="#fd79a8" stroke="#e84393" stroke-width="2" rx="6"/>
+  <text x="485" y="905" text-anchor="middle" class="label-cn" font-weight="bold" font-size="11">③ 异步处理</text>
+  <text x="485" y="920" text-anchor="middle" class="label-en" font-size="9">Async Process</text>
+  <text x="420" y="938" class="label-cn" font-size="9">LangGraph</text>
+  <text x="420" y="952" class="label-cn" font-size="9">多智能体协作</text>
+
+  <!-- Step 4 -->
+  <rect x="590" y="885" width="150" height="80" fill="#ffeaa7" stroke="#fdcb6e" stroke-width="2" rx="6"/>
+  <text x="665" y="905" text-anchor="middle" class="label-cn" font-weight="bold" font-size="11">④ 工具调用</text>
+  <text x="665" y="920" text-anchor="middle" class="label-en" font-size="9">Tool Calls</text>
+  <text x="600" y="938" class="label-cn" font-size="9">搜索/天气</text>
+  <text x="600" y="952" class="label-cn" font-size="9">外部API</text>
+
+  <!-- Step 5 -->
+  <rect x="770" y="885" width="150" height="80" fill="#55efc4" stroke="#00b894" stroke-width="2" rx="6"/>
+  <text x="845" y="905" text-anchor="middle" class="label-cn" font-weight="bold" font-size="11">⑤ 结果生成</text>
+  <text x="845" y="920" text-anchor="middle" class="label-en" font-size="9">Generate Result</text>
+  <text x="780" y="938" class="label-cn" font-size="9">TripSummary</text>
+  <text x="780" y="952" class="label-cn" font-size="9">保存JSON</text>
+
+  <!-- Step 6 -->
+  <rect x="950" y="885" width="150" height="80" fill="#a29bfe" stroke="#6c5ce7" stroke-width="2" rx="6"/>
+  <text x="1025" y="905" text-anchor="middle" class="label-cn" font-weight="bold" font-size="11">⑥ 状态更新</text>
+  <text x="1025" y="920" text-anchor="middle" class="label-en" font-size="9">Update Status</text>
+  <text x="960" y="938" class="label-cn" font-size="9">completed</text>
+  <text x="960" y="952" class="label-cn" font-size="9">progress=100</text>
+
+  <!-- Step 7 -->
+  <rect x="1130" y="885" width="150" height="80" fill="#74b9ff" stroke="#0984e3" stroke-width="2" rx="6"/>
+  <text x="1205" y="905" text-anchor="middle" class="label-cn" font-weight="bold" font-size="11">⑦ 用户获取</text>
+  <text x="1205" y="920" text-anchor="middle" class="label-en" font-size="9">User Retrieve</text>
+  <text x="1140" y="938" class="label-cn" font-size="9">轮询/下载</text>
+  <text x="1140" y="952" class="label-cn" font-size="9">查看结果</text>
+
+  <!-- Flow arrows -->
+  <path d="M 200 925 L 230 925" class="arrow"/>
+  <path d="M 380 925 L 410 925" class="arrow"/>
+  <path d="M 560 925 L 590 925" class="arrow"/>
+  <path d="M 740 925 L 770 925" class="arrow"/>
+  <path d="M 920 925 L 950 925" class="arrow"/>
+  <path d="M 1100 925 L 1130 925" class="arrow"/>
+
+  <!-- Time estimation -->
+  <text x="700" y="995" text-anchor="middle" class="formula" font-size="12">Total Time = T_validation + T_processing + T_storage</text>
+  <text x="700" y="1015" text-anchor="middle" class="formula" font-size="12">T_processing = T_LLM × n_agents + T_tools × n_calls</text>
+  <text x="700" y="1035" text-anchor="middle" class="label-cn" font-size="10">预期总时长: 60-180秒 (取决于目的地复杂度与API响应)</text>
+  <text x="700" y="1055" text-anchor="middle" class="label-en" font-size="9">Expected Duration: 60-180s (depends on complexity and API latency)</text>
+
+  <!-- Legend -->
+  <text x="50" y="1085" class="label-cn" font-weight="bold" font-size="11">图例:</text>
+  <line x1="100" y1="1080" x2="130" y2="1080" class="arrow"/>
+  <text x="140" y="1085" class="label-cn" font-size="10">控制流</text>
+  <line x1="220" y1="1080" x2="250" y2="1080" class="arrow-data"/>
+  <text x="260" y="1085" class="label-cn" font-size="10">数据流</text>
+</svg>

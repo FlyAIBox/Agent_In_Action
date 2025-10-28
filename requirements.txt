@@ -1,0 +1,126 @@
+###############################################
+# AIAgent101 依赖
+#
+# 用法：
+#   pip install -r requirements.txt
+#
+# 说明：
+# - 已按“功能模块”分区并固定版本，确保可复现环境。
+# - 默认覆盖：智能体框架、MCP 集成、观测与安全、API 服务、UI/可视化、
+#   压测/数据格式、训练微调、开发与质量工具。
+# - 如仅做推理/教学演示，可按需注释掉“训练/微调重依赖”和“开发工具”。
+# - 不再安装 PyPI 的 `asyncio` backport（Python 自带标准库，装回移包会冲突）。
+#
+# Python 版本建议：3.10.18（与课程示例一致）
+###############################################
+
+########## 1) 快速上手与基础工具 ##########
+# 配置管理、数据序列化、校验与常用小工具
+python-dotenv==1.1.1      # 从 .env 读取密钥与环境变量，配置与代码解耦
+pyyaml==6.0.2             # YAML 配置解析
+pydantic==2.10.6          # 数据模型校验与序列化
+requests==2.32.5          # 经典同步 HTTP 客户端
+rich==14.0.0              # 终端富文本日志，更易读
+tqdm==4.67.1              # 进度条工具
+omegaconf==2.3.0          # 分层配置/超参合并（训练与多环境配置常用）
+
+########## 2) 智能体核心框架与工具 ##########
+# LangChain / LangGraph 与常见检索工具
+langchain-core==0.3.75            # LangChain 核心抽象（消息、工具、链式接口）
+langchain-community==0.3.27       # 社区工具与向量库适配器集合
+langchain-openai==0.3.32          # OpenAI 接入适配
+langchain==0.3.27                 # LangChain 入口组合包
+
+langgraph==0.6.7                  # 基于图的智能体编排（节点/边/状态机）
+langgraph-prebuilt==0.6.4         # 预构建节点与函数，便于上手
+langgraph-checkpoint-sqlite==2.0.11 # 对话/状态持久化（SQLite 后端）
+langgraph-cli==0.4.2              # CLI 调试/本地运行
+langgraph-sdk==0.2.6              # 统一托管/版本与遥测 SDK
+langsmith==0.4.31                 # LangChain 官方观测平台 SDK
+tiktoken==0.11.0                  # Token 统计与分词（控制成本与上下文）
+
+# 知识接入与文本处理
+tavily-python==0.7.12             # 实时网页检索 API
+wikipedia==1.4.0                  # 维基百科语料访问
+trustcall==0.0.39                 # 结构化信息抽取（更新画像/记忆）
+beautifulsoup4==4.14.2            # HTML 解析成结构化信息
+langchainhub==0.1.20              # LangChain Hub 提示与链路资源
+langchain-text-splitters==0.2.1   # 文本切分（为向量检索做准备）
+langchain-chroma==0.1.2           # Chroma 向量数据库适配器
+langchain-anthropic==0.1.15       # Anthropic/Claude 模型接入
+langdetect==1.0.9                 # 自动语言检测（多语言场景）
+
+########## 3) MCP（Model Context Protocol）集成 ##########
+mcp==1.5.0                        # MCP 官方 SDK（上下文服务器/工具协议）
+httpx==0.28.1                     # 现代异步 HTTP 客户端
+openai==1.107.0                   # OpenAI 官方客户端
+langchain-mcp-adapters==0.0.9     # LangChain 对 MCP 的适配
+# 注意：不要安装 PyPI 的 `asyncio` backport（标准库已内置）
+
+########## 4) 可观测性与安全 ##########
+langfuse==3.3.0                   # 观测与评估平台 SDK
+llm-guard==0.3.16                 # 提示/输出安全策略与过滤
+prometheus-client==0.22.0         # 暴露 Prometheus 指标
+psutil==7.0.0                     # 进程/系统资源监控
+swanlab==0.6.4                    # 训练与实验追踪（国产平台）
+
+########## 5) API 服务与异步 IO ##########
+fastapi==0.115.12                 # 异步 Web 框架（推理 API/服务编排）
+uvicorn==0.34.2                   # 高性能 ASGI 服务器
+aiohttp==3.11.18                  # 异步 HTTP 客户端（批量/流式）
+aiofiles==24.1.0                  # 异步文件 IO（上传/日志）
+
+########## 6) UI 与可视化 ##########
+gradio==5.25.0                    # 快速搭建交互式 Web 演示
+matplotlib==3.7.0                 # 基础绘图
+seaborn==0.11.0                   # 统计绘图
+plotly==5.0.0                     # 交互式可视化
+pillow==11.3.0                    # 图像处理（保存样本/可视化素材）
+
+########## 7) 压测与数据格式 ##########
+pyarrow==15.0.2                   # 列式数据/共享内存，适合压测结果存取
+
+########## 8) 训练 / 微调（重依赖，按需启用） ##########
+# 如仅做推理与教学演示，可先注释本段以减小环境体积
+transformers==4.45.0              # HF 模型与推理 API
+tokenizers==0.20.3                # 高性能分词（Rust 实现）
+datasets==3.2.0                   # 数据集加载/切分/缓存
+accelerate==1.3.0                 # 多卡/混合精度训练调度
+peft==0.15.1                      # 轻量参数微调（LoRA 等）
+trl==0.9.6                        # 强化学习训练（PPO/DPO 等）
+safetensors==0.5.3                # 安全高效的权重格式
+sentencepiece==0.2.0              # 多语言子词分词
+
+# 数值与传统 ML 组件
+numpy==1.25.0
+scipy==1.15.3
+pandas==2.2.3
+scikit-learn==1.6.1
+
+# 模型与资源平台
+modelscope==1.28.2                # 魔搭 ModelScope 生态
+huggingface-hub==0.34.1           # HF Hub 资源管理
+
+########## 9) 开发与质量（可选） ##########
+pytest==8.3.5                     # 单元测试框架
+pytest-asyncio==0.26.0            # 异步测试支持
+ruff==0.11.11                     # 代码静态检查/格式
+
+########## 10) 可选：海光 DCU 优化 Wheel（仅注释说明） ##########
+# 仅在匹配 DTK2504 环境中手动安装以下链接所示的定制 wheel：
+# vLLM（DCU 优化）：
+# https://download.sourcefind.cn:65024/file/4/vllm/DAS1.5/vllm-0.6.2+das.opt3.dtk2504-cp310-cp310-manylinux_2_28_x86_64.whl
+# PyTorch（DAS 定制）：
+# https://download.sourcefind.cn:65024/file/4/pytorch/DAS1.5/torch-2.4.1+das.opt2.dtk2504-cp310-cp310-manylinux_2_28_x86_64.whl
+# TorchVision（DAS）：
+# https://download.sourcefind.cn:65024/file/4/vision/DAS1.5/torchvision-0.19.1+das.opt2.dtk2504-cp310-cp310-manylinux_2_28_x86_64.whl
+# LMSlim：
+# https://download.sourcefind.cn:65024/file/4/lmslim/DAS1.5/lmslim-0.2.1+das.dtk2504-cp310-cp310-manylinux_2_28_x86_64.whl
+# FlashAttention（DAS）：
+# https://download.sourcefind.cn:65024/file/4/flash_attn/DAS1.5/flash_attn-2.6.1+das.opt4.dtk2504-cp310-cp310-manylinux_2_28_x86_64.whl
+# DeepSpeed（DAS）：
+# https://download.sourcefind.cn:65024/file/4/deepspeed/DAS1.5/deepspeed-0.14.2+das.opt2.dtk2504-cp310-cp310-manylinux_2_28_x86_64.whl
+# Triton（DAS）：
+# https://download.sourcefind.cn:65024/file/4/triton/DAS1.5/triton-3.0.0+das.opt4.dtk2504-cp310-cp310-manylinux_2_28_x86_64.whl
+# Transformer Engine（DAS）：
+# https://download.sourcefind.cn:65024/file/4/transformer_engine/DAS1.5/transformer_engine-1.9.0+das.opt2.dtk2504-cp310-cp310-manylinux_2_28_x86_64.whl

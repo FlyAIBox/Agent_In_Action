@@ -1,0 +1,13 @@
+# MCP 基础库
+# Model Context Protocol SDK
+mcp==1.17.0
+# HTTP 客户端库，用于 API 调用
+httpx==0.28.1
+# 异步库
+asyncio==3.4.3
+# OpenAI
+openai==1.107.0
+# LangChain MCP 适配器
+langchain-mcp-adapters==0.1.11
+langgraph==0.6.7
+langchain-openai==0.3.31

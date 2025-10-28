@@ -1,0 +1,185 @@
+<svg viewBox="0 0 1400 1100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: 'SimSun', serif; font-size: 26px; font-weight: bold; fill: #1a1a1a; }
+      .subtitle { font-family: 'SimSun', serif; font-size: 14px; fill: #333; }
+      .label-cn { font-family: 'SimSun', serif; font-size: 12px; fill: #2c3e50; }
+      .label-en { font-family: 'Times New Roman', serif; font-size: 10px; fill: #555; font-style: italic; }
+      .formula { font-family: 'Times New Roman', serif; font-size: 11px; fill: #c0392b; font-style: italic; }
+      .prompt-box { fill: #e8f5e9; stroke: #4caf50; stroke-width: 2; }
+      .tool-box { fill: #fff3e0; stroke: #ff9800; stroke-width: 2; }
+      .llm-box { fill: #e3f2fd; stroke: #2196f3; stroke-width: 2; }
+      .output-box { fill: #f3e5f5; stroke: #9c27b0; stroke-width: 2; }
+      .code-bg { fill: #f8f9fa; stroke: #dee2e6; stroke-width: 1; }
+      .arrow { stroke: #34495e; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#34495e" />
+    </marker>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="700" y="35" text-anchor="middle" class="title">提示词工程与工具调用机制</text>
+  <text x="700" y="57" text-anchor="middle" class="subtitle">Prompt Engineering and Tool Invocation Mechanism</text>
+
+  <!-- Prompt Engineering Principles -->
+  <rect x="30" y="80" width="660" height="320" class="code-bg" rx="8" filter="url(#shadow)"/>
+  <text x="50" y="105" class="label-cn" font-weight="bold" font-size="15">提示词工程原则 (Prompt Engineering Principles)</text>
+
+  <!-- System Prompt -->
+  <rect x="50" y="125" width="620" height="110" class="prompt-box" rx="6" filter="url(#shadow)"/>
+  <text x="70" y="147" class="label-cn" font-weight="bold">① 系统提示词 (System Prompt)</text>
+  <text x="80" y="167" class="label-cn" font-size="11">角色定义: "你是一位专业的旅行规划专家..."</text>
+  <text x="80" y="183" class="label-cn" font-size="11">能力说明: "擅长分析目的地、优化预算、推荐景点..."</text>
+  <text x="80" y="199" class="label-cn" font-size="11">输出格式: "以结构化JSON格式返回规划结果"</text>
+  <text x="80" y="220" class="formula" font-size="10">Clarity Score = f(role_specificity, capability_detail, format_constraint)</text>
+
+  <!-- Few-shot Examples -->
+  <rect x="50" y="245" width="620" height="145" class="prompt-box" rx="6" filter="url(#shadow)"/>
+  <text x="70" y="267" class="label-cn" font-weight="bold">② 少样本示例 (Few-shot Examples)</text>
+  <text x="80" y="287" class="label-cn" font-size="11">示例输入: "目的地: 东京, 预算: $2000, 5天"</text>
+  <text x="80" y="303" class="label-cn" font-size="11">示例输出: {"day1": {"attractions": [...], "cost": 400}, ...}</text>
+  <text x="80" y="324" class="label-en" font-size="9">Purpose: Guide LLM to produce consistent structured outputs</text>
+  <text x="80" y="345" class="formula" font-size="10">Learning Rate ∝ n_examples × quality_score</text>
+  <text x="80" y="365" class="label-cn" font-size="10">✓ 最佳实践: 2-3个高质量示例比10个低质量更有效</text>
+
+  <!-- Context Engineering -->
+  <rect x="720" y="80" width="650" height="320" class="code-bg" rx="8" filter="url(#shadow)"/>
+  <text x="740" y="105" class="label-cn" font-weight="bold" font-size="15">上下文工程 (Context Engineering)</text>
+
+  <!-- Context Window -->
+  <rect x="740" y="125" width="610" height="125" class="llm-box" rx="6" filter="url(#shadow)"/>
+  <text x="760" y="147" class="label-cn" font-weight="bold">上下文窗口管理</text>
+  <text x="770" y="167" class="label-cn" font-size="11">模型: claude-sonnet-4 (200K tokens)</text>
+  <text x="770" y="183" class="formula" font-size="10">Context_Budget = Total_Tokens - (System + Examples + Output_Reserve)</text>
+  <text x="770" y="203" class="label-cn" font-size="11">策略: 优先保留最近对话 + 关键工具结果</text>
+  <text x="770" y="219" class="label-cn" font-size="11">压缩: 总结历史消息,保留核心信息</text>
+  <text x="770" y="235" class="formula" font-size="10">Compression_Ratio = Original_Length / Summarized_Length ≈ 5:1</text>
+
+  <!-- Message History -->
+  <rect x="740" y="260" width="610" height="130" class="llm-box" rx="6" filter="url(#shadow)"/>
+  <text x="760" y="282" class="label-cn" font-weight="bold">消息历史结构</text>
+  <text x="770" y="302" class="formula" font-size="10">messages = [</text>
+  <text x="790" y="319" class="formula" font-size="10">  {"role": "system", "content": system_prompt},</text>
+  <text x="790" y="334" class="formula" font-size="10">  {"role": "user", "content": user_request},</text>
+  <text x="790" y="349" class="formula" font-size="10">  {"role": "assistant", "content": agent_response},</text>
+  <text x="790" y="364" class="formula" font-size="10">  {"role": "tool", "content": tool_result, "tool_call_id": "..."},</text>
+  <text x="770" y="379" class="formula" font-size="10">]</text>
+
+  <!-- Tool Calling Mechanism -->
+  <rect x="30" y="430" width="1340" height="360" class="code-bg" rx="8" filter="url(#shadow)"/>
+  <text x="700" y="455" text-anchor="middle" class="label-cn" font-weight="bold" font-size="16">工具调用机制详解 (Tool Calling Mechanism)</text>
+
+  <!-- Tool Definition -->
+  <rect x="50" y="475" width="400" height="300" class="tool-box" rx="6" filter="url(#shadow)"/>
+  <text x="250" y="497" text-anchor="middle" class="label-cn" font-weight="bold">工具定义 (Tool Definition)</text>
+  
+  <text x="70" y="520" class="label-cn" font-size="11" font-weight="bold">1. DuckDuckGo 搜索工具</text>
+  <text x="80" y="540" class="formula" font-size="9">{</text>
+  <text x="90" y="555" class="formula" font-size="9">  "name": "search_destination",</text>
+  <text x="90" y="568" class="formula" font-size="9">  "description": "搜索目的地相关信息",</text>
+  <text x="90" y="581" class="formula" font-size="9">  "parameters": {</text>
+  <text x="100" y="594" class="formula" font-size="9">    "query": {"type": "string", "description": "搜索关键词"},</text>
+  <text x="100" y="607" class="formula" font-size="9">    "max_results": {"type": "integer", "default": 5}</text>
+  <text x="90" y="620" class="formula" font-size="9">  }</text>
+  <text x="80" y="633" class="formula" font-size="9">}</text>
+  
+  <text x="70" y="655" class="label-cn" font-size="11" font-weight="bold">2. MCP 天气服务工具</text>
+  <text x="80" y="675" class="formula" font-size="9">{</text>
+  <text x="90" y="688" class="formula" font-size="9">  "name": "get_weather_forecast",</text>
+  <text x="90" y="701" class="formula" font-size="9">  "description": "获取天气预报",</text>
+  <text x="90" y="714" class="formula" font-size="9">  "parameters": {</text>
+  <text x="100" y="727" class="formula" font-size="9">    "city": {"type": "string"},</text>
+  <text x="100" y="740" class="formula" font-size="9">    "days": {"type": "integer", "max": 7}</text>
+  <text x="90" y="753" class="formula" font-size="9">  }</text>
+  <text x="80" y="766" class="formula" font-size="9">}</text>
+
+  <!-- Tool Call Flow -->
+  <rect x="480" y="475" width="420" height="300" class="llm-box" rx="6" filter="url(#shadow)"/>
+  <text x="690" y="497" text-anchor="middle" class="label-cn" font-weight="bold">调用流程 (Invocation Flow)</text>
+  
+  <!-- Step boxes -->
+  <rect x="500" y="515" width="380" height="40" fill="#bbdefb" stroke="#1976d2" stroke-width="1" rx="4"/>
+  <text x="520" y="540" class="label-cn" font-size="11">① LLM判断需要工具 → 生成tool_call</text>
+  
+  <path d="M 690 555 L 690 575" class="arrow"/>
+  
+  <rect x="500" y="575" width="380" height="40" fill="#c5e1a5" stroke="#689f38" stroke-width="1" rx="4"/>
+  <text x="520" y="600" class="label-cn" font-size="11">② 解析tool_call → 提取参数</text>
+  
+  <path d="M 690 615 L 690 635" class="arrow"/>
+  
+  <rect x="500" y="635" width="380" height="40" fill="#fff59d" stroke="#f57f17" stroke-width="1" rx="4"/>
+  <text x="520" y="660" class="label-cn" font-size="11">③ 执行工具函数 → 调用外部API</text>
+  
+  <path d="M 690 675 L 690 695" class="arrow"/>
+  
+  <rect x="500" y="695" width="380" height="40" fill="#ce93d8" stroke="#7b1fa2" stroke-width="1" rx="4"/>
+  <text x="520" y="720" class="label-cn" font-size="11">④ 返回结果 → 添加到消息历史</text>
+  
+  <path d="M 690 735 L 690 755" class="arrow"/>
+  
+  <rect x="500" y="755" width="380" height="40" fill="#a5d6a7" stroke="#388e3c" stroke-width="1" rx="4"/>
+  <text x="520" y="780" class="label-cn" font-size="11">⑤ LLM处理结果 → 继续推理或输出</text>
+
+  <!-- Error Handling -->
+  <rect x="930" y="475" width="420" height="300" class="output-box" rx="6" filter="url(#shadow)"/>
+  <text x="1140" y="497" text-anchor="middle" class="label-cn" font-weight="bold">错误处理与回退 (Error Handling)</text>
+  
+  <text x="950" y="525" class="label-cn" font-size="11" font-weight="bold">工具调用失败场景:</text>
+  <text x="960" y="545" class="label-cn" font-size="10">• API超时 (Timeout > 30s)</text>
+  <text x="960" y="560" class="label-cn" font-size="10">• 速率限制 (Rate Limit)</text>
+  <text x="960" y="575" class="label-cn" font-size="10">• 网络错误 (Network Error)</text>
+  <text x="960" y="590" class="label-cn" font-size="10">• 无效响应 (Invalid Response)</text>
+  
+  <text x="950" y="615" class="label-cn" font-size="11" font-weight="bold">重试策略:</text>
+  <text x="960" y="635" class="formula" font-size="10">delay = min(base_delay × 2^attempt, max_delay)</text>
+  <text x="960" y="653" class="formula" font-size="10">max_retries = 3</text>
+  <text x="960" y="671" class="formula" font-size="10">base_delay = 1s, max_delay = 10s</text>
+  
+  <text x="950" y="695" class="label-cn" font-size="11" font-weight="bold">回退机制:</text>
+  <text x="960" y="715" class="label-cn" font-size="10">1. 使用缓存数据</text>
+  <text x="960" y="730" class="label-cn" font-size="10">2. 返回模拟数据 (Mock Data)</text>
+  <text x="960" y="745" class="label-cn" font-size="10">3. 通知用户降级服务</text>
+  <text x="960" y="765" class="formula" font-size="10">Availability = 1 - P(all_attempts_fail)</text>
+
+  <!-- Best Practices -->
+  <rect x="30" y="820" width="1340" height="260" class="code-bg" rx="8" filter="url(#shadow)"/>
+  <text x="700" y="845" text-anchor="middle" class="label-cn" font-weight="bold" font-size="16">最佳实践总结 (Best Practices Summary)</text>
+  
+  <!-- Column 1 -->
+  <rect x="50" y="865" width="400" height="200" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="6"/>
+  <text x="250" y="887" text-anchor="middle" class="label-cn" font-weight="bold">提示词设计</text>
+  <text x="70" y="910" class="label-cn" font-size="11">✓ 明确角色与任务边界</text>
+  <text x="70" y="928" class="label-cn" font-size="11">✓ 提供2-3个高质量示例</text>
+  <text x="70" y="946" class="label-cn" font-size="11">✓ 指定输出格式与约束</text>
+  <text x="70" y="964" class="label-cn" font-size="11">✓ 使用思维链 (Chain-of-Thought)</text>
+  <text x="70" y="982" class="label-cn" font-size="11">✓ 分步骤推理复杂任务</text>
+  <text x="70" y="1000" class="label-en" font-size="9">"Let's think step by step..."</text>
+  <text x="70" y="1020" class="formula" font-size="10">Quality ∝ Specificity × Examples × Structure</text>
+
+  <!-- Column 2 -->
+  <rect x="480" y="865" width="400" height="200" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="6"/>
+  <text x="680" y="887" text-anchor="middle" class="label-cn" font-weight="bold">工具调用优化</text>
+  <text x="500" y="910" class="label-cn" font-size="11">✓ 并行化独立工具调用</text>
+  <text x="500" y="928" class="label-cn" font-size="11">✓ 缓存频繁查询结果 (TTL: 1h)</text>
+  <text x="500" y="946" class="label-cn" font-size="11">✓ 设置合理超时 (30s典型)</text>
+  <text x="500" y="964" class="label-cn" font-size="11">✓ 实现指数退避重试</text>
+  <text x="500" y="982" class="label-cn" font-size="11">✓ 提供Mock数据回退</text>
+  <text x="500" y="1000" class="label-en" font-size="9">Graceful degradation over failure</text>
+  <text x="500" y="1020" class="formula" font-size="10">Throughput ↑ via parallelization</text>
+
+  <!-- Column 3 -->
+  <rect x="910" y="865" width="440" height="200" fill="#e3f2fd" stroke="#2196f3" stroke-width="2" rx="6"/>
+  <text x="1130" y="887" text-anchor="middle" class="label-cn" font-weight="bold">上下文管理</text>
+  <text x="930" y="910" class="label-cn" font-size="11">✓ 控制消息历史长度 (max 50条)</text>
+  <text x="930" y="928" class="label-cn" font-size="11">✓ 压缩旧对话保留要点</text>
+  <text x="930" y="946" class="label-cn" font-size="11">✓ 优先保留工具结果</text>
+  <text x="930" y="964" class="label-cn" font-size="11">✓ 监控token使用率</text>
+  <text x="930" y="982" class="formula" font-size="10">if tokens > threshold: summarize_history()</text>
+  <text x="930" y="1000" class="label-cn" font-size="11">✓ 使用语义检索关键信息</text>
+  <text x="930" y="1020" class="label-en" font-size="9">RAG-style context injection when needed</text>
+</svg>
