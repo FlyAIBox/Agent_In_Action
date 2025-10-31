@@ -1,0 +1,366 @@
+# ==================================================
+# Agent-101 大模型项目 Git 忽略文件配置
+# ==================================================
+
+# ==================== 敏感信息和配置文件 ====================
+# 环境变量和API密钥文件
+.env
+.env.*
+!.env.template
+*.env
+.env.local
+.env.development
+.env.staging
+.env.production
+
+# 配置文件中的敏感信息
+secrets.json
+config.json
+credentials.json
+.secrets.toml
+.streamlit/secrets.toml
+
+# API 密钥和令牌文件
+api_keys.txt
+tokens.json
+*.key
+*.pem
+*.p12
+
+# ==================== Python 相关文件 ====================
+# 字节码文件
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+*.pyd
+
+# 分发和打包
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# 安装器日志
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ==================== 虚拟环境 ====================
+# Python 虚拟环境
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+.virtualenv/
+
+# Conda 环境
+.conda/
+conda-env/
+# environment.yml
+
+# Pipenv
+Pipfile.lock
+
+# Poetry
+poetry.lock
+
+# ==================== AI/ML 模型和数据文件 ====================
+# 模型文件
+*.pt
+*.pth
+*.pkl
+*.pickle
+*.joblib
+*.h5
+*.hdf5
+*.pb
+*.onnx
+*.tflite
+*.safetensors
+
+# 模型目录
+models/
+saved_models/
+checkpoints/
+weights/
+pretrained/
+
+# 数据文件
+# data/
+datasets/
+*.csv
+# *.json
+*.jsonl
+*.parquet
+*.feather
+*.xlsx
+*.xls
+*.db
+*.sqlite
+*.sqlite3
+04-agent-build-docker-deploy/backend/tasks_state.json
+
+# 向量数据库文件
+*.db
+chroma_db/
+qdrant_storage/
+pinecone_index/
+faiss_index/
+vector_store/
+
+# ==================== 开发工具和IDE ====================
+# VSCode
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ==================== 操作系统文件 ====================
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+.nfs*
+
+# ==================== 日志和临时文件 ====================
+# 日志文件
+*.log
+logs/
+log/
+*.out
+*.err
+
+# 临时文件
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+*.orig
+*.cache
+
+# ==================== Jupyter Notebook ====================
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+profile_default/
+ipython_config.py
+
+# ==================== 测试和覆盖率 ====================
+# 测试覆盖率
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+htmlcov/
+
+# 测试结果
+.tox/
+.nox/
+.testmondata
+
+# ==================== Streamlit 特定文件 ====================
+# Streamlit 配置（保留示例配置）
+# .streamlit/config.toml
+
+# ==================== Docker 相关 ====================
+# Docker 文件
+.dockerignore
+docker-compose.override.yml
+.docker/
+
+# ==================== 缓存文件 ====================
+# 各种缓存目录
+.cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.ruff_cache/
+
+# npm 缓存（如果有前端组件）
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ==================== 输出和结果文件 ====================
+# 生成的文件
+output/
+outputs/
+results/
+generated/
+exports/
+04-agent-build-docker-deploy/backend/tasks_state.json
+
+# 图表和可视化
+plots/
+figures/
+# *.png
+# *.jpg
+# *.jpeg
+# *.gif
+# *.svg
+# *.pdf
+
+# ==================== 文档生成 ====================
+# Sphinx 文档
+docs/_build/
+
+# MkDocs 文档
+site/
+
+# ==================== 备份和压缩文件 ====================
+# 备份文件
+*.bak
+*.backup
+*.old
+
+# 压缩文件
+# *.zip
+# *.tar.gz
+*.tar.bz2
+*.rar
+*.7z
+
+# ==================== 项目特定文件 ====================
+# 大模型训练相关
+wandb/
+mlruns/
+tensorboard_logs/
+.wandb/
+
+# 实验结果
+experiments/
+runs/
+lightning_logs/
+
+# 数据库连接
+*.db-journal
+
+# 云存储同步
+.dropbox
+.sync
+
+# ==================== 安全和认证 ====================
+# SSH 密钥
+*.rsa
+*.rsa.pub
+id_rsa*
+id_ed25519*
+
+# GPG 密钥
+*.gpg
+*.asc
+
+# ==================== 其他工具 ====================
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath
+*.sage.py
+
+# 环境
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder
+.spyderproject
+.spyproject
+
+# Rope
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# ==================================================
+# 项目特定补充（根据需要取消注释）
+# ==================================================
+
+# 如果有特定的模型文件需要忽略
+# llama-models/
+# bert-models/
+# gpt-models/
+
+# 如果有特定的数据集目录
+# training_data/
+# validation_data/
+# test_data/
+
+# 如果有特定的部署文件
+# deployment/
+# k8s/
+# helm/
