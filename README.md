@@ -188,7 +188,7 @@ mcp_client_deepseek.py  # 集成DeepSeek的客户端
 
 **🔑 核心知识点**：
 - Langfuse追踪与监控集成
-- LangSmith调试工具使用
+- 调试工具使用
 - 智能体评估指标设计（准确性/完整性/安全性）
 - 自动化评估流程
 - 成本分析与优化
@@ -233,7 +233,7 @@ dataset/              # 医疗领域数据集
   - dataset_info.json # 数据集配置
 
 configs/              # 微调配置
-  - dtk2504-*.yaml    # LlamaFactory配置
+  - llamafactory-*.yaml    # LlamaFactory配置
 
 lora/                 # LoRA适配器
   - 微调后的模型权重
