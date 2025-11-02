@@ -10,4 +10,3 @@ langgraph-sdk==0.2.6
 tavily-python==0.7.12
 requests==2.32.5
 beautifulsoup4==4.14.2
-
