@@ -37,9 +37,7 @@ from langchain_openai import ChatOpenAI
 
 # 导入搜索工具
 from langchain_community.tools.tavily_search import TavilySearchResults
-
-# 导入百度百科加载器（从同级目录导入）
-from baike_loader import BaiduBaikeLoader
+from langchain_community.document_loaders import WikipediaLoader
 
 # LangGraph 相关导入
 from langgraph.graph import START, END, StateGraph
@@ -364,21 +362,76 @@ def search_web(state: InterviewState):
 
 
 def search_baike(state: InterviewState):
-    """通过百科（百度百科）检索相关文档"""
+    
+    """ Retrieve docs from wikipedia """
+
+    # Search query
     structured_llm = llm.with_structured_output(SearchQuery)
-    search_query = structured_llm.invoke([search_instructions] + state['messages'])
+    search_query = structured_llm.invoke([search_instructions]+state['messages'])
+    
+    # Search
+    search_docs = WikipediaLoader(query=search_query.search_query, 
+                                  load_max_docs=2).load()
 
-    search_docs = BaiduBaikeLoader(
-        query=search_query.search_query,
-        load_max_docs=2
-    ).load()
+     # Format
+    formatted_search_docs = "\n\n---\n\n".join(
+        [
+            f'<Document source="{doc.metadata["source"]}" page="{doc.metadata.get("page", "")}"/>\n{doc.page_content}\n</Document>'
+            for doc in search_docs
+        ]
+    )
 
-    formatted_search_docs = "\n\n---\n\n".join([
-        f'<Document source="{doc.metadata["source"]}" page="{doc.metadata.get("page", "")}"/>\n{doc.page_content}\n</Document>'
-        for doc in search_docs
-    ])
+    return {"context": [formatted_search_docs]} 
 
-    return {"context": [formatted_search_docs]}
+# def search_baike_bak(state: InterviewState):
+#     """
+#     通过维基百科检索相关文档
+
+#     功能:
+#         1. 分析当前对话内容，生成维基百科搜索查询
+#         2. 使用WikipediaLoader获取维基百科内容
+#         3. 格式化搜索结果，便于后续处理
+
+#     参数:
+#         state: 包含对话历史的状态对象
+
+#     返回:
+#         dict: 包含格式化维基百科搜索结果的上下文信息
+#     """
+#     # 使用结构化输出生成搜索查询
+#     structured_llm = llm.with_structured_output(SearchQuery)
+#     search_query = structured_llm.invoke([search_instructions] + state['messages'])
+
+#     # 检查搜索查询是否有效
+#     if not search_query.search_query:
+#         return {"context": []}
+
+#     # 执行维基百科搜索
+#     # WikipediaLoader 需要将查询字符串作为位置参数
+#     try:
+#         # 尝试使用 load_max_docs 参数（如果支持）
+#         try:
+#             search_docs = WikipediaLoader(
+#                 search_query.search_query,
+#                 load_max_docs=2
+#             ).load()
+#         except TypeError:
+#             # 如果不支持 load_max_docs，则使用默认方式
+#             search_docs = WikipediaLoader(search_query.search_query).load()
+#             # 限制文档数量
+#             search_docs = search_docs[:2]
+#     except Exception as e:
+#         # 如果维基百科搜索失败，返回空上下文
+#         print(f"维基百科搜索失败: {e}")
+#         return {"context": []}
+
+#     # 格式化维基百科搜索结果
+#     formatted_search_docs = "\n\n---\n\n".join([
+#         f'<Document source="{doc.metadata.get("source", "Wikipedia")}" page="{doc.metadata.get("page", "")}"/>\n{doc.page_content}\n</Document>'
+#         for doc in search_docs
+#     ])
+
+#     return {"context": [formatted_search_docs]}
 
 
 def generate_answer(state: InterviewState):
@@ -489,7 +542,7 @@ def write_introduction(state: ResearchGraphState):
     )
 
     intro = llm.invoke([
-        instructions,
+        SystemMessage(content=instructions),
         HumanMessage(content=f"撰写报告引言")
     ])
 
@@ -508,7 +561,7 @@ def write_conclusion(state: ResearchGraphState):
     )
 
     conclusion = llm.invoke([
-        instructions,
+        SystemMessage(content=instructions),
         HumanMessage(content=f"撰写报告结论")
     ])
 

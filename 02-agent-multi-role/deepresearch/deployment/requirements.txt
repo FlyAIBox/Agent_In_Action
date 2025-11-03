@@ -10,3 +10,4 @@ langgraph-sdk
 tavily-python
 requests
 beautifulsoup4
+wikipedia

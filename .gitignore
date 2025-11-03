@@ -115,6 +115,9 @@ datasets/
 *.sqlite
 *.sqlite3
 04-agent-build-docker-deploy/backend/tasks_state.json
+reports/
+.ipynb_checkpoints/
+.pytest_cache
 
 # 向量数据库文件
 *.db
@@ -364,3 +367,4 @@ dmypy.json
 # deployment/
 # k8s/
 # helm/
+.ipynb_checkpoints/
