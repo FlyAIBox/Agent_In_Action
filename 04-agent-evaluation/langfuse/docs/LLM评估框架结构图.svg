@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <style>
+      .title-text { font-family: '宋体', serif; font-size: 16px; font-weight: bold; fill: #2c3e50; }
+      .label-text { font-family: '宋体', serif; font-size: 12px; fill: #34495e; }
+      .en-text { font-family: 'Times New Roman', serif; font-size: 10px; fill: #7f8c8d; }
+      .formula-text { font-family: 'Times New Roman', serif; font-size: 11px; fill: #e74c3c; }
+      .box { fill: #ecf0f1; stroke: #34495e; stroke-width: 2; rx: 8; }
+      .data-box { fill: #e8f4f8; stroke: #3498db; stroke-width: 2; rx: 6; }
+      .eval-box { fill: #fef9e7; stroke: #f39c12; stroke-width: 2; rx: 6; }
+      .feedback-box { fill: #edf2f7; stroke: #9b59b6; stroke-width: 2; rx: 6; }
+      .arrow { stroke: #34495e; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#34495e"/>
+    </marker>
+  </defs>
+  
+  <!-- 主标题 -->
+  <text x="400" y="30" class="title-text" text-anchor="middle">LLM评估技术框架</text>
+  
+  <!-- 数据收集层 -->
+  <rect x="50" y="60" width="700" height="80" class="data-box"/>
+  <text x="400" y="85" class="label-text" text-anchor="middle">数据收集层</text>
+  
+  <!-- Traces数据 -->
+  <rect x="80" y="95" width="120" height="35" class="box"/>
+  <text x="140" y="112" class="label-text" text-anchor="middle">追踪数据</text>
+  <text x="140" y="125" class="en-text" text-anchor="middle">(Traces)</text>
+  
+  <!-- 用户交互数据 -->
+  <rect x="220" y="95" width="120" height="35" class="box"/>
+  <text x="280" y="115" class="label-text" text-anchor="middle">用户交互数据</text>
+  
+  <!-- 测试数据集 -->
+  <rect x="360" y="95" width="120" height="35" class="box"/>
+  <text x="420" y="115" class="label-text" text-anchor="middle">测试数据集</text>
+  
+  <!-- 生产环境数据 -->
+  <rect x="500" y="95" width="120" height="35" class="box"/>
+  <text x="560" y="115" class="label-text" text-anchor="middle">生产环境数据</text>
+  
+  <!-- 评估方法层 -->
+  <rect x="50" y="180" width="700" height="200" class="eval-box"/>
+  <text x="400" y="205" class="label-text" text-anchor="middle">评估方法层</text>
+  
+  <!-- 离线评估 -->
+  <rect x="80" y="220" width="150" height="120" class="box"/>
+  <text x="155" y="240" class="label-text" text-anchor="middle">离线评估</text>
+  <text x="155" y="255" class="en-text" text-anchor="middle">(Offline Evaluation)</text>
+  
+  <!-- 自动化指标 -->
+  <rect x="90" y="265" width="60" height="25" class="feedback-box"/>
+  <text x="120" y="280" class="label-text" text-anchor="middle" style="font-size: 10px;">自动化指标</text>
+  
+  <!-- 人工标注详细说明 -->
+  <rect x="90" y="265" width="65" height="20" class="feedback-box"/>
+  <text x="122" y="278" class="label-text" text-anchor="middle" style="font-size: 10px;">专家标注</text>
+  
+  <rect x="90" y="290" width="65" height="20" class="feedback-box"/>
+  <text x="122" y="303" class="label-text" text-anchor="middle" style="font-size: 10px;">众包评估</text>
+  
+  <rect x="160" y="265" width="65" height="20" class="feedback-box"/>
+  <text x="192" y="278" class="label-text" text-anchor="middle" style="font-size: 10px;">基准测试</text>
+  
+  <rect x="160" y="290" width="65" height="20" class="feedback-box"/>
+  <text x="192" y="303" class="label-text" text-anchor="middle" style="font-size: 10px;">回归检测</text>
+  
+  <!-- 在线评估 -->
+  <rect x="270" y="220" width="150" height="120" class="box"/>
+  <text x="345" y="240" class="label-text" text-anchor="middle">在线评估</text>
+  <text x="345" y="255" class="en-text" text-anchor="middle">(Online Evaluation)</text>
+  
+  <!-- 在线评估详细说明 -->
+  <rect x="280" y="265" width="65" height="20" class="feedback-box"/>
+  <text x="312" y="278" class="label-text" text-anchor="middle" style="font-size: 10px;">用户反馈</text>
+  
+  <rect x="280" y="290" width="65" height="20" class="feedback-box"/>
+  <text x="312" y="303" class="label-text" text-anchor="middle" style="font-size: 10px;">行为分析</text>
+  
+  <rect x="350" y="265" width="65" height="20" class="feedback-box"/>
+  <text x="382" y="278" class="label-text" text-anchor="middle" style="font-size: 10px;">A/B测试</text>
+  
+  <rect x="350" y="290" width="65" height="20" class="feedback-box"/>
+  <text x="382" y="303" class="label-text" text-anchor="middle" style="font-size: 10px;">实时监控</text>
+  
+  <!-- LLM-as-Judge -->
+  <rect x="460" y="220" width="150" height="120" class="box"/>
+  <text x="535" y="240" class="label-text" text-anchor="middle">LLM评判</text>
+  <text x="535" y="255" class="en-text" text-anchor="middle">(LLM-as-a-Judge)</text>
+  
+  <!-- LLM评判详细说明 -->
+  <rect x="470" y="265" width="65" height="20" class="feedback-box"/>
+  <text x="502" y="278" class="label-text" text-anchor="middle" style="font-size: 10px;">多模型对比</text>
+  
+  <rect x="470" y="290" width="65" height="20" class="feedback-box"/>
+  <text x="502" y="303" class="label-text" text-anchor="middle" style="font-size: 10px;">质量评分</text>
+  
+  <rect x="540" y="265" width="65" height="20" class="feedback-box"/>
+  <text x="572" y="278" class="label-text" text-anchor="middle" style="font-size: 10px;">一致性检查</text>
+  
+  <rect x="540" y="290" width="65" height="20" class="feedback-box"/>
+  <text x="572" y="303" class="label-text" text-anchor="middle" style="font-size: 10px;">偏差校正</text>
+  
+  <!-- 反馈循环层 -->
+  <rect x="50" y="420" width="700" height="80" class="feedback-box"/>
+  <text x="400" y="445" class="label-text" text-anchor="middle">反馈循环层</text>
+  
+  <!-- 性能监控 -->
+  <rect x="100" y="455" width="100" height="35" class="box"/>
+  <text x="150" y="475" class="label-text" text-anchor="middle">性能监控</text>
+  
+  <!-- 模型优化 -->
+  <rect x="230" y="455" width="100" height="35" class="box"/>
+  <text x="280" y="475" class="label-text" text-anchor="middle">模型优化</text>
+  
+  <!-- 数据更新 -->
+  <rect x="360" y="455" width="100" height="35" class="box"/>
+  <text x="410" y="475" class="label-text" text-anchor="middle">数据更新</text>
+  
+  <!-- 策略调整 -->
+  <rect x="490" y="455" width="100" height="35" class="box"/>
+  <text x="540" y="475" class="label-text" text-anchor="middle">策略调整</text>
+  
+  <!-- 箭头连接 -->
+  <!-- 从数据收集到评估方法 -->
+  <path d="M 400 150 L 400 180" class="arrow"/>
+  
+  <!-- 从评估方法到反馈循环 -->
+  <path d="M 400 390 L 400 420" class="arrow"/>
+  
+  <!-- 反馈循环回到数据收集 -->
+  <path d="M 100 455 Q 30 400 30 250 Q 30 100 80 95" class="arrow"/>
+  
+  <!-- 评估方法间的连接 -->
+  <path d="M 230 280 L 270 280" class="arrow"/>
+  <path d="M 420 280 L 460 280" class="arrow"/>
+  
+</svg>
