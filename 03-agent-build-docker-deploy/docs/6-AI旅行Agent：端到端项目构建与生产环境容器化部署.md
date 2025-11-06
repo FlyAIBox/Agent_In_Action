@@ -34,7 +34,7 @@
 
 ### 1. Agent导览：认知端到端旅行规划项目蓝图
 
-**教学准备**：切换到仓库根并打开 `04-agent-build-docker-deploy/README.md`，配合投影展示。
+**教学准备**：切换到仓库根并打开 `03-agent-build-docker-deploy/README.md`，配合投影展示。
 **讲解结构**
 
 1. 项目定位开场（5 分钟）
@@ -69,7 +69,7 @@
    - 让学员在纸上画出简化流程图，加强记忆。
 3. 技术选择背后原因（5 分钟）
    - 说明为何选择 LangGraph（易于构建状态流和条件路由）、LangChain（工具与 LLM 集成）、Tavily（简单易用的搜索服务，已在本目录依赖中提供）等。
-   - 强调国内可访问 API（和风天气、AMap、exchangerate.host）在实战中的重要性（对应代码在仓库根 04-agent-build-docker-deploy/ 中）。
+   - 强调国内可访问 API（和风天气、AMap、exchangerate.host）在实战中的重要性（对应代码在仓库根 03-agent-build-docker-deploy/ 中）。
 
 **互动提示**
 
@@ -88,20 +88,20 @@
    - 本目录（03-agent-multi-role/langgraph）本地入门：
      - 安装依赖：`pip install -r 03-agent-multi-role/langgraph/requirements.txt`
      - 运行 Notebook：`jupyter notebook` 并打开 `03-agent-multi-role/langgraph/1-Base/01-simple-graph.ipynb`
-   - 后端与前端（仓库根 04-agent-build-docker-deploy/）：
-     - 讲解 `04-agent-build-docker-deploy/backend/requirements.txt` 与 `04-agent-build-docker-deploy/frontend/requirements.txt` 的关键包（LangGraph、LangChain、ChatOpenAI、Streamlit、FastAPI 等）。
+   - 后端与前端（仓库根 03-agent-build-docker-deploy/）：
+     - 讲解 `03-agent-build-docker-deploy/backend/requirements.txt` 与 `03-agent-build-docker-deploy/frontend/requirements.txt` 的关键包（LangGraph、LangChain、ChatOpenAI、Streamlit、FastAPI 等）。
      - 演示 `setup_environment.sh`：安装依赖、复制 `.env` 模板、创建 `results/`。解释脚本中每一步的意义。
 
 2. 环境变量详解（10 分钟）
 
-   - 在仓库根 `04-agent-build-docker-deploy/` 中使用 `.env` 管理变量，示例：
+   - 在仓库根 `03-agent-build-docker-deploy/` 中使用 `.env` 管理变量，示例：
      - `OPENAI_API_KEY`/`OPENAI_BASE_URL`/`OPENAI_MODEL`
      - `QWEATHER_*`、`AMAP_*`、`EXCHANGE_RATE_*`
    - 说明使用 `.env` 的原因以及安全注意事项。
 
 3. 动手配置（10 分钟）
 
-   - 现场示范：在 `04-agent-build-docker-deploy/` 复制 `.env`，填入测试密钥（可用占位符），运行脚本，确认没有报错。
+   - 现场示范：在 `03-agent-build-docker-deploy/` 复制 `.env`，填入测试密钥（可用占位符），运行脚本，确认没有报错。
    - 提醒学员检查依赖安装结果、`.env` 是否正确加载。
 
 **互动练习**
@@ -113,7 +113,7 @@
 
 ### 4. Agent语言大脑：LangGraphConfig 与 ChatOpenAI 接入
 
-**教学准备**：切换到仓库根并打开 `04-agent-build-docker-deploy/backend/config/langgraph_config.py`、`04-agent-build-docker-deploy/backend/agents/langgraph_agents.py`、`04-agent-build-docker-deploy/backend/agents/simple_travel_agent.py`。
+**教学准备**：切换到仓库根并打开 `03-agent-build-docker-deploy/backend/config/langgraph_config.py`、`03-agent-build-docker-deploy/backend/agents/langgraph_agents.py`、`03-agent-build-docker-deploy/backend/agents/simple_travel_agent.py`。
 **讲解结构**
 
 1. 配置类结构解析（10 分钟）
@@ -135,7 +135,7 @@
 
 ### 5. Agent基础设定：AppConfig 与业务常量管理
 
-**教学准备**：切换到仓库根并打开 `04-agent-build-docker-deploy/backend/config/app_config.py`，同时准备 `04-agent-build-docker-deploy/backend/modules` 中引用它的文件。
+**教学准备**：切换到仓库根并打开 `03-agent-build-docker-deploy/backend/config/app_config.py`，同时准备 `03-agent-build-docker-deploy/backend/modules` 中引用它的文件。
 **讲解结构**
 
 1. 常量与默认值（10 分钟）
@@ -155,7 +155,7 @@
 
 ### 6. Agent服务联通：外部数据源 API 接入策略
 
-**教学准备**：切换到仓库根并打开 `04-agent-build-docker-deploy/backend/config/api_config.py` 和各业务模块文件。
+**教学准备**：切换到仓库根并打开 `03-agent-build-docker-deploy/backend/config/api_config.py` 和各业务模块文件。
 **讲解结构**
 
 1. 配置载入与状态检测（5 分钟）
@@ -178,7 +178,7 @@
 
 ### 7. Agent大脑建模：LangGraph 多智能体编排
 
-**教学准备**：切换到仓库根并打开 `04-agent-build-docker-deploy/backend/agents/langgraph_agents.py`，并可对照 `03-agent-multi-role/langgraph/4-BuildYourAssiant/*.ipynb` 的并行与子图示例，准备投影或绘制状态图。
+**教学准备**：切换到仓库根并打开 `03-agent-build-docker-deploy/backend/agents/langgraph_agents.py`，并可对照 `03-agent-multi-role/langgraph/4-BuildYourAssiant/*.ipynb` 的并行与子图示例，准备投影或绘制状态图。
 **讲解结构**
 
 1. TravelPlanState 分析（10 分钟）
@@ -201,7 +201,7 @@
 
 ### 8. Agent分身体系：传统多智能体与角色能力库
 
-**教学准备**：切换到仓库根并打开 `04-agent-build-docker-deploy/backend/agents/multi_agent_orchestrator.py`、`04-agent-build-docker-deploy/backend/agents/travel_agents.py`。
+**教学准备**：切换到仓库根并打开 `03-agent-build-docker-deploy/backend/agents/multi_agent_orchestrator.py`、`03-agent-build-docker-deploy/backend/agents/travel_agents.py`。
 **讲解结构**
 
 1. 基础设施说明（10 分钟）
@@ -223,7 +223,7 @@
 
 ### 9. Agent业务骨架：功能模块与工具库串讲
 
-**教学准备**：切换到仓库根并打开 `04-agent-build-docker-deploy/backend/modules` 各文件、`04-agent-build-docker-deploy/backend/tools/travel_tools.py`、`04-agent-build-docker-deploy/backend/utils/helpers.py`。
+**教学准备**：切换到仓库根并打开 `03-agent-build-docker-deploy/backend/modules` 各文件、`03-agent-build-docker-deploy/backend/tools/travel_tools.py`、`03-agent-build-docker-deploy/backend/utils/helpers.py`。
 **讲解结构**
 
 1. 模块概览（5 分钟）
@@ -247,7 +247,7 @@
 
 ### 10. Agent服务层：FastAPI 调度与任务管理
 
-**教学准备**：切换到仓库根并打开 `04-agent-build-docker-deploy/backend/api_server.py`，准备流程图工具。
+**教学准备**：切换到仓库根并打开 `03-agent-build-docker-deploy/backend/api_server.py`，准备流程图工具。
 **讲解结构**
 
 1. 应用初始化（5 分钟）
@@ -269,7 +269,7 @@
 
 ### 11. Agent界面体验：Streamlit 前端与联调技巧
 
-**教学准备**：切换到仓库根并打开 `04-agent-build-docker-deploy/frontend/streamlit_app.py`，准备终端运行 Streamlit。
+**教学准备**：切换到仓库根并打开 `03-agent-build-docker-deploy/frontend/streamlit_app.py`，准备终端运行 Streamlit。
 **讲解结构**
 
 1. 界面布局（10 分钟）
@@ -291,7 +291,7 @@
 
 ### 12. Agent容器化部署：构建生产可交付体
 
-**教学准备**：切换到仓库根并打开 `04-agent-build-docker-deploy/backend/Dockerfile`、`04-agent-build-docker-deploy/frontend/Dockerfile`、`04-agent-build-docker-deploy/docker-compose.yml`、相关启动脚本，准备 Docker 环境。
+**教学准备**：切换到仓库根并打开 `03-agent-build-docker-deploy/backend/Dockerfile`、`03-agent-build-docker-deploy/frontend/Dockerfile`、`03-agent-build-docker-deploy/docker-compose.yml`、相关启动脚本，准备 Docker 环境。
 **讲解结构**
 
 1. 后端镜像构建（10 分钟）

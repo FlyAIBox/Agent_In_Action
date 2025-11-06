@@ -114,7 +114,7 @@ datasets/
 *.db
 *.sqlite
 *.sqlite3
-04-agent-build-docker-deploy/backend/tasks_state.json
+03-agent-build-docker-deploy/backend/tasks_state.json
 reports/
 .ipynb_checkpoints/
 .pytest_cache
@@ -252,7 +252,7 @@ outputs/
 results/
 generated/
 exports/
-04-agent-build-docker-deploy/backend/tasks_state.json
+03-agent-build-docker-deploy/backend/tasks_state.json
 
 # 图表和可视化
 plots/

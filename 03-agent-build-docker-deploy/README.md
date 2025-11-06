@@ -46,7 +46,7 @@
 
 ### 1. 进入项目目录
 ```bash
-cd 04-agent-build-docker-deploy
+cd 03-agent-build-docker-deploy
 ```
 
 ### 2. 安装依赖

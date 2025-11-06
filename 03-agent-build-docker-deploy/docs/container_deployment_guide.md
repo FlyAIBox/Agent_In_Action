@@ -9,7 +9,7 @@
 1) 在后端目录准备环境变量文件：
 
 ```bash
-cd 04-agent-build-docker-deploy/backend
+cd 03-agent-build-docker-deploy/backend
 cp env.example .env
 # 编辑 .env，填入 OPENAI_API_KEY 等必需配置
 ```
@@ -33,7 +33,7 @@ docker compose -f docker-compose.yml up -d --build
 | ---- | ---- |
 | Docker | 确保已安装最新版 Docker Engine |
 | Docker Compose | 推荐使用内置的 Compose V2（`docker compose` 命令） |
-| 项目源码 | 克隆仓库并切换到 `04-agent-build-docker-deploy/` 目录 |
+| 项目源码 | 克隆仓库并切换到 `03-agent-build-docker-deploy/` 目录 |
 | 环境变量 | 在项目根目录准备 `.env` 文件，至少包含 LLM、和风天气、高德等密钥 |
 
 `.env` 示例：
