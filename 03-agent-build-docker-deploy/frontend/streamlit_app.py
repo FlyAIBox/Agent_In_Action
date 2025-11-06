@@ -656,9 +656,9 @@ def main():
         # 日期选择
         col1, col2 = st.columns(2)
         with col1:
-            start_date = st.date_input("📅 出发日期", value=date.today() + timedelta(days=7))
+            start_date = st.date_input("📅 出发日期", value=date.today() + timedelta(days=1))
         with col2:
-            end_date = st.date_input("📅 返回日期", value=date.today() + timedelta(days=10))
+            end_date = st.date_input("📅 返回日期", value=date.today() + timedelta(days=8))
 
         # 团队信息
         group_size = st.number_input("👥 团队人数", min_value=1, max_value=20, value=2)

@@ -145,7 +145,7 @@ async def search_weather_info(destination: str, dates: str = "") -> str:
         travel_logger.info("尝试使用 MCP 天气服务器获取天气预报")
         
         # Simple heuristic to map dates string to forecast days
-        days = 3
+        days = 7
         text = dates.lower()
         if any(k in text for k in ["7天", "七天", "7d", "一周", "week"]):
             days = 7
