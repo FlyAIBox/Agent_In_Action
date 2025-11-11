@@ -1,48 +1,83 @@
+# ============================================
+# Docker Compose 配置文件
+# ============================================
+# 用于部署 LangGraph 深度研究助手系统
+# 包含三个核心服务：Redis（缓存）、PostgreSQL（数据库）、API 服务
+
+# 数据卷定义
 volumes:
+    # LangGraph 数据持久化卷，用于存储 PostgreSQL 数据
     langgraph-data:
-        driver: local
+        driver: local  # 使用本地存储驱动
+
+# 服务定义
 services:
+    # ============================================
+    # Redis 服务 - 用于缓存和消息队列
+    # ============================================
     langgraph-redis:
-        image: redis:6
+        image: redis:6  # 使用 Redis 6 版本镜像
+        # 健康检查配置 - 确保服务完全启动后再被依赖
         healthcheck:
-            test: redis-cli ping
-            interval: 5s
-            timeout: 1s
-            retries: 5
+            test: redis-cli ping  # 使用 redis-cli ping 命令检查服务状态
+            interval: 5s          # 每 5 秒检查一次
+            timeout: 1s           # 检查超时时间 1 秒
+            retries: 5            # 最多重试 5 次
+        # 端口映射：宿主机端口:容器端口
         ports:
-            - "6380:6379"
+            - "6380:6379"  # 将容器的 6379 端口映射到宿主机的 6380 端口
+    
+    # ============================================
+    # PostgreSQL 服务 - 用于持久化存储研究数据
+    # ============================================
     langgraph-postgres:
-        image: postgres:16
+        image: postgres:16  # 使用 PostgreSQL 16 版本镜像
+        # 端口映射：宿主机端口:容器端口
         ports:
-            - "5433:5432"
+            - "5433:5432"  # 将容器的 5432 端口映射到宿主机的 5433 端口
+        # 环境变量配置 - 数据库初始化参数
         environment:
-            POSTGRES_DB: postgres
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: postgres        # 默认数据库名称
+            POSTGRES_USER: postgres      # 数据库用户名
+            POSTGRES_PASSWORD: postgres  # 数据库密码
+        # 数据卷挂载 - 实现数据持久化
         volumes:
-            - langgraph-data:/var/lib/postgresql/data
+            - langgraph-data:/var/lib/postgresql/data  # 将数据目录挂载到持久化卷
+        # 健康检查配置
         healthcheck:
-            test: pg_isready -U postgres
-            start_period: 10s
-            timeout: 1s
-            retries: 5
-            interval: 5s
+            test: pg_isready -U postgres  # 使用 pg_isready 检查数据库是否就绪
+            start_period: 10s             # 启动后等待 10 秒再开始检查
+            timeout: 1s                   # 检查超时时间 1 秒
+            retries: 5                    # 最多重试 5 次
+            interval: 5s                  # 每 5 秒检查一次
+    
+    # ============================================
+    # LangGraph API 服务 - 深度研究助手核心服务
+    # ============================================
     langgraph-api:
-        image: "research-assistant-image"
+        image: "research-assistant-image"  # 使用自定义构建的研究助手镜像
+        # 端口映射：宿主机端口:容器端口
         ports:
-            - "8124:8000"
+            - "8124:8000"  # 将容器的 8000 端口映射到宿主机的 8124 端口
+        # 服务依赖配置 - 确保依赖服务健康后再启动
         depends_on:
             langgraph-redis:
-                condition: service_healthy
+                condition: service_healthy      # 等待 Redis 服务健康
             langgraph-postgres:
-                condition: service_healthy
+                condition: service_healthy      # 等待 PostgreSQL 服务健康
+        # 环境变量配置 - 应用运行所需的配置参数
         environment:
+            # Redis 连接配置
             REDIS_URI: redis://langgraph-redis:6379
-            OPENAI_API_KEY: ${OPENAI_API_KEY}
-            OPENAI_BASE_URL: ${OPENAI_BASE_URL}
-            TAVILY_API_KEY: ${TAVILY_API_KEY}
-            LANGSMITH_API_KEY: ${LANGSMITH_API_KEY}
-            # LANGSMITH_TRACING: "true"
-            # LANGSMITH_PROJECT: "ResearchAssistant"
+            # OpenAI API 配置 - 用于调用大语言模型
+            OPENAI_API_KEY: ${OPENAI_API_KEY}      # 从宿主机环境变量读取 API Key
+            OPENAI_BASE_URL: ${OPENAI_BASE_URL}    # OpenAI API 基础 URL（支持代理）
+            # Tavily 搜索 API 配置 - 用于网络搜索功能
+            TAVILY_API_KEY: ${TAVILY_API_KEY}      # 从宿主机环境变量读取 API Key
+            # LangSmith 配置 - 用于调试和追踪（可选）
+            LANGSMITH_API_KEY: ${LANGSMITH_API_KEY}  # LangSmith API Key
+            # LANGSMITH_TRACING: "true"              # 是否启用追踪（已注释）
+            # LANGSMITH_PROJECT: "ResearchAssistant" # 项目名称（已注释）
+            # PostgreSQL 连接配置
             POSTGRES_URI: postgres://postgres:postgres@langgraph-postgres:5432/postgres?sslmode=disable
 
