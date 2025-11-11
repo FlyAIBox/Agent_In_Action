@@ -4,53 +4,72 @@
 
 ## 系统概述
 
-深度研究助手是一个基于 LangGraph 的智能研究系统，具备以下核心功能：
+深度研究助手是一个基于 LangGraph 的**多智能体协作研究系统**，能够针对任意主题自动生成全面、多角度的研究报告。
 
 ### 核心功能
 
-1. **分析师团队生成**
-   - 根据研究主题自动生成多位AI分析师
-   - 支持人类反馈进行分析师调整
-   - 每位分析师负责特定的研究视角
+1. **多视角分析**
+   - 根据研究主题自动生成 3-5 个不同视角的 AI 分析师
+   - 每个分析师代表特定的专业领域或关注点
+   - 支持人类审核和调整分析师配置（通过中断点实现）
 
-2. **并行访谈系统**
-   - 分析师与专家进行多轮深度访谈
-   - 支持网络搜索和百科检索
-   - 智能提问和回答生成
+2. **深度信息收集**
+   - 每个分析师通过"访谈"方式进行深度研究
+   - 自动生成针对性问题，并通过搜索获取答案
+   - 支持 Web 搜索（Tavily）和百科检索（Wikipedia）
+   - 多轮对话确保信息的深度和完整性
 
-3. **报告生成**
-   - 自动整合多个分析师的研究成果
-   - 生成结构化的研究报告
-   - 包含引言、主体内容、结论和引用
+3. **结构化报告生成**
+   - 自动整合所有分析师的研究成果
+   - 生成包含引言、主体、结论和来源引用的完整报告
+   - 使用 Markdown 格式，结构清晰，便于阅读
 
 4. **工作流架构**
-   - 使用 Map-Reduce 模式并行处理
+   - 使用 Map-Reduce 模式实现并行处理
    - 支持人机协同（Human-in-the-loop）
-   - 完整的状态管理和检查点机制
+   - 基于 LangGraph Checkpointer 的状态持久化机制
 
 ## 系统架构
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    深度研究助手系统                          │
-├─────────────────────────────────────────────────────────────┤
-│  1. 分析师生成 → 2. 人机协同 → 3. 并行访谈 → 4. 报告生成   │
-└─────────────────────────────────────────────────────────────┘
+主工作流 (Map-Reduce 模式)
+┌────────────────────────────────────────────────────────────────┐
+│                      深度研究助手系统                           │
+├────────────────────────────────────────────────────────────────┤
+│ 1. 生成分析师 → 2. 人机协同中断 → 3. 并行访谈 → 4. 整合报告   │
+│                                        ↓                        │
+│                    Map 阶段（并行执行）                         │
+│    ┌──────────────┬──────────────┬──────────────┐             │
+│    │ 分析师 1     │ 分析师 2     │ 分析师 N     │             │
+│    │ ↓            │ ↓            │ ↓            │             │
+│    │ 访谈子图     │ 访谈子图     │ 访谈子图     │             │
+│    │ ↓            │ ↓            │ ↓            │             │
+│    │ 报告小节 1   │ 报告小节 2   │ 报告小节 N   │             │
+│    └──────────────┴──────────────┴──────────────┘             │
+│                          ↓                                     │
+│                  Reduce 阶段（整合）                           │
+│         ┌────────────┬──────────┬──────────┐                  │
+│         │ 写主体     │ 写引言   │ 写结论   │                  │
+│         └────────────┴──────────┴──────────┘                  │
+│                          ↓                                     │
+│                    最终报告组装                                │
+└────────────────────────────────────────────────────────────────┘
          ↓                ↓                ↓           ↓
-    ┌────────┐      ┌────────┐      ┌────────┐  ┌────────┐
-    │OpenAI  │      │Memory  │      │Tavily  │  │百度百科│
-    │GPT-4o  │      │Store   │      │Search  │  │Loader  │
-    └────────┘      └────────┘      └────────┘  └────────┘
+    ┌────────┐      ┌────────┐      ┌────────┐  ┌──────────┐
+    │OpenAI  │      │Memory  │      │Tavily  │  │Wikipedia │
+    │GPT-4o  │      │Saver   │      │Search  │  │ Loader   │
+    └────────┘      └────────┘      └────────┘  └──────────┘
+      (LLM)      (Checkpointer)    (Web搜索)    (百科检索)
 ```
 
 ## 技术栈
 
-- **LangGraph**: 0.6.7 - 智能体工作流框架
-- **LangChain**: 0.3.27 - 大模型应用框架
-- **OpenAI GPT-4o**: 语言模型
-- **Tavily Search**: 网络搜索服务
-- **百度百科**: 知识检索
-- **PostgreSQL**: 状态持久化存储
+- **LangGraph**: 智能体工作流编排框架
+- **LangChain**: LLM 应用集成框架
+- **OpenAI GPT-4o**: 大语言模型（推理引擎）
+- **Tavily Search**: 实时 Web 搜索 API
+- **Wikipedia**: 权威知识库检索
+- **PostgreSQL**: 状态持久化数据库（LangGraph Checkpointer）
 - **Redis**: 消息队列和缓存
 
 ## 快速开始
@@ -91,7 +110,7 @@ LANGSMITH_API_KEY="lsv2-your-langsmith-api-key"
 
 ```bash
 # 进入部署目录
-cd 01-agent-build/6-DeepResearchAssistant/deployment
+cd 02-agent-multi-role/deepresearch/deployment
 
 # 构建镜像
 langgraph build -t research-assistant-image
@@ -146,31 +165,36 @@ https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:8124
 ```python
 from langgraph_sdk import get_client
 
-# 连接到部署
+# 连接到部署的 LangGraph Server
 client = get_client(url="http://localhost:8124")
 
-# 创建线程
+# 创建线程（每个研究任务使用独立线程）
 thread = await client.threads.create()
 
-# 启动研究
-config = {
-    "configurable": {
-        "topic": "人工智能在医疗领域的应用",
-        "max_analysts": 3
-    }
+# 准备输入数据
+input_data = {
+    "topic": "人工智能在医疗领域的应用",
+    "max_analysts": 3
 }
 
-# 执行研究流程
+# 执行研究流程（流式输出）
 async for chunk in client.runs.stream(
     thread["thread_id"],
     "research_assistant",
-    input=None,
-    config=config,
+    input=input_data,
     stream_mode="values"
 ):
     # 处理流式输出
     if "final_report" in chunk:
         print(chunk["final_report"])
+        
+# 或者使用非流式方式
+result = await client.runs.create_blocking(
+    thread["thread_id"],
+    "research_assistant",
+    input=input_data
+)
+print(result["final_report"])
 ```
 
 ### Remote Graph 示例
@@ -178,25 +202,25 @@ async for chunk in client.runs.stream(
 ```python
 from langgraph.pregel.remote import RemoteGraph
 
-# 连接到远程图
+# 连接到远程部署的图
 remote_graph = RemoteGraph("research_assistant", url="http://localhost:8124")
 
-# 配置研究参数
-config = {
-    "configurable": {
-        "topic": "区块链技术的发展趋势",
-        "max_analysts": 3
-    }
-}
-
-# 执行研究
-result = await remote_graph.ainvoke({
+# 准备输入数据
+input_data = {
     "topic": "区块链技术的发展趋势",
     "max_analysts": 3
-}, config=config)
+}
+
+# 执行研究（异步）
+result = await remote_graph.ainvoke(input_data)
 
 # 获取最终报告
 print(result["final_report"])
+
+# 或者使用流式输出
+async for chunk in remote_graph.astream(input_data, stream_mode="values"):
+    if "final_report" in chunk:
+        print(chunk["final_report"])
 ```
 
 ## 配置说明
@@ -217,18 +241,28 @@ print(result["final_report"])
 }
 ```
 
-#### configuration.py
+此文件告诉 LangGraph CLI：
+- 图的入口点：`research_assistant.py` 文件中的 `graph` 对象
+- Python 版本：3.11
+- 依赖安装：当前目录（会读取 `pyproject.toml` 或 `requirements.txt`）
 
-定义可配置的参数：
+#### 研究参数配置
+
+研究参数通过 **输入数据** 传递，而不是通过配置文件：
 
 ```python
-@dataclass(kw_only=True)
-class Configuration:
-    topic: str = "人工智能的发展趋势"
-    max_analysts: int = 3
-    max_interview_turns: int = 2
-    enable_human_feedback: bool = True
+# 通过输入数据控制研究行为
+input_data = {
+    "topic": "研究主题",           # 必需：研究的具体主题
+    "max_analysts": 3,             # 可选：生成的分析师数量（默认3）
+    "human_analyst_feedback": ""   # 可选：人类对分析师的反馈
+}
 ```
+
+**重要说明**：
+- `max_interview_turns` 在代码中硬编码为 2（参见 `route_messages` 函数）
+- `enable_human_feedback` 功能始终启用（`interrupt_before=['human_feedback']` 硬编码）
+- 如需调整这些参数，需要修改 `research_assistant.py` 源代码
 
 ### 环境变量
 
@@ -338,11 +372,21 @@ docker compose --env-file .env up -d --force-recreate
 
 ### 并行处理
 
-系统使用 Map-Reduce 模式并行处理多个访谈，提高效率：
+系统使用 **Map-Reduce 模式** 并行处理多个访谈，显著提高效率：
 
-- 分析师数量：建议 2-5 个
-- 访谈轮次：建议 2-3 轮
-- 并发请求：根据 API 限制调整
+**Map 阶段**：所有分析师的访谈同时进行
+- 分析师数量：建议 3-5 个（太少视角不够，太多成本高）
+- 访谈轮次：当前硬编码为 2 轮（可在代码中修改）
+- 每轮访谈包含：提问 → 并行搜索（Web + Wikipedia）→ 回答
+
+**Reduce 阶段**：报告生成也是并行的
+- 引言、主体、结论三部分同时生成
+- 最后组装成完整报告
+
+**性能建议**：
+- 3个分析师 × 2轮访谈 = 约 6 次 LLM 调用（访谈） + 3 次（小节）+ 4 次（报告）
+- 总计约 13 次 LLM API 调用
+- 预计耗时：3-5 分钟（取决于 API 响应速度）
 
 ### 资源配置
 
@@ -379,30 +423,103 @@ langgraph-api:
 
 ## 扩展开发
 
-### 自定义分析师生成
+### 1. 自定义分析师生成逻辑
 
-修改 `research_assistant.py` 中的提示词模板：
+修改 `research_assistant.py` 中的 `analyst_instructions` 提示词模板：
 
 ```python
-analyst_instructions = """你需要创建一组 AI 分析师人设。
-根据特定领域（如医疗、金融）定制分析师角色...
+# 位置：第 169 行左右
+analyst_instructions = """你需要创建一组 AI 分析师人设。请严格遵循以下指引：
+
+1. 先审阅研究主题：
+{topic}
+
+2. 根据特定领域（如医疗、金融、技术）定制分析师角色
+3. 确保分析师视角多样化且互补
+4. 为每个分析师设定明确的关注点和专业背景
+...
 """
 ```
 
-### 添加新的检索源
+### 2. 添加新的检索源
 
-实现新的检索节点：
+在访谈子图中添加新的检索节点：
 
 ```python
 def search_custom_source(state: InterviewState):
-    """自定义检索源"""
-    # 实现检索逻辑
+    """
+    自定义检索源（如企业内部知识库）
+    """
+    # 1. 生成搜索查询
+    structured_llm = llm.with_structured_output(SearchQuery)
+    search_query = structured_llm.invoke([search_instructions] + state['messages'])
+    
+    # 2. 执行检索
+    search_docs = your_custom_search_api(search_query.search_query)
+    
+    # 3. 格式化结果
+    formatted_docs = "\n\n---\n\n".join([
+        f'<Document source="{doc.source}"/>\n{doc.content}\n</Document>'
+        for doc in search_docs
+    ])
+    
     return {"context": [formatted_docs]}
+
+# 在访谈子图中添加节点
+interview_builder.add_node("search_custom", search_custom_source)
+interview_builder.add_edge("ask_question", "search_custom")
+interview_builder.add_edge("search_custom", "answer_question")
 ```
 
-### 调整报告格式
+### 3. 调整访谈轮次
 
-修改报告生成的提示词和后处理逻辑。
+修改 `route_messages` 函数中的轮次限制：
+
+```python
+# 位置：第 641 行左右
+def route_messages(state: InterviewState, name: str = "expert"):
+    messages = state["messages"]
+    max_num_turns = state.get('max_num_turns', 3)  # 改为 3 轮或更多
+    # ...
+```
+
+### 4. 自定义报告格式
+
+修改报告生成的提示词模板和后处理逻辑：
+
+```python
+# 修改 section_writer_instructions（第 256 行左右）
+section_writer_instructions = """你是一名资深技术写作者。
+
+你的任务是基于一组来源文档，撰写一段简洁、易读的报告小节。
+
+# 自定义格式要求：
+- 使用特定的行业术语
+- 添加数据可视化建议
+- 包含关键指标和KPI
+...
+"""
+
+# 修改 finalize_report 函数（第 840 行左右）
+def finalize_report(state: ResearchGraphState):
+    """自定义报告组装逻辑"""
+    # 添加封面页
+    # 添加目录
+    # 添加执行摘要
+    # ... 自定义格式
+```
+
+### 5. 禁用人机协同中断
+
+如需自动执行整个流程，修改编译配置：
+
+```python
+# 位置：第 1038 行左右
+graph = builder.compile(
+    # interrupt_before=['human_feedback'],  # 注释掉此行
+    checkpointer=memory
+)
+```
 
 ## 参考资源
 
