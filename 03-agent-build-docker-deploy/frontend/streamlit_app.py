@@ -22,11 +22,381 @@ import pandas as pd
 
 # 页面配置
 st.set_page_config(
-    page_title="AI旅行规划智能体",
-    page_icon="🌍",
+    page_title="旅小智 - 您的智能旅行规划助手",
+    page_icon="🤖",
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+# 自定义CSS样式
+def inject_custom_css():
+    """注入自定义CSS样式"""
+    st.markdown("""
+    <style>
+    /* 主背景 - 使用浅色渐变 */
+    .stApp {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        background-attachment: fixed;
+    }
+    
+    /* 自然风光背景图层（更淡的透明度） */
+    .stApp::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920');
+        background-size: cover;
+        background-position: center;
+        opacity: 0.08;
+        z-index: 0;
+        pointer-events: none;
+    }
+    
+    /* 主内容区域 */
+    .main .block-container {
+        background: rgba(255, 255, 255, 0.98);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        position: relative;
+        z-index: 1;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    /* 侧边栏样式 - 更浅的背景 */
+    section[data-testid="stSidebar"] {
+        background: linear-gradient(180deg, rgba(102, 126, 234, 0.55) 0%, rgba(118, 75, 162, 0.55) 100%);
+        backdrop-filter: blur(10px);
+    }
+    
+    section[data-testid="stSidebar"] .stMarkdown,
+    section[data-testid="stSidebar"] .stMarkdown p,
+    section[data-testid="stSidebar"] h1,
+    section[data-testid="stSidebar"] h2,
+    section[data-testid="stSidebar"] h3 {
+        color: white !important;
+        text-shadow: 0 2px 6px rgba(0,0,0,0.5), 0 0 10px rgba(0,0,0,0.3);
+    }
+    
+    /* 侧边栏标签文字 - 更大字体 */
+    section[data-testid="stSidebar"] label {
+        color: white !important;
+        font-size: 1.3rem !important;
+        font-weight: 700 !important;
+        text-shadow: 0 2px 6px rgba(0,0,0,0.5), 0 0 10px rgba(0,0,0,0.3);
+        line-height: 1.6;
+    }
+    
+    /* 侧边栏输入框样式 - 更大字体 */
+    section[data-testid="stSidebar"] input,
+    section[data-testid="stSidebar"] select {
+        background-color: rgba(255, 255, 255, 0.95) !important;
+        color: #333 !important;
+        border-radius: 10px;
+        font-size: 1.2rem !important;
+        padding: 0.7rem !important;
+        font-weight: 500;
+    }
+    
+    /* 侧边栏数字输入框 */
+    section[data-testid="stSidebar"] input[type="number"] {
+        font-size: 1.2rem !important;
+    }
+    
+    /* 侧边栏选择框选项 */
+    section[data-testid="stSidebar"] select option {
+        font-size: 1.1rem !important;
+    }
+    
+    /* 侧边栏checkbox标签 */
+    section[data-testid="stSidebar"] .stCheckbox label {
+        font-size: 1.1rem !important;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    
+    /* 侧边栏所有文本 */
+    section[data-testid="stSidebar"] p,
+    section[data-testid="stSidebar"] span,
+    section[data-testid="stSidebar"] div {
+        font-size: 1.1rem !important;
+    }
+    
+    /* 侧边栏help文本 */
+    section[data-testid="stSidebar"] small {
+        font-size: 1rem !important;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+    
+    /* 侧边栏按钮 - 更大字体 */
+    section[data-testid="stSidebar"] .stButton > button {
+        background: white !important;
+        color: #667eea !important;
+        font-weight: 700;
+        font-size: 1.3rem !important;
+        padding: 0.9rem 1.8rem !important;
+        border-radius: 12px;
+    }
+    
+    section[data-testid="stSidebar"] .stButton > button:hover {
+        background: rgba(255, 255, 255, 0.9) !important;
+        color: #764ba2 !important;
+        transform: translateY(-2px);
+    }
+    
+    /* 标题样式 */
+    h1 {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 800;
+        text-align: center;
+        font-size: 3.5rem !important;
+        margin-bottom: 1rem;
+    }
+    
+    /* 主内容区标题 - 使用深色提高对比度 */
+    .main h2 {
+        color: #2d3748 !important;
+        font-weight: 700;
+    }
+    
+    .main h3 {
+        color: #4a5568 !important;
+        font-weight: 600;
+    }
+    
+    /* Hero区域标题保持渐变色 */
+    .hero-section h1 {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    /* 按钮样式 */
+    .stButton > button {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 25px;
+        padding: 0.75rem 2rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+    
+    .stButton > button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+    
+    /* 卡片样式 */
+    .feature-card {
+        background: white;
+        border-radius: 15px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(102, 126, 234, 0.1);
+        height: 100%;
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+    }
+    
+    /* 图片画廊样式 */
+    .gallery-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin: 2rem 0;
+    }
+    
+    .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+        height: 200px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+    
+    .gallery-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+    
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .gallery-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+        color: white;
+        padding: 1rem;
+        font-weight: 600;
+    }
+    
+    /* 成功/错误消息样式 */
+    .stSuccess {
+        background-color: rgba(40, 167, 69, 0.1);
+        border-left: 4px solid #28a745;
+        border-radius: 8px;
+    }
+    
+    .stError {
+        background-color: rgba(220, 53, 69, 0.1);
+        border-left: 4px solid #dc3545;
+        border-radius: 8px;
+    }
+    
+    /* 进度条样式 */
+    .stProgress > div > div {
+        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    /* 输入框焦点样式 */
+    .stTextInput > div > div > input:focus,
+    .stSelectbox > div > div > select:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    }
+    
+    /* 页脚样式 */
+    .footer {
+        text-align: center;
+        padding: 2rem 0;
+        color: #666;
+        font-size: 0.9rem;
+        margin-top: 3rem;
+        border-top: 1px solid rgba(102, 126, 234, 0.1);
+    }
+    
+    /* 旅小智AI形象样式 - 超大超可爱 */
+    .ai-avatar {
+        font-size: 8rem;
+        text-align: center;
+        margin: 1.5rem 0;
+        animation: float 3s ease-in-out infinite, wobble 4s ease-in-out infinite;
+        filter: drop-shadow(0 6px 12px rgba(102, 126, 234, 0.4));
+        transform-origin: center;
+    }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        25% { transform: translateY(-15px) rotate(-5deg); }
+        50% { transform: translateY(-20px) rotate(0deg); }
+        75% { transform: translateY(-15px) rotate(5deg); }
+    }
+    
+    @keyframes wobble {
+        0%, 100% { transform: rotate(0deg); }
+        25% { transform: rotate(-3deg); }
+        75% { transform: rotate(3deg); }
+    }
+    
+    /* 侧边栏旅小智logo - 超大超萌 */
+    .sidebar-logo {
+        font-size: 5rem !important;
+        animation: pulse 2s ease-in-out infinite;
+        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+        display: inline-block;
+    }
+    
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.15); }
+    }
+    
+    /* 自然语言输入框样式 */
+    .chat-input-container {
+        background: white;
+        border-radius: 50px;
+        padding: 1.5rem 2rem;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        border: 2px solid rgba(102, 126, 234, 0.2);
+        margin: 2rem 0;
+        transition: all 0.3s ease;
+    }
+    
+    .chat-input-container:hover {
+        box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);
+        border-color: rgba(102, 126, 234, 0.4);
+    }
+    
+    .chat-input-container input {
+        border: none !important;
+        font-size: 1.1rem;
+    }
+    
+    .chat-input-container input:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    
+    /* 快捷示例按钮 */
+    .example-chips {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 1rem 0;
+    }
+    
+    .example-chip {
+        background: rgba(102, 126, 234, 0.1);
+        color: #667eea;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(102, 126, 234, 0.2);
+    }
+    
+    .example-chip:hover {
+        background: rgba(102, 126, 234, 0.2);
+        transform: translateY(-2px);
+    }
+    
+    /* Hero区域样式 */
+    .hero-section {
+        text-align: center;
+        padding: 3rem 1rem;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+        border-radius: 20px;
+        margin-bottom: 2rem;
+        border: 2px solid rgba(102, 126, 234, 0.2);
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        color: #2d3748;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.3rem;
+        color: #4a5568;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
 # API基础URL
 import os
@@ -549,6 +919,314 @@ def save_report_to_results(content: str, filename: str) -> str:
         st.error(f"保存文件失败: {str(e)}")
         return None
 
+def display_hero_section():
+    """显示Hero区域 - 旅小智"""
+    st.markdown("""
+    <div class="hero-section">
+        <div class="ai-avatar">🤖</div>
+        <h1 class="hero-title">旅小智 - 您的智能旅行规划助手</h1>
+        <p class="hero-subtitle">
+            只需一句话，AI多智能体团队为您规划完美旅程<br/>
+            从预算优化到行程安排，让旅行变得更简单
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+def display_chat_interface():
+    """显示自然语言交互界面"""
+    st.markdown("## 💬 告诉旅小智你的旅行想法")
+    st.markdown("")
+    
+    # 创建输入框
+    user_input = st.text_input(
+        "自然语言输入",
+        placeholder="例如：我想下周去北京玩3天，预算3000元，喜欢历史文化...",
+        key="chat_input",
+        label_visibility="collapsed",
+        help="💡 用自然语言描述您的旅行需求，旅小智会自动为您规划"
+    )
+    
+    # 快捷示例按钮
+    st.markdown('<div class="example-chips">', unsafe_allow_html=True)
+    
+    col1, col2, col3, col4 = st.columns(4)
+    
+    examples = [
+        "北京3日游，历史文化",
+        "杭州周末游，2人，预算中等",
+        "成都美食之旅，5天",
+        "上海亲子游，一家三口"
+    ]
+    
+    clicked_example = None
+    
+    with col1:
+        if st.button(examples[0], key="ex1", use_container_width=True):
+            clicked_example = examples[0]
+    with col2:
+        if st.button(examples[1], key="ex2", use_container_width=True):
+            clicked_example = examples[1]
+    with col3:
+        if st.button(examples[2], key="ex3", use_container_width=True):
+            clicked_example = examples[2]
+    with col4:
+        if st.button(examples[3], key="ex4", use_container_width=True):
+            clicked_example = examples[3]
+    
+    st.markdown('</div>', unsafe_allow_html=True)
+    
+    # 处理输入
+    input_to_process = clicked_example if clicked_example else user_input
+    
+    if input_to_process:
+        with st.spinner("🤖 旅小智正在理解您的需求..."):
+            try:
+                # 调用后端聊天接口
+                response = requests.post(
+                    f"{API_BASE_URL}/chat",
+                    json={"message": input_to_process},
+                    timeout=30
+                )
+                
+                if response.status_code == 200:
+                    chat_response = response.json()
+                    
+                    # 显示旅小智的回复
+                    st.markdown("### 🤖 旅小智回复")
+                    st.info(chat_response["clarification"])
+                    
+                    # 如果可以直接创建任务
+                    if chat_response["can_proceed"] and chat_response.get("task_id"):
+                        task_id = chat_response["task_id"]
+                        st.success(f"✅ 任务已创建！任务ID: {task_id}")
+                        
+                        # 保存任务ID到session state
+                        st.session_state.current_task_id = task_id
+                        st.session_state.planning_started = True
+                        st.rerun()
+                    
+                    # 显示提取的信息
+                    if chat_response["extracted_info"]:
+                        with st.expander("📋 已识别的信息"):
+                            for key, value in chat_response["extracted_info"].items():
+                                st.write(f"**{key}**: {value}")
+                    
+                    # 显示缺失的信息
+                    if chat_response["missing_info"]:
+                        with st.expander("❓ 还需要补充的信息"):
+                            for item in chat_response["missing_info"]:
+                                st.write(f"- {item}")
+                else:
+                    st.error(f"请求失败: {response.status_code}")
+                    
+            except requests.exceptions.Timeout:
+                st.error("⏰ 请求超时，请稍后重试")
+            except requests.exceptions.ConnectionError:
+                st.error("🔌 无法连接到服务器，请确保后端服务已启动")
+            except Exception as e:
+                st.error(f"❌ 发生错误: {str(e)}")
+
+def display_features_section():
+    """显示功能特色区域"""
+    st.markdown("## ✨ 为什么选择我们？")
+    st.markdown("")
+    
+    col1, col2, col3, col4 = st.columns(4)
+    
+    with col1:
+        st.markdown("""
+        <div class="feature-card">
+            <h2 style="text-align: center; font-size: 3rem;">🤖</h2>
+            <h3 style="text-align: center; color: #2d3748;">AI多智能体</h3>
+            <p style="text-align: center; color: #666;">
+                6个专业AI智能体协同工作，为您提供全方位的旅行规划服务
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("""
+        <div class="feature-card">
+            <h2 style="text-align: center; font-size: 3rem;">🎯</h2>
+            <h3 style="text-align: center; color: #2d3748;">个性化定制</h3>
+            <p style="text-align: center; color: #666;">
+                根据您的兴趣、预算和偏好，量身定制专属旅行方案
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col3:
+        st.markdown("""
+        <div class="feature-card">
+            <h2 style="text-align: center; font-size: 3rem;">⚡</h2>
+            <h3 style="text-align: center; color: #2d3748;">快速高效</h3>
+            <p style="text-align: center; color: #666;">
+                几分钟内完成专业旅行规划，节省您的宝贵时间
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col4:
+        st.markdown("""
+        <div class="feature-card">
+            <h2 style="text-align: center; font-size: 3rem;">📄</h2>
+            <h3 style="text-align: center; color: #2d3748;">专业报告</h3>
+            <p style="text-align: center; color: #666;">
+                生成详细的旅行规划报告，随时下载和分享
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
+def display_world_gallery():
+    """显示世界各地风光画廊"""
+    st.markdown("## 🌏 探索世界之美")
+    st.markdown("让AI带您发现世界各地的精彩")
+    st.markdown("")
+    
+    # 使用Unsplash的高质量旅行图片
+    destinations = [
+        {
+            "name": "🗼 巴黎·浪漫之都",
+            "url": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&h=400&fit=crop",
+        },
+        {
+            "name": "🗻 日本·富士山",
+            "url": "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=600&h=400&fit=crop",
+        },
+        {
+            "name": "🏰 希腊·圣托里尼",
+            "url": "https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=600&h=400&fit=crop",
+        },
+        {
+            "name": "🏔️ 瑞士·阿尔卑斯",
+            "url": "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=600&h=400&fit=crop",
+        },
+        {
+            "name": "🏖️ 马尔代夫·海岛",
+            "url": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&h=400&fit=crop",
+        },
+        {
+            "name": "🌆 纽约·都市风光",
+            "url": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=600&h=400&fit=crop",
+        },
+        {
+            "name": "🏛️ 罗马·古城遗迹",
+            "url": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&h=400&fit=crop",
+        },
+        {
+            "name": "🌴 巴厘岛·热带天堂",
+            "url": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&h=400&fit=crop",
+        },
+    ]
+    
+    # 使用Streamlit原生列布局 - 第一行（4张图片）
+    col1, col2, col3, col4 = st.columns(4)
+    
+    with col1:
+        st.markdown(f"""
+        <div style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+            <img src="{destinations[0]['url']}" alt="{destinations[0]['name']}" style="width: 100%; height: 200px; object-fit: cover;">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 1rem; font-weight: 600; font-size: 0.9rem;">
+                {destinations[0]['name']}
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown(f"""
+        <div style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+            <img src="{destinations[1]['url']}" alt="{destinations[1]['name']}" style="width: 100%; height: 200px; object-fit: cover;">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 1rem; font-weight: 600; font-size: 0.9rem;">
+                {destinations[1]['name']}
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col3:
+        st.markdown(f"""
+        <div style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+            <img src="{destinations[2]['url']}" alt="{destinations[2]['name']}" style="width: 100%; height: 200px; object-fit: cover;">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 1rem; font-weight: 600; font-size: 0.9rem;">
+                {destinations[2]['name']}
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col4:
+        st.markdown(f"""
+        <div style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+            <img src="{destinations[3]['url']}" alt="{destinations[3]['name']}" style="width: 100%; height: 200px; object-fit: cover;">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 1rem; font-weight: 600; font-size: 0.9rem;">
+                {destinations[3]['name']}
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    st.markdown("")
+    
+    # 第二行（4张图片）
+    col5, col6, col7, col8 = st.columns(4)
+    
+    with col5:
+        st.markdown(f"""
+        <div style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+            <img src="{destinations[4]['url']}" alt="{destinations[4]['name']}" style="width: 100%; height: 200px; object-fit: cover;">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 1rem; font-weight: 600; font-size: 0.9rem;">
+                {destinations[4]['name']}
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col6:
+        st.markdown(f"""
+        <div style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+            <img src="{destinations[5]['url']}" alt="{destinations[5]['name']}" style="width: 100%; height: 200px; object-fit: cover;">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 1rem; font-weight: 600; font-size: 0.9rem;">
+                {destinations[5]['name']}
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col7:
+        st.markdown(f"""
+        <div style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+            <img src="{destinations[6]['url']}" alt="{destinations[6]['name']}" style="width: 100%; height: 200px; object-fit: cover;">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 1rem; font-weight: 600; font-size: 0.9rem;">
+                {destinations[6]['name']}
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col8:
+        st.markdown(f"""
+        <div style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+            <img src="{destinations[7]['url']}" alt="{destinations[7]['name']}" style="width: 100%; height: 200px; object-fit: cover;">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 1rem; font-weight: 600; font-size: 0.9rem;">
+                {destinations[7]['name']}
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+def display_footer():
+    """显示页脚"""
+    st.markdown("""
+    <div class="footer">
+        <p style="font-size: 1.1rem; margin-bottom: 1rem;">
+            🤖 <strong>旅小智</strong> - 您的智能旅行规划助手
+        </p>
+        <p style="color: #999;">
+            由 <strong>LangGraph 多智能体系统</strong> 驱动 | 
+            采用 <strong>OpenAI兼容大模型</strong> 和 <strong>DuckDuckGo实时搜索</strong>
+        </p>
+        <p style="color: #999; margin-top: 1rem;">
+            © 2025 旅小智 Travel AI | 技术架构: FastAPI + Streamlit + LangGraph
+        </p>
+        <p style="color: #aaa; font-size: 0.85rem; margin-top: 0.5rem;">
+            💡 支持自然语言交互 | 完美适用于AI智能体课程教学和技术演示
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
 def display_planning_result(result: Dict[str, Any]):
     """显示规划结果"""
     if not result:
@@ -603,8 +1281,16 @@ def display_planning_result(result: Dict[str, Any]):
 
 def main():
     """主函数"""
-    st.title("🌍 AI旅行规划智能体")
+    # 注入自定义CSS样式
+    inject_custom_css()
+    
+    # 显示Hero区域
+    display_hero_section()
+    
     st.markdown("---")
+    
+    # 显示自然语言交互界面
+    display_chat_interface()
 
     # 检查API健康状态
     is_healthy, health_info = check_api_health()
@@ -648,7 +1334,15 @@ def main():
 
     # 侧边栏 - 旅行规划表单
     with st.sidebar:
-        st.header("📝 旅行规划表单")
+        st.markdown("""
+        <div style="text-align: center; padding: 1.5rem 0;">
+            <div class="sidebar-logo">🤖</div>
+            <h1 style="color: white; font-size: 2.3rem; margin: 1rem 0 0.5rem 0; text-shadow: 0 3px 6px rgba(0,0,0,0.3); font-weight: 800;">旅小智</h1>
+            <p style="color: rgba(255,255,255,1); font-size: 1.2rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); margin-top: 0.5rem;">也可以用表单详细填写</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("---")
 
         # 基本信息
         destination = st.text_input("🎯 目的地", placeholder="例如：北京、上海、成都")
@@ -692,7 +1386,7 @@ def main():
         ])
 
         # 兴趣爱好
-        st.markdown("🎨 **兴趣爱好**")
+        st.markdown('<p style="color: white; font-size: 1.3rem; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.3); margin-bottom: 0.8rem;">🎨 兴趣爱好</p>', unsafe_allow_html=True)
         interests = []
 
         col1, col2, col3 = st.columns(3)
@@ -813,14 +1507,18 @@ def main():
 
     # 主内容区域
     if hasattr(st.session_state, 'planning_started') and st.session_state.planning_started:
-        travel_data = st.session_state.travel_data
+        # 检查是否从聊天接口创建的任务
+        if hasattr(st.session_state, 'current_task_id'):
+            task_id = st.session_state.current_task_id
+        else:
+            travel_data = st.session_state.travel_data
 
-        st.markdown("### 🎯 规划请求")
-        st.json(travel_data)
+            st.markdown("### 🎯 规划请求")
+            st.json(travel_data)
 
-        # 创建规划任务
-        with st.spinner("正在创建规划任务..."):
-            task_id = create_travel_plan(travel_data)
+            # 创建规划任务
+            with st.spinner("正在创建规划任务..."):
+                task_id = create_travel_plan(travel_data)
 
         if task_id:
             st.success(f"✅ 规划任务已创建，任务ID: {task_id}")
@@ -944,29 +1642,122 @@ def main():
             st.error("❌ 创建规划任务失败")
 
     else:
-        # 显示欢迎信息
-        st.markdown("""
-        ## 🎉 欢迎使用AI旅行规划智能体！
-
-        ### ✨ 功能特色
-        - 🤖 **多智能体协作**: 6个专业AI智能体为您服务
-        - 🎯 **个性化规划**: 根据您的兴趣和预算定制
-        - 📊 **实时进度**: 查看规划过程的每一步
-        - 📄 **专业报告**: 生成详细的旅行规划文档
-
-        ### 🚀 开始使用
-        1. 在左侧填写旅行需求
-        2. 点击"开始规划"按钮
-        3. 等待AI智能体完成规划
-        4. 下载您的专属旅行指南
-
-        ### 🤖 智能体团队
-        - 🏛️ **旅行顾问**: 提供目的地概览和建议
-        - 🌤️ **天气分析师**: 分析天气状况和穿衣建议
-        - 💰 **预算优化师**: 制定合理的预算分配
-        - 🏠 **当地专家**: 推荐地道的体验和美食
-        - 📅 **行程规划师**: 安排详细的日程计划
-        """)
+        # 显示功能特色区域
+        display_features_section()
+        
+        st.markdown("---")
+        
+        # 显示智能体团队介绍
+        st.markdown("## 🤖 专业AI智能体团队")
+        st.markdown("6位专业AI智能体协同工作，为您提供全方位旅行规划服务")
+        
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            st.markdown("""
+            <div class="feature-card">
+                <h3 style="color: #2d3748;">🏛️ 旅行顾问</h3>
+                <p style="color: #666;">
+                    提供目的地概览、景点推荐和旅行建议，确保您不错过任何精彩
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div class="feature-card">
+                <h3 style="color: #2d3748;">🌤️ 天气分析师</h3>
+                <p style="color: #666;">
+                    分析目的地天气状况，提供穿衣指南和最佳出行时间建议
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        with col2:
+            st.markdown("""
+            <div class="feature-card">
+                <h3 style="color: #2d3748;">💰 预算优化师</h3>
+                <p style="color: #666;">
+                    制定合理的预算分配方案，确保每一分钱都花得物有所值
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div class="feature-card">
+                <h3 style="color: #2d3748;">🏠 当地专家</h3>
+                <p style="color: #666;">
+                    推荐地道的餐厅、体验和隐藏景点，让您像当地人一样旅行
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        with col3:
+            st.markdown("""
+            <div class="feature-card">
+                <h3 style="color: #2d3748;">📅 行程规划师</h3>
+                <p style="color: #666;">
+                    安排详细的日程计划，优化路线，确保旅行顺畅高效
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div class="feature-card">
+                <h3 style="color: #2d3748;">🎯 协调员</h3>
+                <p style="color: #666;">
+                    统筹协调各智能体工作，整合信息，提供最优旅行方案
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        st.markdown("---")
+        
+        # 显示使用指南
+        st.markdown("## 🚀 三步开启智能旅行规划")
+        
+        guide_col1, guide_col2, guide_col3 = st.columns(3)
+        
+        with guide_col1:
+            st.markdown("""
+            <div class="feature-card" style="text-align: center;">
+                <h2 style="font-size: 4rem; margin: 0;">1️⃣</h2>
+                <h3 style="color: #2d3748;">填写需求</h3>
+                <p style="color: #666;">
+                    在左侧表单中填写您的旅行目的地、日期、预算和兴趣偏好
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        with guide_col2:
+            st.markdown("""
+            <div class="feature-card" style="text-align: center;">
+                <h2 style="font-size: 4rem; margin: 0;">2️⃣</h2>
+                <h3 style="color: #2d3748;">AI智能规划</h3>
+                <p style="color: #666;">
+                    点击"开始规划"，AI智能体团队将在几分钟内为您生成专属方案
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        with guide_col3:
+            st.markdown("""
+            <div class="feature-card" style="text-align: center;">
+                <h2 style="font-size: 4rem; margin: 0;">3️⃣</h2>
+                <h3 style="color: #2d3748;">下载报告</h3>
+                <p style="color: #666;">
+                    获取详细的旅行规划报告，支持Markdown和JSON格式下载
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        st.markdown("---")
+        
+        # 显示世界风光画廊
+        display_world_gallery()
+    
+    # 显示页脚
+    st.markdown("---")
+    display_footer()
 
 if __name__ == "__main__":
     main()
