@@ -79,7 +79,7 @@ def inject_custom_css():
     section[data-testid="stSidebar"] h2,
     section[data-testid="stSidebar"] h3 {
         color: white !important;
-        text-shadow: 0 2px 6px rgba(0,0,0,0.5), 0 0 10px rgba(0,0,0,0.3);
+        text-shadow: 0 1px 2px rgba(0,0,0,0.2);
     }
     
     /* 侧边栏标签文字 - 更大字体 */
@@ -87,7 +87,7 @@ def inject_custom_css():
         color: white !important;
         font-size: 1.3rem !important;
         font-weight: 700 !important;
-        text-shadow: 0 2px 6px rgba(0,0,0,0.5), 0 0 10px rgba(0,0,0,0.3);
+        text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         line-height: 1.6;
     }
     
@@ -115,7 +115,7 @@ def inject_custom_css():
     /* 侧边栏checkbox标签 */
     section[data-testid="stSidebar"] .stCheckbox label {
         font-size: 1.1rem !important;
-        text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        text-shadow: 0 1px 2px rgba(0,0,0,0.15);
     }
     
     /* 侧边栏所有文本 */
@@ -324,7 +324,7 @@ def inject_custom_css():
     /* 自然语言输入框样式 */
     .chat-input-container {
         background: white;
-        border-radius: 50px;
+        border-radius: 20px;
         padding: 1.5rem 2rem;
         box-shadow: 0 8px 30px rgba(0,0,0,0.1);
         border: 2px solid rgba(102, 126, 234, 0.2);
@@ -337,14 +337,38 @@ def inject_custom_css():
         border-color: rgba(102, 126, 234, 0.4);
     }
     
-    .chat-input-container input {
+    .chat-input-container input,
+    .chat-input-container textarea {
         border: none !important;
         font-size: 1.1rem;
+        line-height: 1.6;
     }
     
-    .chat-input-container input:focus {
+    .chat-input-container input:focus,
+    .chat-input-container textarea:focus {
         outline: none !important;
         box-shadow: none !important;
+    }
+    
+    /* 增强textarea样式 */
+    .stTextArea textarea {
+        font-size: 1.2rem !important;
+        line-height: 1.8 !important;
+        padding: 1rem !important;
+        border-radius: 15px !important;
+        border: 2px solid rgba(102, 126, 234, 0.3) !important;
+        transition: all 0.3s ease;
+    }
+    
+    .stTextArea textarea:focus {
+        border-color: rgba(102, 126, 234, 0.6) !important;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.15) !important;
+    }
+    
+    .stTextArea textarea::placeholder {
+        color: #999 !important;
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
     }
     
     /* 快捷示例按钮 */
@@ -923,7 +947,7 @@ def display_hero_section():
     """显示Hero区域 - 旅小智"""
     st.markdown("""
     <div class="hero-section">
-        <div class="ai-avatar">🤖</div>
+        <div class="ai-avatar"><img src="https://raw.githubusercontent.com/FlyAIBox/Agent_In_Action/main/03-agent-build-docker-deploy/frontend/logo.png" alt="Agent in Action Logo" width="500"></div>
         <h1 class="hero-title">旅小智 - 您的智能旅行规划助手</h1>
         <p class="hero-subtitle">
             只需一句话，AI多智能体团队为您规划完美旅程<br/>
@@ -937,11 +961,12 @@ def display_chat_interface():
     st.markdown("## 💬 告诉旅小智你的旅行想法")
     st.markdown("")
     
-    # 创建输入框
-    user_input = st.text_input(
+    # 创建输入框（使用text_area提供更大的输入区域）
+    user_input = st.text_area(
         "自然语言输入",
-        placeholder="例如：我想下周去北京玩3天，预算3000元，喜欢历史文化...",
+        placeholder="例如：我想下周去北京玩3天，预算3000元，喜欢历史文化...\n\n您可以详细描述您的旅行需求，包括：\n- 目的地和时间\n- 预算范围\n- 同行人数\n- 兴趣偏好（美食、历史、自然风光等）",
         key="chat_input",
+        height=400,
         label_visibility="collapsed",
         help="💡 用自然语言描述您的旅行需求，旅小智会自动为您规划"
     )
@@ -1220,7 +1245,7 @@ def display_footer():
             © 2025 旅小智 Travel AI | 技术架构: FastAPI + Streamlit + LangGraph
         </p>
         <p style="color: #aaa; font-size: 0.85rem; margin-top: 0.5rem;">
-            💡 支持自然语言交互 | 完美适用于AI智能体课程教学和技术演示
+            💡 支持自然语言和表单交互 
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -1334,7 +1359,7 @@ def main():
     with st.sidebar:
         st.markdown("""
         <div style="text-align: center; padding: 1.5rem 0;">
-            <div class="sidebar-logo"><img src="logo.png" alt="Your Website Logo"></div>
+            <div class="sidebar-logo"><img src="https://raw.githubusercontent.com/FlyAIBox/Agent_In_Action/main/03-agent-build-docker-deploy/frontend/logo.png" alt="Logo"></div>
             <h1 style="color: white; font-size: 2.3rem; margin: 1rem 0 0.5rem 0; text-shadow: 0 3px 6px rgba(0,0,0,0.3); font-weight: 800;">旅小智</h1>
             
         </div>
@@ -1384,7 +1409,7 @@ def main():
         ])
 
         # 兴趣爱好
-        st.markdown('<p style="color: white; font-size: 1.3rem; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.3); margin-bottom: 0.8rem;">🎨 兴趣爱好</p>', unsafe_allow_html=True)
+        st.markdown('<p style="color: white; font-size: 1.3rem; font-weight: 700;  margin-bottom: 0.8rem;">🎨 兴趣爱好</p>', unsafe_allow_html=True)
         interests = []
 
         col1, col2, col3 = st.columns(3)
