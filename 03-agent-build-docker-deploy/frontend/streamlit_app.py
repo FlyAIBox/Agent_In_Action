@@ -400,7 +400,7 @@ def inject_custom_css():
 
 # API基础URL
 import os
-API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:8080")
+API_BASE_URL = os.getenv("API_BASE_URL", "http://192.168.172.128:8080")
 
 def check_api_health():
     """检查API服务状态"""
@@ -1020,9 +1020,7 @@ def display_chat_interface():
                     st.error(f"请求失败: {response.status_code}")
                     
             except requests.exceptions.Timeout:
-                st.error("⏰ 请求超时，请稍后重试")
-            except requests.exceptions.ConnectionError:
-                st.error("🔌 无法连接到服务器，请确保后端服务已启动")
+               st.info("⏰ 任务创建中... 请稍候...")
             except Exception as e:
                 st.error(f"❌ 发生错误: {str(e)}")
 
@@ -1317,8 +1315,8 @@ def main():
             ### 检查服务状态
 
             启动后，您可以访问以下地址检查服务状态：
-            - 健康检查: http://localhost:8080/health
-            - API文档: http://localhost:8080/docs
+            - 健康检查: http://192.168.172.128:8080/health
+            - API文档: http://192.168.172.128:8080/docs
 
             ### 常见问题
 
@@ -1336,9 +1334,9 @@ def main():
     with st.sidebar:
         st.markdown("""
         <div style="text-align: center; padding: 1.5rem 0;">
-            <div class="sidebar-logo">🤖</div>
+            <div class="sidebar-logo"><img src="logo.png" alt="Your Website Logo"></div>
             <h1 style="color: white; font-size: 2.3rem; margin: 1rem 0 0.5rem 0; text-shadow: 0 3px 6px rgba(0,0,0,0.3); font-weight: 800;">旅小智</h1>
-            <p style="color: rgba(255,255,255,1); font-size: 1.2rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); margin-top: 0.5rem;">也可以用表单详细填写</p>
+            
         </div>
         """, unsafe_allow_html=True)
         
