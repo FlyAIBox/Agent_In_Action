@@ -200,6 +200,7 @@ def inject_custom_css():
         background: white;
         border-radius: 15px;
         padding: 1.5rem;
+        margin-bottom: 1.5rem;
         box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         transition: all 0.3s ease;
         border: 1px solid rgba(102, 126, 234, 0.1);
@@ -377,7 +378,7 @@ def inject_custom_css():
         gap: 0.5rem;
         flex-wrap: wrap;
         justify-content: center;
-        margin: 1rem 0;
+        margin: 2rem 0 3rem 0;
     }
     
     .example-chip {
@@ -402,7 +403,7 @@ def inject_custom_css():
         padding: 3rem 1rem;
         background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
         border-radius: 20px;
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
         border: 2px solid rgba(102, 126, 234, 0.2);
     }
     
@@ -958,8 +959,9 @@ def display_hero_section():
 
 def display_chat_interface():
     """显示自然语言交互界面"""
+    st.markdown("<br/>", unsafe_allow_html=True)
     st.markdown("## 💬 告诉旅小智你的旅行想法")
-    st.markdown("")
+    st.markdown("<br/>", unsafe_allow_html=True)
     
     # 创建输入框（使用text_area提供更大的输入区域）
     user_input = st.text_area(
@@ -1051,8 +1053,9 @@ def display_chat_interface():
 
 def display_features_section():
     """显示功能特色区域"""
+    st.markdown("<br/><br/>", unsafe_allow_html=True)
     st.markdown("## ✨ 为什么选择我们？")
-    st.markdown("")
+    st.markdown("<br/>", unsafe_allow_html=True)
     
     col1, col2, col3, col4 = st.columns(4)
     
@@ -1102,9 +1105,10 @@ def display_features_section():
 
 def display_world_gallery():
     """显示世界各地风光画廊"""
+    st.markdown("<br/><br/>", unsafe_allow_html=True)
     st.markdown("## 🌏 探索世界之美")
     st.markdown("让AI带您发现世界各地的精彩")
-    st.markdown("")
+    st.markdown("<br/>", unsafe_allow_html=True)
     
     # 使用Unsplash的高质量旅行图片
     destinations = [
@@ -1232,6 +1236,7 @@ def display_world_gallery():
 
 def display_footer():
     """显示页脚"""
+    st.markdown("<br/><br/>", unsafe_allow_html=True)
     st.markdown("""
     <div class="footer">
         <p style="font-size: 1.1rem; margin-bottom: 1rem;">
@@ -1671,8 +1676,10 @@ def main():
         st.markdown("---")
         
         # 显示智能体团队介绍
+        st.markdown("<br/><br/>", unsafe_allow_html=True)
         st.markdown("## 🤖 专业AI智能体团队")
         st.markdown("6位专业AI智能体协同工作，为您提供全方位旅行规划服务")
+        st.markdown("<br/>", unsafe_allow_html=True)
         
         col1, col2, col3 = st.columns(3)
         
