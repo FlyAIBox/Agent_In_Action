@@ -1,0 +1,283 @@
+# VirtualBox 安装 Ubuntu22.04 与系统开发环境配置
+
+> [!INFO]
+> 如果使用 VMware，可以参考[这里](/2.编程模块/2.1%20CStart/2.1.1%20Book/2.开发环境配置（VMware）)的 VMware 版安装教程。
+
+> [!IMPORTANT]
+> 什么是 Linux?
+>
+> 请阅读[Linux 概念普及](/2023旧版内容/3.编程思维体系构建/3.Y.1Linux概念普及)
+>
+> 虚拟机太卡了我不喜欢?
+>
+> 请阅读[双系统安装指南](/2023旧版内容/3.编程思维体系构建/3.Y.2双系统安装和发行版推荐)
+
+## 0. 下载系统初始化工具和 VSCode 配置文件
+
+请在[课程主页](/2.编程模块/2.1%20CStart/2.1%20CStart)下方“课程工具”中下载。
+
+## 1. 下载安装 VirtualBox
+
+> [!CAUTION]
+> 由于 Virtual Box 7.1 版本目前在 Windows 系统下网络连接方式选择“NAT”方式会导致严重的网络性能下降（大约为物理网络的 1/100）。
+>
+> 设置“控制芯片”选择“virtio-net”可以一定程度上缓解这个问题，此时的网络大约为物理网络的 1/25。
+>
+> 因此请选择安装[7.0 版本的 Virtual Box](https://www.virtualbox.org/wiki/Download_Old_Builds_7_0)。
+>
+> 教程部分图片为 VirtualBox 7.1 界面，两者并不存在操作差异。
+
+![下载 VirtualBox](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205603.png)
+
+点击[链接](https://www.virtualbox.org/wiki/Downloads)下载 VirtuaBox windows 平台安装包和功能扩展包。
+
+![安装 VirtualBox](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205400.png)
+
+双击 VirtualBox 安装程序，完成 VirtualBox 本体安装； 双击扩展包安装程序，会自动打开 VirtualBox，完成增强功能安装。
+
+> [!CAUTION]
+> 如果你需要改变默认的 Virtual Box 的安装路径，请不要选择**已创建的目录**，而是选择直接在**路径栏**中进行修改，比如"D:\Oracle\VirtualBox"（请确保本身不存在这个目录）
+
+## 2. 下载 Ubuntu22.04 系统镜像
+
+![清华大学开源软件镜像站](https://cdn.xyxsw.site/ubuntu-iso-download1_1251e75425cb219cac6b945fefc009a4.png)
+
+进入[清华大学开源软件镜像站](https://mirrors.tuna.tsinghua.edu.cn/)，点击"获取下载链接"，进入下载界面。
+
+![下载 Ubuntu22.04 镜像](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205510.png)
+
+选择 Ubuntu 操作系统，下载 22.04.5(amd64， Desktop LiveDvD) 镜像。
+
+## 3. 安装 Ubuntu22.04
+
+![新建虚拟机](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205442.png)
+
+启动 VirtualBox，在"工具"界面点击"新建(N)"。
+
+![选择系统镜像](https://cdn.xyxsw.site/virtualbox-ubuntu2_3da44c2e5708f973be61d611e4837b80.png)
+
+输入虚拟机名称，选择对应的 Ubuntu22.04 系统镜像，勾选"跳过自动安装"。
+
+![配置虚拟硬件](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205630.png)
+
+根据计算机性能，调整虚拟机硬件设置。
+
+![配置虚拟硬盘文件](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205469.png)
+
+选择虚拟硬盘文件位置，分配虚拟硬盘文件大小，建议"大于 40GB"。
+
+![启动虚拟机](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205473.png)
+
+回到 VirtualBox 主界面，选择创建的虚拟机，点击“启动”。
+
+![进入系统镜像引导](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205618.png)
+
+进入系统镜像引导界面，选择第一项“Try or Install Ubuntu”。
+
+注意此时如果鼠标被虚拟机捕获，可以按下键盘“右 Ctrl”键脱离虚拟机。
+
+![选择安装系统](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205906.png)
+
+建议安装过程中始终保持语言为 English（英文显示），点击"Install Ubuntu"开始安装 Ubuntu 系统。
+
+![选择地区](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205774.png)
+
+一路点击“Continue”，进入地区选择，选择“Shanghai”。
+
+![创建用户](https://cdn.xyxsw.site/virtualbox-ubuntu9_4bed09c6cfe0d4ab52daf4c84db4ea32.png)
+
+输入“用户名-密码”创建用户，等待系统安装完毕，等待虚拟机自动重启后，按下键盘“Enter”回车键启动系统，进入系统后先**关闭**虚拟机。
+
+![设置虚拟机快照](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205188.png)
+
+点击左侧菜单，选择“备份[系统快照]”，进入虚拟机快照界面。
+
+![创建快照](https://cdn.xyxsw.site/virtualbox-ubuntu25_6fb04f1cd15434aaee98d6383ad44f46.png)
+
+点击上方“生成”按钮，为安装的虚拟机系统设置初始快照，便于后续出现问题后进行恢复。
+
+![恢复快照](https://cdn.xyxsw.site/virtualbox-ubuntu26_12cd6537a72dcdcab3447c6137c65bcf.png)
+
+如果后续出现误操作，可以回到快照界面，选择之前创建的快照，点击上方“恢复备份”，将虚拟机恢复到初始系统状态。
+
+![设置虚拟机粘贴板](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205825.png)
+
+回到 VirtualBox 主界面，选择虚拟机，点击“设置”，在“常规”-“高级”中调整“共享粘贴板”为双向，方便后续操作。
+
+![设置显存](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205112.png)
+
+根据电脑性能，适当调大显存，避免可能出现的花屏问题。
+
+> [!CAUTION]
+> 如果你的显卡属于 RTX 40 系列，并存在虚拟机花屏问题，这可能是“众做周知”的 Linux 下 Nvidia 显卡存在的驱动问题，请尝试关闭独显直连。
+
+![设置虚拟机网络配置](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205825.png)
+
+在“网络”-“网卡 1”中，确保连接方式选择为“网络地址转换(NAT)”，设置“控制芯片”为“准虚拟化网络(virtio-net)”，点击“端口转发”。
+
+![配置ssh端口转发](https://cdn.xyxsw.site/virtualbox-ubuntu12_1de8f15739c9dd0c5c39d2987d96afed.png)
+
+点击“右侧加号”，添加新规则，设置“子系统端口 22”向主机端口（比如 9090）的 TCP 协议转发，用于后续使用 ssh 服务连接虚拟机。
+
+![安装增强功能](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205751.png)
+
+启动虚拟机，点击上方“设备”-“安装增强功能”，为虚拟机安装增强功能。
+
+> [!CAUTION]
+> 请忽略所有系统弹窗提示（例如：提示更新系统软件）
+
+![安装增强功能](https://cdn.xyxsw.site//virtualbox-ubuntu14_5c0196573ed419e3ffeeead979494362.png)
+
+找到自动插入的"VBox_GAs"文件夹，右键“autorun.sh”选择“Run as a Program”运行脚本，完成增强功能安装。
+
+![设置共享文件夹](https://cdn.xyxsw.site/virtualbox-ubuntu15_ddf844649460e0da0d040bdc7817644c.png)
+
+退出虚拟机，进入虚拟机设置，选择“共享文件夹”，点击“右侧加号”，添加共享文件夹，选择“系统初始化工具”所在的路径，设置挂载点为“/mnt/share”，设置“只读分配”和“自动挂载”。
+
+> [!CAUTION]
+> 注意选择“系统初始化工具”即“setup.tar.gz”文件所在的文件夹，共享文件夹路径未必为图片显示，请选择自己电脑上的路径。
+
+![找到系统初始化工具](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205319.png)
+
+打开虚拟机，在文件浏览器右侧中点击“Other Locations”，进入“/mnt/share”目录，复制“系统初始化工具”到其他目录（比如 Documents）。
+
+![在终端中打开](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205781.png)
+
+右键复制的“系统初始化工具”所在的目录，点击“Open in Terminal”（在终端中打开）。
+
+![输入命令](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205610.png)
+
+在终端中依次输入
+
+```bash
+tar xzf setup.tar.gz    # 解压工具
+cd setup                # 进入工具目录
+bash common.sh          # 运行初始化脚本
+```
+
+提示输入密码“[sudo] password for user:”，输入密码（此时终端禁止回显，不会显示输入的字符）后敲击回车，等待脚本运行完毕（运行期间可能需要再次输入密码）。
+
+“系统初始化工具”运行结束后，在终端输入`reboot`重启系统。
+
+> [!CAUTION]
+> 注意脚本运行期间没有输出报错信息即为正在运行，请耐心等待脚本结束。
+
+![打开系统设置](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205467.png)
+
+点击系统右上角，点击“Settings”，进入系统设置。
+
+![设置中文](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205657.png)
+
+右侧点击“Region & Language”，修改系统语言为“汉语（中国）”，完成后，下方将会提示重启，此时选择不重启，继续操作。
+
+![设置中文](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205475.png)
+
+点击“Manage installed Languages”，等待弹窗，点击“install”，安装完毕后重启系统。
+
+![英文目录](https://cdn.xyxsw.site/virtualbox-ubuntu22_c0628032f9c6e16e2b8a50cca9806f4c.png)
+
+重启后会选择文件夹名的语言，请务必选择以英文形式保留。
+
+![完成zsh主题配置](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205939.png)
+
+按下键盘“Ctrl+Alt+t”快捷键，打开终端（或选择点击左下角的“显示应用程序”找到“终端”打开），此时会提示配置 shell 主题，按照提示自定义即可，安装完成。
+
+## 4. 安装 Visual Studio Code
+
+![安装VSCode](https://cdn.xyxsw.site/VSCode-download_33284ab6a8455df861e61575a1d604c4.png)
+
+进入[VSCode 官网](https://code.visualstudio.com/)，点击下载安装包，完成安装。
+
+## 5. 导入 Visual Studio Code 配置
+
+![导入VSCode配置](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205833.png)
+
+![导入VSCode配置](https://cdn.xyxsw.site//VSCode-config3_ee27bb0fbb58095ad1e570acdd5e465c.png)
+
+![导入VSCode配置](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205696.png)
+
+打开 VSCode，点击左下角“齿轮”，选择“配置文件”，进入配置文件管理界面，点击“新建配置文件”下拉菜单，选择“导入文件”，导入 C/C++配置文件，点击创建，然后点击“√”应用 C/C++配置文件。
+
+![禁用VIM（可选）](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205876.png)
+
+可选（不推荐禁用）：如果不想使用 Vim 键位，可在插件中找到 Vim 插件选择“禁用”。
+
+## 6. 配置 VSCode SSH 连接虚拟机
+
+![VSCode ssh](https://cdn.xyxsw.site/VSCode-ssh1_1a1ace268a0babe6939a13569b3d5e0b.png)
+
+点击左侧“远程资源管理器”，点击 SSH 的“新建连接”
+
+![VSCode ssh](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205604.png)
+
+在上方弹出的界面中输入“用户名（为虚拟机系统的用户，非本机 Windows 系统的用户）@localhost:9090（上面端口转发配置的主机端口）”，如果“localhost”无法使用，可以用“127.0.0.1”代替（请检查系统的 hosts 配置），之后按照提示（指纹验证选择“继续”，平台选择“Linux”，输入用户密码）完成连接即可（第一次连接期间需要下载资源，请耐心等待）。
+
+![VSCode Plugin](https://cdn.xyxsw.site/VSCode-ssh3_1c4fb05510a01d3ef7cd1dbe6bf5b368.png)
+
+请在连接虚拟机后，点击 VSCode 扩展，将扩展在虚拟机内进行安装。
+
+## 7. 使用 VSCode 在 Ubuntu 中编写程序
+
+![ssh连接模型](https://cdn.xyxsw.site/ssh-programming1_b2b9e3f46a4400d31af597ab20c81ec5.png)
+我们使用 ssh 连接到虚拟机中的 Ubuntu，并通过 Windows 上的 VSCode、PowerShell 等软件，通过 ssh，操作 Ubuntu 中的文件、运行内部的软件等等。
+
+![在VSCode中新建终端](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205447.png)
+
+![在VSCode终端](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205376.png)
+
+**在 VSCode 中 ssh 连接到虚拟机后**，在菜单栏中选择终端->新建终端，可以在下面弹出的终端中输入命令尝试，如`ls`命令、`gcc --version`查看 gcc 版本等。
+
+![Ubuntu新建code文件夹1](https://cdn.xyxsw.site/ssh-programming5_519124f67d35dacc4e2f5fe2aad4c979.png)
+
+![Ubuntu新建code文件夹2](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205511.png)
+
+按照如图所示步骤，在 Ubuntu 的 Documents 文件夹下新建一个 code 文件夹。VSCode 的每一个项目都是一个文件夹，大家以后需要写新的项目时，可以再新建一个文件夹。
+
+![vscode打开文件夹1](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205334.png)
+
+![vscode打开文件夹2](https://cdn.xyxsw.site/ssh-programming7_39259a681793896755e922028b0a4331.png)
+
+接下来，我们在 VSCode 中打开刚刚新建的文件夹。在菜单栏中选择文件->打开文件夹，在弹出的窗口中选择 code 文件夹，点击确定。
+
+![vscode打开文件夹3](https://cdn.xyxsw.site/ssh-programming8_4d6f00f7ff1034e218471dc17983fb38.png)
+
+在弹出的窗口中，选择“是，我信任此作者”，注意以后打开不信任的项目时，应该选择“否，我不信任此作者”。
+
+![vscode新建文本文件1](https://cdn.xyxsw.site/ssh-programming9_97519b487c55b2d0db9e97e168f43752.png)
+
+![vscode新建文本文件2](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205501.png)
+
+在侧边栏中，点击“新建文件”按钮，并输入文件名称`main.c`。
+
+![vscode新建文本文件3](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205999.png)
+
+然后再在新建的文件中编写一个简单的 C 语言程序：
+
+```C
+#include <stdio.h>
+
+int main() {
+    printf("Hello World!\n");
+    return 0;
+}
+```
+
+接下来，在终端中输入
+
+```shell
+gcc ./main.c
+```
+
+来使用 gcc 编译程序，可以在侧边栏看到，已经生成了一个`a.out`文件，这就是我们编译的结果，在终端中输入
+
+```shell
+./a.out
+```
+
+来运行这个文件。可以看到程序输出了`Hello World!`。
+
+## 8. 使用 Windows 终端进行编程（可选）
+
+![终端连接ssh](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202509191205711.png)
+
+在 Windows 中安装 ssh（一般系统默认即有），在终端中使用`ssh 用户名@localhost -p 主机端口`进行连接。
