@@ -41,21 +41,55 @@
 **最快速的方式！已配置好所有环境，开箱即用！**
 
 ```bash
-# 1. 下载虚拟机镜像（OVF 格式）
-链接: https://pan.baidu.com/s/1sAtxJABh2fM_c8_D9mIdow 
-提取码: 1234
+# 1. 下载虚拟机镜像（OVF 格式）【待修改】
+链接: https://pan.baidu.com/s/1_uipki1CBEeS3xrVb29wZQ 提取码: 1234
 
 # 2. 导入虚拟机
 - VMware：文件 → 打开 → 选择 .ovf 文件
 - VirtualBox：管理 → 导入虚拟设备 → 选择 .ovf 文件
+导入后，就可以启动虚拟机
 
-# 3. 启动虚拟机
+# 3. 连接虚拟机
+SSH工具：https://www.xshell.com/zh/free-for-home-school/
+地址：192.168.172.128
+端口：22
 用户名: root
 密码: fly123
 
-# 4. 验证环境
+# 4. 配置环境变量
+## 全局环境变量配置
+vim ~/.bashrc
+### 修改AI Agent 101 环境变量配置
+## 应用配置：
+source ~/.bashrc
+
+## JupyteLab 环境变量
+vim /Agent101/app/jupyter/start_jupyter.sh
+### 修改AI Agent 101 环境变量配置
+## 应用配置：
+sudo systemctl daemon-reload
+sudo systemctl restart jupyter.service
+
+# 5. 配置科学上网
+科学上网订阅地址：https://yundong.xn--xhq8sm16c5ls.com/#/register?code=RQKCnEWf
+浏览器打开，注册后，复制订阅地址。
+里面有文档哈，不能微信多说哈
+## 登录V2RayA服务，添加订阅地址
+地址：http://192.168.172.128:2017/
+用户名: root
+密码: fly123
+
+# 6. 验证环境
 conda activate agent101
 jupyter lab --version
+
+# 7. 更新代码
+cd /Agent101/code/Agent_In_Action
+git pull https://github.com/FlyAIBox/Agent_In_Action
+
+# 8. 访问JupyterLab
+地址：http://192.168.172.128:8000/
+备注：确保JupyterLab服务正常，可以通过systemctl status jupyter.service确认
 ```
 
 **预配置虚拟机包含**：
@@ -84,7 +118,7 @@ jupyter lab --version
 | **CPU** | 4 核心 | 最低 2 核心 |
 | **内存** | 8 GB+ | 最低 4 GB |
 | **存储** | 100 GB+ | 建议 SSD |
-| **GPU** | 非必需 | 使用云端 API |
+| **GPU** | 非必需 | 如没有，可使用云厂商 |
 
 ### 高级配置（项目6：模型微调）
 
@@ -111,14 +145,15 @@ jupyter lab --version
 
 **获取方式**：
 - 官方下载：[Broadcom 支持门户](https://support.broadcom.com/)（需要注册）
-- 百度网盘：https://pan.baidu.com/s/1gRF4Rtxbqk8C-3Jt7stfcQ 提取码：ffff
+- 百度网盘： https://pan.baidu.com/s/12YvAKoVq9Fpz5oUZKKBKBw 提取码: 1234
 
 **安装步骤**：
 
 1. **下载安装包**
+   
    - 文件名：`VMware-workstation-full-17.x.x-xxxxx.exe`（Windows）
    - 文件名：`VMware-Workstation-Full-17.x.x-xxxxx.x86_64.bundle`（Linux）
-
+   
 2. **安装 VMware**
    ```bash
    # Windows: 双击安装包，按提示操作
@@ -157,7 +192,7 @@ jupyter lab --version
 **推荐镜像站**：清华大学开源软件镜像站
 
 1. **访问镜像站**
-   ```
+   ```shell
    https://mirrors.tuna.tsinghua.edu.cn/
    ```
 
@@ -169,6 +204,7 @@ jupyter lab --version
    - 大小：约 5.7 GB
 
 **备用镜像站**：
+
 - 阿里云：https://mirrors.aliyun.com/ubuntu-releases/
 - 网易：https://mirrors.163.com/ubuntu-releases/
 - 中科大：https://mirrors.ustc.edu.cn/ubuntu-releases/
@@ -618,10 +654,14 @@ source ~/.bashrc
    - 设置并记住登录凭据
 
 3. **导入节点**
-   
+
+   > Pay Science 上 网 订阅服务
+   > https://yundong.xn--xhq8sm16c5ls.com/#/register?code=RQKCnEWf
+
    支持多种导入方式：
-   
+
    **方式1：导入订阅链接**
+
    - 点击"导入" → "从订阅链接导入"
    - 粘贴订阅地址
    - 点击"导入"
@@ -629,7 +669,7 @@ source ~/.bashrc
    **方式2：手动添加节点**
    - 点击"创建"
    - 输入节点信息（服务器地址、端口、加密方式等）
-   
+
    **方式3：扫描二维码**
    - 使用手机端 v2rayN 等工具生成二维码
    - 在 v2raya 界面扫描
@@ -947,6 +987,124 @@ pip list | grep -E "langchain|openai|fastapi"
 
 ---
 
+### 6.5 备注：Ubuntu22.04 系统配置Git 用户名和密钥
+
+**1. 配置 Git 用户名和邮箱**
+
+这是最基本的配置，当你提交代码时，Git 会记录下你的用户名和邮箱。
+
+打开终端并执行以下命令：
+
+```Bash
+git config --global user.name "你的用户名"
+git config --global user.email "你的邮箱地址" 
+```
+
+将 `"你的用户名"` 替换为你希望在 Git 提交中显示的名字，将 `"你的邮箱地址"` 替换为你的常用邮箱。
+
+你可以通过以下命令查看是否配置成功：
+
+```Bash
+git config --global user.name
+git config --global user.email
+```
+
+**2. 配置** **SSH** **密钥（推荐用于与远程仓库交互）**
+
+使用 SSH 密钥可以让你在与 GitHub、GitLab、Gitee 等远程仓库交互时，无需每次都输入密码，更加方便和安全。
+
+**步骤 2.1: 检查是否已存在** **SSH** **密钥**
+
+在终端中输入以下命令，查看 `~/.ssh` 目录下是否有 `id_rsa` 或 `id_ed25519` 等文件：
+
+```Bash
+ls -al ~/.ssh
+```
+
+如果看到类似 `id_rsa` (或 `id_ed25519`) 和 `id_rsa.pub` (或 `id_ed25519.pub`) 的文件，说明你可能已经生成过 SSH 密钥，可以直接跳到 **步骤 2.3: 将 SSH** **公钥****添加到你的 Git 账户**。
+
+**步骤 2.2: 生成新的** **SSH** **密钥**
+
+如果 `~/.ssh` 目录下没有密钥文件，你需要生成一个新的。推荐使用 `ed25519` 算法，如果不支持，可以使用 `rsa`。
+
+- **生成 Ed25519 密钥 (推荐):**
+
+```Bash
+ssh-keygen -t ed25519 -C "你的邮箱地址"
+```
+
+- 将 `"你的邮箱地址"` 替换为你之前配置的 Git 邮箱地址。
+- 当提示 "Enter file in which to save the key" 时，可以直接按回车键，使用默认文件名 `id_ed25519`。
+- 然后会提示你输入密码（passphrase），这是为了增加密钥的安全性。你可以选择设置密码，也可以直接按两次回车键留空。
+- **生成** **RSA** **密钥 (如果不支持 Ed25519):**
+
+```Bash
+ssh-keygen -t rsa -b 4096 -C "你的邮箱地址"
+```
+
+- 同样，将 `"你的邮箱地址"` 替换为你的 Git 邮箱地址。
+- 按照提示操作，可以选择文件名和密码。
+
+**步骤 2.3: 将** **SSH** **公钥****添加到你的 Git 账户**
+
+你需要将生成的公钥（以 `.pub` 结尾的文件内容）添加到你的远程 Git 仓库账户中（例如 GitHub、GitLab、Gitee 等）。
+
+- **复制** **SSH** **公钥****到剪贴板:**
+
+- 根据你生成的密钥类型，执行以下命令：
+
+  - **Ed25519:**
+
+  - ```Bash
+    cat ~/.ssh/id_ed25519.pub | xclip -selection clipboard
+    ```
+
+  - （如果你的系统没有 `xclip`，可以使用 `sudo apt install xclip` 安装）
+
+  - **RSA****:**
+
+  - ```Bash
+    cat ~/.ssh/id_rsa.pub | xclip -selection clipboard
+    ```
+
+  - （同样，如果没有 `xclip`，请安装）
+
+- 或者，你也可以使用文本编辑器打开 `.pub` 文件，手动复制里面的内容。
+
+- **将公钥添加到你的 Git 账户:**
+
+  - **GitHub**: 登录 GitHub 网站，点击右上角的头像，选择 "Settings"。在左侧菜单中选择 "SSH and GPG keys"，然后点击 "New SSH key" 或 "Add SSH key"。将复制的公钥粘贴到 "Key" 文本框中，并为这个密钥添加一个描述，然后点击 "Add SSH key"。
+  - **GitLab:** 登录 GitLab 网站，点击右上角的头像，选择 "Edit profile"。在左侧菜单中选择 "SSH Keys"。将复制的公钥粘贴到 "Key" 文本框中，可以添加一个 "Title" 来描述这个密钥，然后点击 "Add key"。
+  - **Gitee (码云):** 登录 Gitee 网站，点击右上角的头像，选择 "设置"。在左侧菜单中选择 "SSH 公钥"，然后点击 "添加公钥"。将复制的公钥粘贴到 "公钥" 文本框中，可以设置一个 "标题"，然后点击 "确定"。
+
+- 不同的 Git 服务提供商的操作可能略有不同，但大致步骤类似。
+
+**步骤 2.4: 测试** **SSH** **连接**
+
+添加公钥后，你可以测试一下 SSH 连接是否成功。
+
+- **GitHub****:**
+
+```Bash
+ssh -T git@github.com
+```
+
+- **GitLab:**
+
+```Bash
+ssh -T git@gitlab.com
+```
+
+- **Gitee:**
+
+```Bash
+ssh -T git@gitee.com
+```
+
+如果看到类似 "Hi [Your Username]! You've successfully authenticated..." 的消息，说明 SSH 连接配置成功。
+
+完成以上步骤后，你就成功地在 Ubuntu 22.04 上配置了 Git 的用户名、邮箱和 SSH 密钥。以后在进行 Git 操作时，你将能够方便地提交代码并与远程仓库进行交互。
+
 ## 步骤7：环境变量配置
 
 ### 7.1 配置方式选择
@@ -1023,6 +1181,7 @@ source ~/.bashrc
 | API 服务 | 获取地址 | 用途 | 费用 | 备注 |
 |---------|---------|------|------|------|
 | **OpenAI** | [platform.openai.com](https://platform.openai.com) | GPT-4/GPT-4o 模型 | 按量付费 | 需要信用卡 |
+| **OpenAI等国外大模型国内代理** | https://api.apiyi.com/register/?aff_code=we80 | GPT/Claude等 模型 | 按量付费 | 新用户注册送0.1美金，注册成功后在以下表格中填写你的账号，平台会再赠送2美金（5个工作日到账）<br/><br/>---- 【腾讯文档】API易账号收集 https://docs.qq.com/form/page/DQm1qb1VBQU9wR2xq<br/> |
 | **DeepSeek** | [platform.deepseek.com](https://platform.deepseek.com) | DeepSeek-Chat/V3 | 价格实惠 | 支持国内支付 |
 | **和风天气** | [dev.qweather.com](https://dev.qweather.com) | 天气查询工具 | 免费额度 1000次/天 | 需要实名认证 |
 | **Tavily** | [tavily.com](https://tavily.com) | AI 搜索 API | 免费 1000次/月 | 邮箱注册即可 |
@@ -1884,28 +2043,6 @@ sudo journalctl --vacuum-size=100M
 # 8. 扩展虚拟机硬盘（见下一节）
 ```
 
-### 问题 10：虚拟机硬盘扩容
-
-**VMware 扩容**：
-
-```bash
-# 1. 关闭虚拟机
-
-# 2. 在 VMware 中扩展硬盘
-# 虚拟机设置 → 硬盘 → 扩展 → 输入新大小
-
-# 3. 启动虚拟机，使用 gparted 扩展分区
-sudo apt install gparted
-sudo gparted
-
-# 或使用命令行（LVM）
-sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
-sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
-
-# 4. 验证
-df -h
-```
-
 ---
 
 ## ❓ 常见问题
@@ -1952,71 +2089,7 @@ df -h
 | **性能** | 更好 | 一般 |
 | **推荐度** | ✅ 推荐 | 已过时 |
 
-### Q5：如何在多台设备上同步环境？
-
-**A**：
-
-**方案1：导出环境配置**
-```bash
-# 导出环境
-conda env export > environment.yml
-
-# 在新设备上创建环境
-conda env create -f environment.yml
-```
-
-**方案2：使用 Docker**
-```bash
-# 构建 Docker 镜像
-docker build -t agent101:latest .
-
-# 推送到 Docker Hub
-docker push your-username/agent101:latest
-
-# 在其他设备拉取
-docker pull your-username/agent101:latest
-```
-
-**方案3：使用云存储**
-- 将配置文件和脚本上传到 Git 仓库
-- 使用 Ansible 等自动化工具
-
-### Q6：如何备份和恢复环境？
-
-**A**：
-
-**备份**：
-```bash
-# 1. 导出 conda 环境
-conda env export > /backup/agent101_env.yml
-
-# 2. 备份配置文件
-cp ~/.bashrc /backup/
-cp ~/.jupyter/jupyter_lab_config.py /backup/
-cp /Agent101/app/jupyter/start_jupyter.sh /backup/
-
-# 3. 备份项目代码
-tar -czf /backup/code.tar.gz /Agent101/code
-
-# 4. 创建虚拟机快照（推荐）
-# VMware: 虚拟机 → 快照 → 拍摄快照
-# VirtualBox: 备份 → 生成快照
-```
-
-**恢复**：
-```bash
-# 1. 恢复 conda 环境
-conda env create -f /backup/agent101_env.yml
-
-# 2. 恢复配置文件
-cp /backup/.bashrc ~/
-cp /backup/jupyter_lab_config.py ~/.jupyter/
-
-# 3. 恢复代码
-tar -xzf /backup/code.tar.gz -C /
-```
-
-### Q7：如何提升虚拟机性能？
+### Q5：如何提升虚拟机性能？
 
 **A**：
 
@@ -2073,62 +2146,6 @@ tar -xzf /backup/code.tar.gz -C /
    - 设置每月使用额度
    - 定期轮换 API Key
 
-### Q9：如何监控 API 使用情况和成本？
-
-**A**：
-
-1. **使用 Langfuse**（项目已集成）
-   ```python
-   from langfuse import Langfuse
-   
-   langfuse = Langfuse()
-   # 自动追踪所有 API 调用和成本
-   ```
-
-2. **在 API 平台查看**
-   - OpenAI: platform.openai.com → Usage
-   - DeepSeek: platform.deepseek.com → 使用统计
-
-3. **设置预算告警**
-   - 在 OpenAI 设置每月预算
-   - 接近额度时接收邮件通知
-
-### Q10：如何从预配置虚拟机迁移到生产环境？
-
-**A**：
-
-1. **导出配置和代码**
-   ```bash
-   # 导出环境
-   conda env export > environment.yml
-   
-   # 打包代码
-   tar -czf project.tar.gz /Agent101/code/Agent_In_Action
-   ```
-
-2. **在生产服务器上重建环境**
-   ```bash
-   # 安装 Miniconda
-   # 创建环境
-   conda env create -f environment.yml
-   
-   # 解压代码
-   tar -xzf project.tar.gz
-   ```
-
-3. **使用 Docker 部署**（推荐）
-   ```bash
-   # 在开发环境构建镜像
-   docker build -t agent101-prod:v1.0 .
-   
-   # 推送到镜像仓库
-   docker push your-registry/agent101-prod:v1.0
-   
-   # 在生产环境拉取并运行
-   docker pull your-registry/agent101-prod:v1.0
-   docker run -d agent101-prod:v1.0
-   ```
-
 ---
 
 ## 📚 学习资源
@@ -2146,17 +2163,6 @@ tar -xzf /backup/code.tar.gz -C /
 - **Ubuntu 中文论坛**: https://forum.ubuntu.org.cn/
 - **Python 官方教程**: https://docs.python.org/3/tutorial/
 - **GitHub**: https://github.com/FlyAIBox/Agent_In_Action
-
-### 视频教程
-
-- **B站**: 搜索"AI Agent 开发"
-- **YouTube**: LangChain 官方频道
-
----
-
-## 🙏 致谢
-
-本环境搭建指南由 **FlyAIBox** 团队精心打造，感谢所有贡献者和社区成员的支持！
 
 ---
 
@@ -2179,10 +2185,8 @@ tar -xzf /backup/code.tar.gz -C /
 ---
 
 **文档版本**: v2.0  
-**更新日期**: 2025-01-01  
-**维护者**: FlyAIBox Team
+**更新日期**: 2025-11-15  
+**维护者**: 萤火AI百宝箱
 
 *祝你学习顺利！🚀*
-
-</div>
 
