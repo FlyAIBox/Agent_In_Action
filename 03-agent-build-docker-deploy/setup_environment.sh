@@ -83,8 +83,8 @@ else
     exit 1
 fi
 
-# 返回根目录
-cd ..
+# 返回后端目录
+cd ../backend
 
 # 检查环境变量文件
 echo "🔍 检查环境变量配置..."
@@ -100,13 +100,6 @@ OPENAI_MODEL=deepseek-chat
 QWEATHER_API_KEY=your_qweather_api_key_here
 QWEATHER_API_BASE=your_api_host
 
-# 高德地图 API (可选)
-AMAP_API_KEY=your_amap_api_key_here
-AMAP_BASE_URL=https://restapi.amap.com
-
-# 汇率服务 (可选)
-EXCHANGE_RATE_API_BASE=https://api.exchangerate.host/latest
-
 # 模型生成参数
 TEMPERATURE=0.7
 MAX_TOKENS=4000
@@ -118,6 +111,9 @@ else
     echo "✅ .env文件已存在"
 fi
 
+# 返回根目录
+cd ..
+
 # 创建results目录
 if [ ! -d "results" ]; then
     mkdir -p results
@@ -127,24 +123,16 @@ fi
 echo ""
 echo "🎉 环境设置完成！"
 echo "=================================================="
-echo ""
-echo "📋 下一步操作："
-echo "1. 编辑.env文件，配置 OPENAI_API_KEY 以及可选的和风天气、高德地图、汇率服务密钥"
-echo "2. 若使用国内 OpenAI 兼容网关，请同步更新 OPENAI_BASE_URL 和 OPENAI_MODEL"
-echo "3. 启动服务："
+echo "1. 启动服务："
 echo "   # 终端1 - 启动后端"
 echo "   ./start_backend.sh"
 echo ""
 echo "   # 终端2 - 启动前端"
 echo "   ./start_frontend.sh"
 echo ""
-echo "4. 访问应用："
+echo "2. 访问应用："
 echo "   🌐 前端界面: http://localhost:8501"
 echo "   📚 API文档: http://localhost:8000/docs"
-echo ""
-echo "5. 运行演示："
-echo "   conda activate agent101"
-echo "   python demo.py"
 echo ""
 echo "💡 提示："
 echo "   每次使用前请先激活环境: conda activate agent101"

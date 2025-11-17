@@ -425,7 +425,7 @@ def inject_custom_css():
 
 # API基础URL
 import os
-API_BASE_URL = os.getenv("API_BASE_URL", "http://192.168.172.128:8080")
+API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:8000")
 
 def check_api_health():
     """检查API服务状态"""
@@ -1345,8 +1345,8 @@ def main():
             ### 检查服务状态
 
             启动后，您可以访问以下地址检查服务状态：
-            - 健康检查: http://192.168.172.128:8080/health
-            - API文档: http://192.168.172.128:8080/docs
+            - 健康检查: http://localhost:8000/health
+            - API文档: http://localhost:8000/docs
 
             ### 常见问题
 
