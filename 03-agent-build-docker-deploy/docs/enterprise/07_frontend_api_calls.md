@@ -7,7 +7,8 @@
 | 前端函数 | 后端接口 | HTTP 方法 | 说明 |
 | -------- | -------- | -------- | ---- |
 | `check_api_health` | `/health` | GET | 检查后端服务状态，返回配置信息与系统资源。 |
-| `create_travel_plan` | `/plan` | POST | 创建旅行规划任务，返回 `task_id`。 |
+| `create_travel_plan` | `/plan` | POST | （表单方式）创建旅行规划任务，返回 `task_id`。 |
+| `chat_with_ai` | `/chat` | POST | （自然语言）创建旅行规划任务，返回 `ChatResponse`。 |
 | `get_planning_status` | `/status/{task_id}` | GET | 查询规划任务进度与结果。 |
 | `download_travel_plan` | `/download/{task_id}` | GET | 下载规划结果 JSON 文件（用于前端“下载报告”按钮）。 |
 | `list_tasks` *(可选调用)* | `/tasks` | GET | 列出所有任务概览，默认界面未直接调用，可用于运营视图。 |
