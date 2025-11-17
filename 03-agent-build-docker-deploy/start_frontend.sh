@@ -32,7 +32,7 @@ fi
 
 # 检查后端服务
 echo "🔍 检查后端服务..."
-if curl -s http://localhost:8080/health > /dev/null 2>&1; then
+if curl -s http://192.168.172.128:8080/health > /dev/null 2>&1; then
     echo "✅ 后端服务运行中"
 else
     echo "⚠️  后端服务未运行"
@@ -52,19 +52,8 @@ echo "  🚀 启动前端服务"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 echo "📱 访问地址:"
-echo "   Local:    http://localhost:8501"
+echo "   Local:    http://192.168.172.128:8501"
 echo "   Network:  http://$(hostname -I | awk '{print $1}'):8501"
-echo ""
-echo "💡 提示:"
-echo "   - 首次加载可能需要几秒钟"
-echo "   - 界面已优化为营销展示模式"
-echo "   - 适合课程直播和技术演示"
-echo ""
-echo "🎨 新增功能:"
-echo "   ✨ 渐变背景 + 背包客主题"
-echo "   ✨ Hero区域和功能特色展示"
-echo "   ✨ 世界风光画廊（8个热门目的地）"
-echo "   ✨ 专业侧边栏和页脚设计"
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
