@@ -11,13 +11,14 @@
 ## 3. 需求概览
 | 编号 | 需求类型 | 描述 |
 | ---- | -------- | ---- |
-| FR-01 | 功能 | 用户可提交旅行规划请求，系统生成任务并返回 `task_id`。 |
+| FR-01 | 功能 | 用户可提交旅行规划请求（表单或自然语言），系统生成任务并返回 `task_id`。 |
 | FR-02 | 功能 | 系统异步执行多智能体规划，生成行程、预算、天气等建议。 |
 | FR-03 | 功能 | 用户可查询任务状态、查看进度与结果。 |
 | FR-04 | 功能 | 用户可下载结果 JSON，用于后续人工编辑或归档。 |
 | FR-05 | 功能 | 支持简化模式（SimpleTravelAgent）和模拟模式（MockTravelAgent）作为回退。 |
 | FR-06 | 功能 | 集成 DuckDuckGo、QWeather提供实时数据。 |
 | FR-07 | 功能 | 支持任务列表检索，便于运营与审计。 |
+| FR-08 | 功能 | **支持自然语言交互，用户可用对话方式描述旅行需求，AI自动提取关键信息并创建任务。** |
 | NFR-01 | 非功能 | 关键接口响应时间（非规划过程）≤ 1s。 |
 | NFR-02 | 非功能 | 规划任务超时时间默认 5 分钟，超时需自动降级。 |
 | NFR-03 | 非功能 | 系统需提供健康检查 `/health`，返回配置可用性与系统资源信息。 |
@@ -68,6 +69,35 @@
 - 输出任务概要：`task_id`、状态、创建时间、目的地。
 - 用途：运营监控与人工修正。
 
+### 4.8 自然语言交互（FR-08）
+- **输入**：用户自然语言描述（如"我想下周去北京玩3天，预算3000元，喜欢历史文化"）。
+- **AI解析流程**：
+  1. 使用 LLM 分析用户输入，识别关键要素（目的地、时间、预算、人数、兴趣等）；
+  2. 提取结构化信息，生成 `ChatResponse`（包含已识别和缺失信息）；
+  3. 判断信息完整度：
+     - 若关键信息齐全（目的地+时间信息）且置信度>0.6，自动创建规划任务；
+     - 若信息不足，返回澄清问题，引导用户补充；
+  4. 自动填充默认值（如未指定人数默认2人，未指定预算默认"中等预算"）。
+- **校验规则**：
+  - 必须包含目的地（destination）；
+  - 必须包含时间信息（start_date/end_date/duration 至少一个）；
+  - 置信度阈值 ≥ 0.6 才可自动创建任务。
+- **输出**：
+  - `understood`: 是否理解用户意图；
+  - `extracted_info`: 已提取的旅行信息字典；
+  - `missing_info`: 缺失的信息列表；
+  - `clarification`: 友好的反馈文本；
+  - `can_proceed`: 是否可直接创建任务；
+  - `task_id`: 如成功创建则返回任务ID。
+- **用户体验增强**：
+  - 提供快捷示例按钮（如"北京3日游"），点击自动填充；
+  - 大型文本输入框（400px高度），支持详细描述；
+  - 实时显示AI理解的信息和需要补充的内容；
+  - 自动跳转到规划进度页面。
+- **错误处理**：
+  - LLM 解析失败时，返回友好提示，引导用户重新描述；
+  - 自动创建任务失败时，降级为手动表单模式。
+
 ## 5. 非功能需求细化
 ### 5.1 性能
 - FastAPI 接口应保持无状态，多实例部署时 `planning_tasks` 可迁移至 Redis/数据库。
@@ -99,12 +129,14 @@
 ## 8. 需求追踪矩阵（示例）
 | 需求 | 实现模块/文件 | 测试方式 |
 | ---- | ------------- | -------- |
-| FR-01 | `backend/api_server.py:create_travel_plan` | API 集成测试 |
+| FR-01 | `backend/api_server.py:create_travel_plan` + `chat_with_ai` | API 集成测试 |
 | FR-02 | `backend/agents/langgraph_agents.py` + `modules/` | 自动化脚本 + 人工验证 |
 | FR-03 | `backend/api_server.py:get_planning_status` | API 集成测试 |
 | FR-04 | `backend/api_server.py:download_result` | API 集成测试 |
 | FR-05 | `backend/api_server.py:simple_travel_plan/mock_travel_plan` | 单元测试 + 集成测试 |
 | FR-06 | `modules/` + `tools/travel_tools.py` | API Mock 测试 |
+| FR-07 | `backend/api_server.py:list_tasks` | API 集成测试 |
+| FR-08 | `backend/api_server.py:chat_with_ai` + `frontend/streamlit_app.py:display_chat_interface` | 自然语言理解测试 + 端到端测试 |
 | NFR-01 | FastAPI + Uvicorn 配置 | 性能压测 |
 | NFR-02 | `run_planning_task` 超时策略 | 人工模拟超时场景 |
 | NFR-03 | `/health` 路由 | 功能测试 |

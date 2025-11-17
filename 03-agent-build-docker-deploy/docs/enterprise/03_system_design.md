@@ -54,21 +54,28 @@ graph LR
 ## 3. 模块视图
 
 ### 3.1 展示层（Streamlit）
-- **职责**：界面表单收集、任务轮询、结果展示与下载。
+- **职责**：界面表单收集、自然语言交互、任务轮询、结果展示与下载。
 - **主要逻辑**：
   - `display_header()`, `display_agent_info()`：渲染页面结构。
-  - 表单提交：调用 `/plan` 创建任务。
+  - **`display_chat_interface()`**：**自然语言交互界面**，提供大型文本输入框和快捷示例按钮。
+  - 表单提交：调用 `/plan` 创建任务（传统表单模式）。
+  - **聊天提交**：调用 `/chat` 进行自然语言解析与任务创建。
   - `poll_planning_status`：轮询 `GET /status/{task_id}`。
   - 下载按钮：请求 `/download/{task_id}`。
+- **交互模式**：
+  - **模式1：表单模式**（侧边栏）- 结构化输入，适合明确需求的用户。
+  - **模式2：对话模式**（主界面）- 自然语言输入，适合快速表达想法的用户。
 
 ### 3.2 API 服务层（FastAPI）
 - **核心文件**：`backend/api_server.py`。
 - **职责**：
-  - 定义 REST 接口 `/plan`、`/status/{task_id}`、`/download/{task_id}` 等。
+  - 定义 REST 接口 `/plan`、`/chat`、`/status/{task_id}`、`/download/{task_id}` 等。
   - 管理后台任务，维护 `planning_tasks` 状态字典。
   - 处理简化模式与模拟模式请求。
+  - **自然语言解析与意图识别**。
 - **关键逻辑**：
   - `run_planning_task`：异步执行 LangGraph 智能体，设定超时与回退。
+  - **`chat_with_ai`**：**使用 LLM 解析自然语言输入，提取旅行信息，自动创建任务**。
   - `save_planning_result`：输出 JSON 报告至 `results/`。
   - `save_tasks_state`/`load_tasks_state`：持久化任务状态。
 
@@ -101,7 +108,37 @@ graph LR
 
 ## 4. 序列图
 
-### 4.1 LangGraph 规划序列
+### 4.1 自然语言交互规划序列（新增）
+```mermaid
+sequenceDiagram
+    participant User
+    participant Streamlit
+    participant FastAPI
+    participant LLM
+    participant LangGraph
+
+    User->>Streamlit: 输入自然语言描述
+    Streamlit->>FastAPI: POST /chat {message}
+    FastAPI->>LLM: 解析用户意图
+    LLM-->>FastAPI: 提取信息 + 置信度
+    
+    alt 信息完整 & 置信度>0.6
+        FastAPI->>FastAPI: 自动创建 task_id
+        FastAPI->>LangGraph: run_planning_task (后台)
+        FastAPI-->>Streamlit: {can_proceed: true, task_id}
+        Streamlit->>Streamlit: 跳转到进度页面
+    else 信息不足
+        FastAPI-->>Streamlit: {can_proceed: false, clarification}
+        Streamlit->>User: 显示需要补充的信息
+    end
+    
+    loop 轮询（如任务已创建）
+        Streamlit->>FastAPI: GET /status/{task_id}
+        FastAPI-->>Streamlit: 状态 + 进度 + 结果
+    end
+```
+
+### 4.2 表单模式规划序列（传统）
 ```mermaid
 sequenceDiagram
     participant Streamlit
@@ -126,7 +163,7 @@ sequenceDiagram
     FastAPI-->>Streamlit: 返回 JSON 文件
 ```
 
-### 4.2 回退流程
+### 4.3 回退流程
 ```mermaid
 flowchart TD
     A[启动 LangGraph] --> B{执行成功?}
@@ -145,9 +182,15 @@ flowchart TD
 
 ## 6. 扩展点
 - 可将 `tasks_state.json` 替换为 Redis/数据库，提高可靠性。
-- LangGraph 节点可扩展，如加入“安全提醒”、“签证顾问”等。
+- LangGraph 节点可扩展，如加入"安全提醒"、"签证顾问"等。
 - `travel_tools.ALL_TOOLS` 可扩展新的搜索工具或内部知识库。
 - 前端可增加角色权限（策划师/审核员）和编辑功能。
+- **自然语言交互可增强**：
+  - 多轮对话支持（保存对话历史，逐步完善需求）；
+  - 语音输入转文本；
+  - 多语言支持（通过 LLM 自动翻译）；
+  - 意图分类（规划、咨询、修改等）；
+  - 情感分析优化用户体验。
 
 ## 7. 安全与合规
 - 通过 `.env` 管理 API Key，禁止硬编码。

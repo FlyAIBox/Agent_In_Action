@@ -7,7 +7,22 @@
 
 ## 2. 数据实体与属性
 
-### 2.1 Weather（天气信息）
+### 2.1 ChatRequest（自然语言请求）
+| 字段 | 类型 | 说明 |
+| ---- | ---- | ---- |
+| `message` | str | 用户的自然语言输入（如"我想下周去北京玩3天"） |
+
+### 2.2 ChatResponse（自然语言响应）
+| 字段 | 类型 | 说明 |
+| ---- | ---- | ---- |
+| `understood` | bool | 是否理解用户意图 |
+| `extracted_info` | Dict[str, Any] | 提取的旅行信息（目的地、日期、预算等） |
+| `missing_info` | List[str] | 缺失的信息列表 |
+| `clarification` | str | 需要用户澄清的问题或友好反馈 |
+| `can_proceed` | bool | 是否可以直接创建规划任务 |
+| `task_id` | Optional[str] | 如果自动创建任务成功，返回任务ID |
+
+### 2.3 Weather（天气信息）
 | 字段 | 类型 | 说明 |
 | ---- | ---- | ---- |
 | `temperature` | float | 温度（℃） |
@@ -17,7 +32,7 @@
 | `feels_like` | float | 体感温度（℃） |
 | `date` | str | 日期（YYYY-MM-DD） |
 
-### 2.2 Attraction（景点/餐饮/活动）
+### 2.4 Attraction（景点/餐饮/活动）
 | 字段 | 类型 | 说明 |
 | ---- | ---- | ---- |
 | `name` | str | 名称 |
@@ -29,7 +44,7 @@
 | `estimated_cost` | float | 预估成本（USD） |
 | `duration` | int | 推荐停留时长（小时） |
 
-### 2.3 Hotel（酒店）
+### 2.5 Hotel（酒店）
 | 字段 | 类型 | 说明 |
 | ---- | ---- | ---- |
 | `name` | str | 酒店名称 |
@@ -38,14 +53,14 @@
 | `address` | str | 地址 |
 | `amenities` | List[str] | 设施（WiFi、早餐等） |
 
-### 2.4 Transportation（交通）
+### 2.6 Transportation（交通）
 | 字段 | 类型 | 说明 |
 | ---- | ---- | ---- |
 | `mode` | str | 交通方式 |
 | `estimated_cost` | float | 费用（USD） |
 | `duration` | int | 时长（分钟） |
 
-### 2.5 DayPlan（每日行程）
+### 2.7 DayPlan（每日行程）
 | 字段 | 类型 | 说明 |
 | ---- | ---- | ---- |
 | `day` | int | 第几天 |
@@ -57,7 +72,7 @@
 | `transportation` | List[Transportation] | 交通方式 |
 | `daily_cost` | float | 当日总费用 |
 
-### 2.6 TripSummary（行程总结）
+### 2.8 TripSummary（行程总结）
 | 字段 | 类型 | 说明 |
 | ---- | ---- | ---- |
 | `destination` | str | 目的地 |
@@ -121,9 +136,11 @@ erDiagram
 ```
 
 ## 4. 数据流设计
+
+### 4.1 传统表单模式数据流
 ```mermaid
 flowchart TD
-    A[前端输入\nTravelRequest] --> B[FastAPI]
+    A[前端表单输入\nTravelRequest] --> B[FastAPI]
     B --> C[LangGraph Travel Agents]
     C --> D[工具层\nbackend/tools/travel_tools.py]
     D --> E[外部 API\nDuckDuckGo搜索 + MCP天气服务器]
@@ -133,6 +150,29 @@ flowchart TD
     F --> I[结果输出\nresults/*.json]
     B --> J[状态查询\n/ status]
     B --> K[结果下载\n/ download]
+```
+
+### 4.2 自然语言模式数据流（新增）
+```mermaid
+flowchart TD
+    A1[用户自然语言输入\nChatRequest] --> B1[FastAPI /chat]
+    B1 --> C1[LLM 意图解析]
+    C1 --> D1{信息完整?}
+    
+    D1 -- 是 --> E1[构建 TravelRequest]
+    D1 -- 否 --> F1[返回 ChatResponse\n澄清问题]
+    
+    E1 --> G1[创建 task_id]
+    G1 --> H1[LangGraph Travel Agents]
+    H1 --> I1[工具层]
+    I1 --> J1[外部 API]
+    H1 --> K1[数据模型装配]
+    K1 --> L1[任务状态 & 结果]
+    
+    F1 --> M1[前端显示缺失信息]
+    M1 --> A1
+    
+    L1 --> N1[轮询状态 & 下载]
 ```
 
 ## 5. 数据存储策略
@@ -155,6 +195,11 @@ flowchart TD
 - 增加数据仓库或 BI 报表，分析常见目的地、预算偏好等。
 - 对结果文件添加版本号与签名，确保数据完整性和可追溯性。
 - 针对企业内部系统，可提供数据导出接口（JSON/CSV/PDF）。
+- **自然语言交互数据增强**：
+  - 存储对话历史，支持多轮对话上下文；
+  - 记录用户意图分类与提取准确率，优化 prompt；
+  - 建立用户偏好画像，自动推荐旅行方案；
+  - 分析常见表达模式，提升意图识别准确度。
 
 ---
 
