@@ -1451,55 +1451,80 @@ def main():
     with st.expander("🔍 手动查询任务结果", expanded=False):
         st.markdown("如果之前的规划任务超时，您可以在这里手动查询结果：")
 
-        col1, col2 = st.columns([3, 1])
-        with col1:
+        # 使用居中布局
+        _, center_col, _ = st.columns([1, 2, 1])
+        with center_col:
             manual_task_id = st.text_input("输入任务ID", placeholder="例如: task_20250807_123456")
-        with col2:
-            if st.button("查询结果", type="secondary"):
+            if st.button("查询结果", type="secondary", use_container_width=True):
                 if manual_task_id:
-                    with st.spinner("正在查询结果..."):
-                        result = get_planning_result(manual_task_id)
-                        if result:
-                            st.success("✅ 找到结果！")
-                            display_planning_result(result)
-
-                            # 显示下载选项
-                            st.markdown("### 📥 下载报告")
-
-                            col1, col2 = st.columns(2)
-
-                            with col1:
-                                st.markdown("#### 📄 原始数据")
-                                download_url = f"{API_BASE_URL}/download/{manual_task_id}"
-                                st.markdown(f"[📊 JSON格式数据]({download_url})")
-                                st.caption("包含完整的AI分析数据")
-
-                            with col2:
-                                st.markdown("#### 📝 Markdown报告")
-
-                                travel_plan = result.get("travel_plan", {})
-                                destination = travel_plan.get("destination", "未知目的地").replace("/", "-").replace("\\", "-")
-                                group_size = travel_plan.get("group_size", 1)
-                                filename_base = f"{destination}-{group_size}人-旅行规划指南"
-
-                                markdown_content = generate_markdown_report(result, manual_task_id)
-                                md_filename = f"{filename_base}.md"
-                                saved_md_path = save_report_to_results(markdown_content, md_filename)
-
-                                st.download_button(
-                                    label="📥 下载Markdown报告",
-                                    data=markdown_content,
-                                    file_name=md_filename,
-                                    mime="text/markdown",
-                                    help="推荐格式，支持所有设备查看"
-                                )
-
-                                if saved_md_path:
-                                    st.success(f"✅ 报告已保存到: {saved_md_path}")
-                        else:
-                            st.error("❌ 未找到该任务的结果")
+                    # 将结果展示移到expander外层，使用完整宽度居中显示
+                    st.session_state.manual_query_task_id = manual_task_id
+                    st.session_state.show_manual_result = True
                 else:
                     st.warning("请输入任务ID")
+    
+    # 在expander外部显示查询结果（居中对齐）
+    if hasattr(st.session_state, 'show_manual_result') and st.session_state.show_manual_result:
+        manual_task_id = st.session_state.manual_query_task_id
+        
+        # 创建居中容器
+        st.markdown("---")
+        st.markdown("<br/>", unsafe_allow_html=True)
+        
+        with st.spinner("正在查询结果..."):
+            result = get_planning_result(manual_task_id)
+            if result:
+                # 使用居中布局显示结果
+                _, result_col, _ = st.columns([0.5, 3, 0.5])
+                with result_col:
+                    st.success("✅ 找到结果！")
+                    display_planning_result(result)
+
+                    # 显示下载选项
+                    st.markdown("### 📥 下载报告")
+
+                    col1, col2 = st.columns(2)
+
+                    with col1:
+                        st.markdown("#### 📄 原始数据")
+                        download_url = f"{API_BASE_URL}/download/{manual_task_id}"
+                        st.markdown(f"[📊 JSON格式数据]({download_url})")
+                        st.caption("包含完整的AI分析数据")
+
+                    with col2:
+                        st.markdown("#### 📝 Markdown报告")
+
+                        travel_plan = result.get("travel_plan", {})
+                        destination = travel_plan.get("destination", "未知目的地").replace("/", "-").replace("\\", "-")
+                        group_size = travel_plan.get("group_size", 1)
+                        filename_base = f"{destination}-{group_size}人-旅行规划指南"
+
+                        markdown_content = generate_markdown_report(result, manual_task_id)
+                        md_filename = f"{filename_base}.md"
+                        saved_md_path = save_report_to_results(markdown_content, md_filename)
+
+                        st.download_button(
+                            label="📥 下载Markdown报告",
+                            data=markdown_content,
+                            file_name=md_filename,
+                            mime="text/markdown",
+                            help="推荐格式，支持所有设备查看"
+                        )
+
+                        if saved_md_path:
+                            st.success(f"✅ 报告已保存到: {saved_md_path}")
+                    
+                    # 添加关闭按钮
+                    if st.button("❌ 关闭结果", use_container_width=True):
+                        st.session_state.show_manual_result = False
+                        st.rerun()
+            else:
+                _, error_col, _ = st.columns([1, 2, 1])
+                with error_col:
+                    st.error("❌ 未找到该任务的结果")
+                    if st.button("重新查询", use_container_width=True):
+                        st.session_state.show_manual_result = False
+                        st.rerun()
 
     # 主内容区域
     if hasattr(st.session_state, 'planning_started') and st.session_state.planning_started:

@@ -33,9 +33,118 @@
 6. **📅 行程规划师** - 日程优化与物流安排
 
 ### 智能体协作流程
+
+#### 简化流程
 ```
 用户请求 → 协调员 → 并行执行各专业智能体 → 结果整合 → 生成报告
 ```
+
+#### 详细工作流程图
+
+```mermaid
+graph TB
+    Start([用户发起旅行规划请求]) --> Init[初始化TravelPlanState<br/>设置目的地、预算、兴趣等]
+    Init --> Coordinator[协调员智能体<br/>_coordinator_agent]
+    
+    Coordinator --> CoordRouter{协调员路由器<br/>_coordinator_router<br/>决定下一步}
+    
+    CoordRouter -->|需要旅行建议| TravelAdvisor[旅行顾问智能体<br/>_travel_advisor_agent<br/>提供景点、文化洞察]
+    CoordRouter -->|需要天气分析| WeatherAnalyst[天气分析师智能体<br/>_weather_analyst_agent<br/>分析天气、活动规划]
+    CoordRouter -->|需要预算优化| BudgetOptimizer[预算优化师智能体<br/>_budget_optimizer_agent<br/>成本分析、省钱策略]
+    CoordRouter -->|需要本地知识| LocalExpert[当地专家智能体<br/>_local_expert_agent<br/>小众景点、文化贴士]
+    CoordRouter -->|需要行程安排| ItineraryPlanner[行程规划师智能体<br/>_itinerary_planner_agent<br/>日程优化、物流安排]
+    CoordRouter -->|需要搜索信息| Tools[工具执行节点<br/>_tool_executor_node]
+    CoordRouter -->|所有智能体完成| Compile[编译最终计划<br/>_compile_final_plan]
+    
+    TravelAdvisor --> AgentRouter1{智能体路由器<br/>_agent_router}
+    WeatherAnalyst --> AgentRouter2{智能体路由器<br/>_agent_router}
+    BudgetOptimizer --> AgentRouter3{智能体路由器<br/>_agent_router}
+    LocalExpert --> AgentRouter4{智能体路由器<br/>_agent_router}
+    ItineraryPlanner --> AgentRouter5{智能体路由器<br/>_agent_router}
+    
+    AgentRouter1 -->|需要搜索| Tools
+    AgentRouter2 -->|需要搜索| Tools
+    AgentRouter3 -->|需要搜索| Tools
+    AgentRouter4 -->|需要搜索| Tools
+    AgentRouter5 -->|需要搜索| Tools
+    
+    AgentRouter1 -->|完成任务| Coordinator
+    AgentRouter2 -->|完成任务| Coordinator
+    AgentRouter3 -->|完成任务| Coordinator
+    AgentRouter4 -->|完成任务| Coordinator
+    AgentRouter5 -->|完成任务| Coordinator
+    
+    Tools --> ToolDecision{智能工具选择}
+    ToolDecision -->|天气查询| SearchWeather[search_weather_info<br/>获取天气预报]
+    ToolDecision -->|景点查询| SearchAttractions[search_attractions<br/>搜索景点活动]
+    ToolDecision -->|预算查询| SearchBudget[search_budget_info<br/>查询费用信息]
+    ToolDecision -->|住宿查询| SearchHotels[search_hotels<br/>搜索酒店]
+    ToolDecision -->|餐饮查询| SearchRestaurants[search_restaurants<br/>搜索餐厅]
+    ToolDecision -->|本地贴士| SearchLocalTips[search_local_tips<br/>获取本地信息]
+    ToolDecision -->|通用查询| SearchDestination[search_destination_info<br/>目的地信息]
+    
+    SearchWeather --> ToolReturn[返回搜索结果到消息历史]
+    SearchAttractions --> ToolReturn
+    SearchBudget --> ToolReturn
+    SearchHotels --> ToolReturn
+    SearchRestaurants --> ToolReturn
+    SearchLocalTips --> ToolReturn
+    SearchDestination --> ToolReturn
+    
+    ToolReturn --> Coordinator
+    
+    Compile --> Result{检查智能体输出}
+    Result -->|整合所有建议| FinalPlan[生成最终旅行计划<br/>包含各智能体贡献]
+    
+    FinalPlan --> End([返回完整旅行计划])
+    
+    style Start fill:#e1f5e1
+    style End fill:#ffe1e1
+    style Coordinator fill:#fff4e1
+    style CoordRouter fill:#e1f0ff
+    style TravelAdvisor fill:#f0e1ff
+    style WeatherAnalyst fill:#f0e1ff
+    style BudgetOptimizer fill:#f0e1ff
+    style LocalExpert fill:#f0e1ff
+    style ItineraryPlanner fill:#f0e1ff
+    style Tools fill:#ffe1f0
+    style Compile fill:#e1ffe1
+```
+
+#### 核心交互说明
+
+1. **入口流程** (`run_travel_planning`)
+   - 接收用户旅行需求
+   - 初始化 `TravelPlanState` 状态
+   - 启动 LangGraph 工作流
+
+2. **协调员循环** (`_coordinator_agent` + `_coordinator_router`)
+   - 分析当前状态和已完成的智能体
+   - 决定下一个要调用的智能体
+   - 综合所有智能体的输出
+   - 判断是否完成规划
+
+3. **专业智能体执行** (各个 `_*_agent` 方法)
+   - 接收协调员指令
+   - 执行专业分析任务
+   - 如需实时数据，请求工具搜索
+   - 将结果存入 `agent_outputs`
+
+4. **工具执行** (`_tool_executor_node`)
+   - 解析智能体的搜索请求
+   - 智能选择合适的搜索工具
+   - 执行工具并返回结果
+   - 将搜索结果添加到消息历史
+
+5. **智能体路由** (`_agent_router`)
+   - 检查智能体是否需要更多信息
+   - 决定返回协调员或调用工具
+   - 维护工作流的循环执行
+
+6. **结果编译** (`_compile_final_plan`)
+   - 整合所有智能体的输出
+   - 生成结构化的旅行计划
+   - 包含各智能体的专业建议
 
 ## 🚀 快速开始
 
