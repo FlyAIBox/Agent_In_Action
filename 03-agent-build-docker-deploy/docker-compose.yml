@@ -6,6 +6,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    # images: travel-backend:1.0.0
     ports:
       - "8080:8080"
     # 从专用 env 文件注入后端所需密钥与配置
@@ -28,6 +29,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    # images: travel-frontend:1.0.0
     ports:
       - "8501:8501"
     environment:
