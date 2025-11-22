@@ -1,0 +1,507 @@
+# ============================================================================
+# Langfuse Docker Compose 配置文件
+# ============================================================================
+# Langfuse 是一个开源的 LLM 工程平台，用于追踪、监控和评估大模型应用
+# 本配置文件用于在本地或虚拟机上快速部署 Langfuse 完整服务栈
+#
+# 核心组件说明：
+# - langfuse-web: Web 服务，提供用户界面和 API (端口 3000)
+# - langfuse-worker: 后台任务处理器，处理数据摄入和异步任务
+# - postgres: 关系型数据库，存储元数据、用户信息、项目配置等
+# - clickhouse: 列式数据库，存储追踪数据和时间序列数据，用于高性能分析
+# - redis: 内存数据库，用于缓存、队列和会话管理
+# - minio: 对象存储服务 (S3 兼容)，存储媒体文件和批量导出数据
+#
+# 安全提示：
+# ⚠️ 请务必修改所有标记为 # CHANGEME 的密码和密钥配置！
+# ⚠️ 建议仅开放 langfuse-web (3000端口) 和 minio (9090端口) 的外部访问
+# ⚠️ 其他服务已绑定到 127.0.0.1，仅接受本机连接，避免安全风险
+#
+# 参考文档：https://langfuse.com/self-hosting/deployment/docker-compose
+# ============================================================================
+
+services:
+  # ==========================================================================
+  # Langfuse Worker 服务 - 后台任务处理器
+  # ==========================================================================
+  # 职责：处理数据摄入、后台任务、定时任务等异步操作
+  # 特点：与 langfuse-web 共享环境变量配置，但不直接处理 HTTP 请求
+  # 端口：3030 (健康检查和内部监控)
+  # ==========================================================================
+  langfuse-worker:
+    image: docker.io/langfuse/langfuse-worker:3  # 使用官方 Worker 镜像 v3 版本
+    restart: always  # 容器异常退出时自动重启
+    
+    # 服务依赖声明：Worker 必须等待所有依赖服务健康后才能启动
+    # 使用 YAML 锚点 (&) 定义依赖列表，后续可被 langfuse-web 复用
+    depends_on: &langfuse-depends-on
+      postgres:
+        condition: service_healthy  # 等待 PostgreSQL 健康检查通过
+      minio:
+        condition: service_healthy  # 等待 MinIO 健康检查通过
+      redis:
+        condition: service_healthy  # 等待 Redis 健康检查通过
+      clickhouse:
+        condition: service_healthy  # 等待 ClickHouse 健康检查通过
+    
+    ports:
+      - 127.0.0.1:3030:3030  # 仅本机访问，用于健康检查和监控
+    
+    # 环境变量配置（使用 YAML 锚点定义，供 langfuse-web 继承）
+    environment: &langfuse-worker-env
+      # --------------------------------------------------------------------
+      # 核心认证配置
+      # --------------------------------------------------------------------
+      # NextAuth 回调 URL，用于 OAuth 认证流程
+      # 生产环境需修改为实际域名，如: https://langfuse.yourdomain.com
+      NEXTAUTH_URL: ${NEXTAUTH_URL:-http://localhost:3000}
+      
+      # PostgreSQL 数据库连接字符串
+      # 格式: postgresql://用户名:密码@主机:端口/数据库名
+      # ⚠️ CHANGEME: 生产环境必须修改密码！
+      DATABASE_URL: ${DATABASE_URL:-postgresql://postgres:postgres@postgres:5432/postgres}
+      
+      # 加密盐值，用于密码哈希和敏感数据处理
+      # ⚠️ CHANGEME: 使用长随机字符串，建议 32 字符以上
+      SALT: ${SALT:-mysalt}
+      
+      # 数据加密密钥（AES-256），用于加密存储的敏感数据
+      # ⚠️ CHANGEME: 必须是 64 位十六进制字符串（32 字节）
+      # 生成方式: openssl rand -hex 32
+      ENCRYPTION_KEY: ${ENCRYPTION_KEY:-0000000000000000000000000000000000000000000000000000000000000000}
+      
+      # 遥测数据收集开关（匿名使用统计，帮助改进产品）
+      # 设置为 false 可完全禁用
+      TELEMETRY_ENABLED: ${TELEMETRY_ENABLED:-true}
+      
+      # 是否启用实验性功能（适合开发和测试环境）
+      # 生产环境建议设为 false 以确保稳定性
+      LANGFUSE_ENABLE_EXPERIMENTAL_FEATURES: ${LANGFUSE_ENABLE_EXPERIMENTAL_FEATURES:-true}
+      
+      # --------------------------------------------------------------------
+      # ClickHouse 配置 - 高性能列式数据库
+      # --------------------------------------------------------------------
+      # ClickHouse 用于存储和分析追踪数据，相比传统数据库查询速度提升 10-100 倍
+      
+      # ClickHouse 数据库迁移连接 URL（使用原生协议，端口 9000）
+      CLICKHOUSE_MIGRATION_URL: ${CLICKHOUSE_MIGRATION_URL:-clickhouse://clickhouse:9000}
+      
+      # ClickHouse HTTP API 连接 URL（用于查询和数据写入，端口 8123）
+      CLICKHOUSE_URL: ${CLICKHOUSE_URL:-http://clickhouse:8123}
+      
+      # ClickHouse 用户名
+      CLICKHOUSE_USER: ${CLICKHOUSE_USER:-clickhouse}
+      
+      # ClickHouse 密码
+      # ⚠️ CHANGEME: 生产环境必须修改！
+      CLICKHOUSE_PASSWORD: ${CLICKHOUSE_PASSWORD:-clickhouse}
+      
+      # 是否启用 ClickHouse 集群模式
+      # 单机部署设为 false，高可用集群部署设为 true
+      CLICKHOUSE_CLUSTER_ENABLED: ${CLICKHOUSE_CLUSTER_ENABLED:-false}
+      
+      # --------------------------------------------------------------------
+      # 对象存储配置 - 事件数据存储（Event Upload）
+      # --------------------------------------------------------------------
+      # Langfuse 使用 S3 兼容存储保存大量追踪事件数据和媒体文件
+      # 本配置使用 MinIO 作为本地 S3 替代方案，生产环境可切换到 AWS S3/Azure Blob
+      
+      # 是否使用 Azure Blob Storage（false 表示使用 S3 兼容存储）
+      LANGFUSE_USE_AZURE_BLOB: ${LANGFUSE_USE_AZURE_BLOB:-false}
+      
+      # S3 存储桶名称（用于事件数据）
+      LANGFUSE_S3_EVENT_UPLOAD_BUCKET: ${LANGFUSE_S3_EVENT_UPLOAD_BUCKET:-langfuse}
+      
+      # S3 区域设置（MinIO 使用 auto，AWS S3 需设置为实际区域如 us-east-1）
+      LANGFUSE_S3_EVENT_UPLOAD_REGION: ${LANGFUSE_S3_EVENT_UPLOAD_REGION:-auto}
+      
+      # S3 访问密钥 ID（对应 MinIO 的 MINIO_ROOT_USER）
+      LANGFUSE_S3_EVENT_UPLOAD_ACCESS_KEY_ID: ${LANGFUSE_S3_EVENT_UPLOAD_ACCESS_KEY_ID:-minio}
+      
+      # S3 访问密钥（对应 MinIO 的 MINIO_ROOT_PASSWORD）
+      # ⚠️ CHANGEME: 生产环境必须修改！
+      LANGFUSE_S3_EVENT_UPLOAD_SECRET_ACCESS_KEY: ${LANGFUSE_S3_EVENT_UPLOAD_SECRET_ACCESS_KEY:-miniosecret}
+      
+      # S3 服务端点（MinIO 内部访问地址）
+      LANGFUSE_S3_EVENT_UPLOAD_ENDPOINT: ${LANGFUSE_S3_EVENT_UPLOAD_ENDPOINT:-http://minio:9000}
+      
+      # 强制使用路径样式访问（MinIO 必须为 true）
+      # 路径样式: http://endpoint/bucket/key
+      # 虚拟主机样式: http://bucket.endpoint/key
+      LANGFUSE_S3_EVENT_UPLOAD_FORCE_PATH_STYLE: ${LANGFUSE_S3_EVENT_UPLOAD_FORCE_PATH_STYLE:-true}
+      
+      # 事件数据在存储桶中的前缀路径
+      LANGFUSE_S3_EVENT_UPLOAD_PREFIX: ${LANGFUSE_S3_EVENT_UPLOAD_PREFIX:-events/}
+      
+      # --------------------------------------------------------------------
+      # 对象存储配置 - 媒体文件上传（Media Upload）
+      # --------------------------------------------------------------------
+      # 用于存储多模态数据（图片、音频、视频等），支持直接从客户端上传
+      
+      # 媒体文件存储桶（可与事件数据共用同一桶）
+      LANGFUSE_S3_MEDIA_UPLOAD_BUCKET: ${LANGFUSE_S3_MEDIA_UPLOAD_BUCKET:-langfuse}
+      
+      # 媒体存储区域
+      LANGFUSE_S3_MEDIA_UPLOAD_REGION: ${LANGFUSE_S3_MEDIA_UPLOAD_REGION:-auto}
+      
+      # 媒体存储访问密钥 ID
+      LANGFUSE_S3_MEDIA_UPLOAD_ACCESS_KEY_ID: ${LANGFUSE_S3_MEDIA_UPLOAD_ACCESS_KEY_ID:-minio}
+      
+      # 媒体存储访问密钥
+      # ⚠️ CHANGEME: 生产环境必须修改！
+      LANGFUSE_S3_MEDIA_UPLOAD_SECRET_ACCESS_KEY: ${LANGFUSE_S3_MEDIA_UPLOAD_SECRET_ACCESS_KEY:-miniosecret}
+      
+      # 媒体存储端点（外部访问地址，用于生成预签名 URL）
+      # 注意：此处使用 localhost:9090 供客户端浏览器直接访问
+      # 生产环境需修改为公网可访问的域名或 IP
+      LANGFUSE_S3_MEDIA_UPLOAD_ENDPOINT: ${LANGFUSE_S3_MEDIA_UPLOAD_ENDPOINT:-http://localhost:9090}
+      
+      # 强制路径样式访问
+      LANGFUSE_S3_MEDIA_UPLOAD_FORCE_PATH_STYLE: ${LANGFUSE_S3_MEDIA_UPLOAD_FORCE_PATH_STYLE:-true}
+      
+      # 媒体文件存储路径前缀
+      LANGFUSE_S3_MEDIA_UPLOAD_PREFIX: ${LANGFUSE_S3_MEDIA_UPLOAD_PREFIX:-media/}
+      
+      # --------------------------------------------------------------------
+      # 对象存储配置 - 批量数据导出（Batch Export）
+      # --------------------------------------------------------------------
+      # 允许用户将追踪数据批量导出为 JSON/CSV 格式，用于离线分析或备份
+      
+      # 是否启用批量导出功能（设为 true 启用）
+      LANGFUSE_S3_BATCH_EXPORT_ENABLED: ${LANGFUSE_S3_BATCH_EXPORT_ENABLED:-false}
+      
+      # 导出文件存储桶
+      LANGFUSE_S3_BATCH_EXPORT_BUCKET: ${LANGFUSE_S3_BATCH_EXPORT_BUCKET:-langfuse}
+      
+      # 导出文件存储路径前缀
+      LANGFUSE_S3_BATCH_EXPORT_PREFIX: ${LANGFUSE_S3_BATCH_EXPORT_PREFIX:-exports/}
+      
+      # 导出存储区域
+      LANGFUSE_S3_BATCH_EXPORT_REGION: ${LANGFUSE_S3_BATCH_EXPORT_REGION:-auto}
+      
+      # 导出存储内部端点（Worker 写入数据使用）
+      LANGFUSE_S3_BATCH_EXPORT_ENDPOINT: ${LANGFUSE_S3_BATCH_EXPORT_ENDPOINT:-http://minio:9000}
+      
+      # 导出存储外部端点（用户下载文件使用）
+      LANGFUSE_S3_BATCH_EXPORT_EXTERNAL_ENDPOINT: ${LANGFUSE_S3_BATCH_EXPORT_EXTERNAL_ENDPOINT:-http://localhost:9090}
+      
+      # 导出存储访问密钥 ID
+      LANGFUSE_S3_BATCH_EXPORT_ACCESS_KEY_ID: ${LANGFUSE_S3_BATCH_EXPORT_ACCESS_KEY_ID:-minio}
+      
+      # 导出存储访问密钥
+      # ⚠️ CHANGEME: 生产环境必须修改！
+      LANGFUSE_S3_BATCH_EXPORT_SECRET_ACCESS_KEY: ${LANGFUSE_S3_BATCH_EXPORT_SECRET_ACCESS_KEY:-miniosecret}
+      
+      # 强制路径样式访问
+      LANGFUSE_S3_BATCH_EXPORT_FORCE_PATH_STYLE: ${LANGFUSE_S3_BATCH_EXPORT_FORCE_PATH_STYLE:-true}
+      
+      # --------------------------------------------------------------------
+      # 数据摄入队列配置 - 性能调优参数
+      # --------------------------------------------------------------------
+      # 控制追踪数据从接收到写入数据库的时延和批处理策略
+      
+      # 队列处理延迟（毫秒）- 控制数据在队列中的最大停留时间
+      # 留空使用默认值，可根据实际吞吐量调整（如 1000 = 1秒）
+      LANGFUSE_INGESTION_QUEUE_DELAY_MS: ${LANGFUSE_INGESTION_QUEUE_DELAY_MS:-}
+      
+      # ClickHouse 批量写入间隔（毫秒）- 控制数据批量写入的频率
+      # 留空使用默认值，较大值可提高吞吐量但增加延迟
+      LANGFUSE_INGESTION_CLICKHOUSE_WRITE_INTERVAL_MS: ${LANGFUSE_INGESTION_CLICKHOUSE_WRITE_INTERVAL_MS:-}
+      
+      # --------------------------------------------------------------------
+      # Redis 配置 - 缓存和队列服务
+      # --------------------------------------------------------------------
+      # Redis 用于会话缓存、任务队列、速率限制等高性能场景
+      
+      # Redis 服务器主机名（Docker 网络内使用服务名）
+      REDIS_HOST: ${REDIS_HOST:-redis}
+      
+      # Redis 服务端口
+      REDIS_PORT: ${REDIS_PORT:-6379}
+      
+      # Redis 认证密码
+      # ⚠️ CHANGEME: 生产环境必须修改！
+      REDIS_AUTH: ${REDIS_AUTH:-myredissecret}
+      
+      # 是否启用 Redis TLS 加密连接（生产环境建议启用）
+      REDIS_TLS_ENABLED: ${REDIS_TLS_ENABLED:-false}
+      
+      # TLS 证书路径（启用 TLS 时需配置）
+      REDIS_TLS_CA: ${REDIS_TLS_CA:-/certs/ca.crt}
+      REDIS_TLS_CERT: ${REDIS_TLS_CERT:-/certs/redis.crt}
+      REDIS_TLS_KEY: ${REDIS_TLS_KEY:-/certs/redis.key}
+      
+      # --------------------------------------------------------------------
+      # 邮件服务配置 - 用户通知和告警
+      # --------------------------------------------------------------------
+      # 配置 SMTP 服务后可发送邀请邮件、密码重置、系统告警等
+      
+      # 发件人邮箱地址（如 noreply@yourdomain.com）
+      EMAIL_FROM_ADDRESS: ${EMAIL_FROM_ADDRESS:-}
+      
+      # SMTP 连接 URL（格式: smtp://username:password@host:port）
+      # 留空则禁用邮件功能
+      SMTP_CONNECTION_URL: ${SMTP_CONNECTION_URL:-}
+
+  # ==========================================================================
+  # Langfuse Web 服务 - 主应用服务器
+  # ==========================================================================
+  # 职责：提供 Web UI、REST API、认证服务等所有面向用户的功能
+  # 特点：继承 Worker 的所有环境变量，并额外配置初始化参数
+  # 端口：3000 (HTTP 服务，对外开放)
+  # ==========================================================================
+  langfuse-web:
+    image: docker.io/langfuse/langfuse:3  # 使用官方 Web 镜像 v3 版本
+    restart: always
+    depends_on: *langfuse-depends-on  # 复用 Worker 的依赖配置（YAML 别名引用）
+    ports:
+      - 3000:3000  # 映射到主机 3000 端口，可对外访问
+    
+    environment:
+      # 继承所有 Worker 环境变量（使用 YAML 合并语法）
+      <<: *langfuse-worker-env
+      
+      # --------------------------------------------------------------------
+      # Web 服务专属配置
+      # --------------------------------------------------------------------
+      
+      # NextAuth.js 会话签名密钥（用于 JWT 签名和加密）
+      # ⚠️ CHANGEME: 必须使用长随机字符串，建议 64 字符以上
+      # 生成方式: openssl rand -base64 32
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET:-mysecret}
+      
+      # --------------------------------------------------------------------
+      # 无头初始化配置 (Headless Initialization)
+      # --------------------------------------------------------------------
+      # 配置后首次启动时自动创建组织、项目和用户，无需手动注册
+      # 适用于自动化部署和测试环境，生产环境可选
+      
+      # 初始组织 ID（可自定义，留空则自动生成）
+      LANGFUSE_INIT_ORG_ID: ${LANGFUSE_INIT_ORG_ID:-}
+      
+      # 初始组织名称
+      LANGFUSE_INIT_ORG_NAME: ${LANGFUSE_INIT_ORG_NAME:-}
+      
+      # 初始项目 ID（可自定义，留空则自动生成）
+      LANGFUSE_INIT_PROJECT_ID: ${LANGFUSE_INIT_PROJECT_ID:-}
+      
+      # 初始项目名称
+      LANGFUSE_INIT_PROJECT_NAME: ${LANGFUSE_INIT_PROJECT_NAME:-}
+      
+      # 初始项目公钥（用于客户端 SDK 认证）
+      LANGFUSE_INIT_PROJECT_PUBLIC_KEY: ${LANGFUSE_INIT_PROJECT_PUBLIC_KEY:-}
+      
+      # 初始项目私钥（用于服务端 SDK 认证）
+      LANGFUSE_INIT_PROJECT_SECRET_KEY: ${LANGFUSE_INIT_PROJECT_SECRET_KEY:-}
+      
+      # 初始管理员邮箱
+      LANGFUSE_INIT_USER_EMAIL: ${LANGFUSE_INIT_USER_EMAIL:-}
+      
+      # 初始管理员用户名
+      LANGFUSE_INIT_USER_NAME: ${LANGFUSE_INIT_USER_NAME:-}
+      
+      # 初始管理员密码
+      LANGFUSE_INIT_USER_PASSWORD: ${LANGFUSE_INIT_USER_PASSWORD:-}
+
+  # ==========================================================================
+  # ClickHouse 服务 - 高性能列式分析数据库
+  # ==========================================================================
+  # 职责：存储和查询大规模追踪数据、指标数据、时间序列数据
+  # 特点：针对分析查询优化，比传统数据库快 10-100 倍
+  # 端口：8123 (HTTP API), 9000 (原生 TCP 协议)
+  # 数据持久化：通过 Docker Volume 保存数据和日志
+  # ==========================================================================
+  clickhouse:
+    image: docker.io/clickhouse/clickhouse-server  # 官方 ClickHouse 镜像
+    restart: always
+    
+    # 使用非 root 用户运行（安全最佳实践）
+    # 101:101 是 ClickHouse 镜像中预定义的 clickhouse 用户和组
+    user: "101:101"
+    
+    environment:
+      # 默认数据库名称
+      CLICKHOUSE_DB: default
+      
+      # ClickHouse 用户名
+      CLICKHOUSE_USER: ${CLICKHOUSE_USER:-clickhouse}
+      
+      # ClickHouse 密码
+      # ⚠️ CHANGEME: 生产环境必须修改！
+      CLICKHOUSE_PASSWORD: ${CLICKHOUSE_PASSWORD:-clickhouse}
+    
+    # 数据持久化卷映射
+    volumes:
+      # 数据文件存储（表数据、索引等）
+      - langfuse_clickhouse_data:/var/lib/clickhouse
+      
+      # 日志文件存储（查询日志、错误日志等）
+      - langfuse_clickhouse_logs:/var/log/clickhouse-server
+    
+    ports:
+      # HTTP API 端口（用于 SQL 查询和管理）- 仅本机访问
+      - 127.0.0.1:8123:8123
+      
+      # 原生 TCP 协议端口（用于高性能数据传输和迁移）- 仅本机访问
+      - 127.0.0.1:9000:9000
+    
+    # 健康检查：通过 HTTP ping 端点检测服务可用性
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:8123/ping || exit 1
+      interval: 5s      # 每 5 秒检查一次
+      timeout: 5s       # 超时时间 5 秒
+      retries: 10       # 失败 10 次后标记为 unhealthy
+      start_period: 1s  # 启动后等待 1 秒开始检查
+
+  # ==========================================================================
+  # MinIO 服务 - S3 兼容对象存储
+  # ==========================================================================
+  # 职责：存储媒体文件、事件数据、批量导出文件等大对象数据
+  # 特点：完全兼容 AWS S3 API，可无缝切换到云端对象存储
+  # 端口：9000 (S3 API), 9001 (管理控制台)
+  # 数据持久化：通过 Docker Volume 保存所有对象数据
+  # ==========================================================================
+  minio:
+    image: docker.io/minio/minio  # 官方 MinIO 镜像
+    restart: always
+    
+    # 自定义启动脚本：先创建存储桶，再启动服务
+    entrypoint: sh
+    # 说明：
+    # 1. mkdir -p /data/langfuse：创建名为 'langfuse' 的存储桶目录
+    # 2. minio server：启动 MinIO 服务器
+    # 3. --address ":9000"：S3 API 监听在 9000 端口
+    # 4. --console-address ":9001"：Web 管理控制台监听在 9001 端口
+    # 5. /data：数据存储根目录
+    command: -c 'mkdir -p /data/langfuse && minio server --address ":9000" --console-address ":9001" /data'
+    
+    environment:
+      # MinIO 管理员用户名（对应 S3 Access Key ID）
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minio}
+      
+      # MinIO 管理员密码（对应 S3 Secret Access Key）
+      # ⚠️ CHANGEME: 生产环境必须修改，最少 8 个字符！
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-miniosecret}
+    
+    ports:
+      # S3 API 端口 - 对外开放，供客户端和浏览器直接访问
+      # 映射到主机 9090 端口（避免与可能的其他服务冲突）
+      - 9090:9000
+      
+      # Web 管理控制台 - 仅本机访问
+      # 可通过 http://localhost:9091 访问 MinIO 管理界面
+      - 127.0.0.1:9091:9001
+    
+    # 数据持久化卷映射
+    volumes:
+      # 对象存储数据（所有上传的文件）
+      - langfuse_minio_data:/data
+    
+    # 健康检查：使用 MinIO Client (mc) 检测服务就绪状态
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 1s      # 每 1 秒检查一次（快速启动）
+      timeout: 5s       # 超时时间 5 秒
+      retries: 5        # 失败 5 次后标记为 unhealthy
+      start_period: 1s  # 启动后等待 1 秒开始检查
+
+  # ==========================================================================
+  # Redis 服务 - 高性能内存数据库
+  # ==========================================================================
+  # 职责：会话缓存、任务队列、速率限制、分布式锁
+  # 特点：内存存储、毫秒级响应、支持多种数据结构
+  # 端口：6379 (默认 Redis 端口)
+  # 注意：本配置未启用持久化，重启后数据会丢失（仅缓存用途可接受）
+  # ==========================================================================
+  redis:
+    image: docker.io/redis:7  # 官方 Redis 7.x 镜像
+    restart: always
+    
+    # Redis 启动命令配置
+    # ⚠️ CHANGEME: 必须修改密码以保护 Redis 安全！
+    # 说明：--requirepass 参数设置密码认证，防止未授权访问
+    command: >
+      --requirepass ${REDIS_AUTH:-myredissecret}
+    
+    ports:
+      # Redis 端口 - 仅本机访问，避免外部直接连接
+      - 127.0.0.1:6379:6379
+    
+    # 健康检查：使用 redis-cli ping 命令检测服务可用性
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s      # 每 3 秒检查一次
+      timeout: 10s      # 超时时间 10 秒
+      retries: 10       # 失败 10 次后标记为 unhealthy
+
+  # ==========================================================================
+  # PostgreSQL 服务 - 主数据库
+  # ==========================================================================
+  # 职责：存储元数据、用户信息、项目配置、权限控制等核心业务数据
+  # 特点：ACID 事务支持、关系型数据库、成熟稳定
+  # 端口：5432 (默认 PostgreSQL 端口)
+  # 数据持久化：通过 Docker Volume 保存所有数据库数据
+  # ==========================================================================
+  postgres:
+    image: docker.io/postgres:${POSTGRES_VERSION:-17}  # 官方 PostgreSQL 镜像（默认 17 版本）
+    restart: always
+    
+    # 健康检查：使用 pg_isready 工具检测数据库是否可接受连接
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 3s      # 每 3 秒检查一次
+      timeout: 3s       # 超时时间 3 秒
+      retries: 10       # 失败 10 次后标记为 unhealthy
+    
+    environment:
+      # PostgreSQL 超级用户名
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      
+      # PostgreSQL 超级用户密码
+      # ⚠️ CHANGEME: 生产环境必须修改！
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      
+      # 默认数据库名称
+      POSTGRES_DB: ${POSTGRES_DB:-postgres}
+      
+      # 时区设置为 UTC（统一时间标准）
+      TZ: UTC
+      PGTZ: UTC
+    
+    ports:
+      # PostgreSQL 端口 - 仅本机访问
+      - 127.0.0.1:5432:5432
+    
+    # 数据持久化卷映射
+    volumes:
+      # 数据库文件存储（表、索引、WAL 日志等）
+      - langfuse_postgres_data:/var/lib/postgresql/data
+
+# ============================================================================
+# Docker Volumes 数据持久化配置
+# ============================================================================
+# 所有数据卷使用 local 驱动，存储在 Docker 宿主机本地文件系统
+# 生产环境建议使用网络存储或云存储卷以提高数据可靠性
+#
+# 数据位置（Linux/Mac）：/var/lib/docker/volumes/
+# 数据位置（Windows）：\\wsl$\docker-desktop-data\data\docker\volumes\
+#
+# 备份建议：定期使用 docker run --rm 挂载卷进行备份
+# 迁移说明：可通过 docker volume inspect 查看卷路径，复制数据到新环境
+# ============================================================================
+volumes:
+  # PostgreSQL 数据卷（约 100MB-1GB，取决于项目规模）
+  langfuse_postgres_data:
+    driver: local
+  
+  # ClickHouse 数据卷（数据量较大，追踪数据随时间增长）
+  langfuse_clickhouse_data:
+    driver: local
+  
+  # ClickHouse 日志卷（查询日志、错误日志等）
+  langfuse_clickhouse_logs:
+    driver: local
+  
+  # MinIO 对象存储卷（媒体文件和批量导出，可能非常大）
+  langfuse_minio_data:
+    driver: local
