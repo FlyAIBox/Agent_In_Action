@@ -27,54 +27,22 @@ LangGraph应用：
 ### 🏗️ 核心概念
 
 #### 1. StateGraph（状态图）
-```python
-from langgraph.graph import StateGraph
-from typing_extensions import TypedDict
-
-# 定义状态结构
-class State(TypedDict):
-    messages: list  # 对话历史
-    user_info: dict  # 用户信息
-    context: str    # 上下文
-
-# 创建状态图
-graph = StateGraph(State)
-```
-
-**作用：** 管理整个工作流的状态
+- 定义状态结构（TypedDict）
+- 包含：messages、user_info、context等字段
+- 使用 `StateGraph(State)` 创建
+- **作用：** 管理整个工作流的状态
 
 #### 2. Node（节点）
-```python
-def node_function(state: State):
-    """节点函数：接收状态，返回更新"""
-    # 处理逻辑
-    new_data = process(state)
-    # 返回状态更新
-    return {"context": new_data}
-
-# 添加节点
-graph.add_node("my_node", node_function)
-```
-
-**作用：** 执行具体的业务逻辑
+- 节点是一个函数：接收state，返回更新
+- 处理具体的业务逻辑
+- 使用 `graph.add_node(name, function)` 添加
+- **作用：** 执行具体的业务逻辑
 
 #### 3. Edge（边）
-```python
-# 无条件边：总是执行
-graph.add_edge("node_a", "node_b")
-
-# 条件边：根据函数返回值选择下一个节点
-graph.add_conditional_edges(
-    "classifier",
-    route_function,  # 返回下一个节点名称
-    {
-        "safe": "process_safe",
-        "unsafe": "handle_unsafe"
-    }
-)
-```
-
-**作用：** 定义节点之间的流转关系
+- **无条件边：** `add_edge("node_a", "node_b")` 总是执行
+- **条件边：** `add_conditional_edges()` 根据路由函数选择下一个节点
+- 路由函数返回下一个节点的名称
+- **作用：** 定义节点之间的流转关系
 
 ---
 
@@ -95,59 +63,22 @@ graph.add_conditional_edges(
 ### 🚀 三种集成方式
 
 #### 方式1：使用CallbackHandler
-
-```python
-from langfuse.langchain import CallbackHandler
-from langgraph.graph import StateGraph
-
-langfuse_handler = CallbackHandler()
-
-# 编译图
-graph = state_graph.compile()
-
-# 执行时添加callbacks
-result = graph.invoke(
-    initial_state,
-    config={"callbacks": [langfuse_handler]}
-)
-```
-
-**特点：** 简单，适合快速集成
+- 创建 `CallbackHandler` 实例
+- 编译图后在 `invoke` 时传递callbacks
+- 格式：`config={"callbacks": [langfuse_handler]}`
+- **特点：** 简单，适合快速集成
 
 #### 方式2：使用@observe装饰器
-
-```python
-from langfuse import observe
-
-@observe()
-def my_node(state):
-    """被追踪的节点函数"""
-    # 节点逻辑
-    return updated_state
-
-# 添加被装饰的节点
-graph.add_node("my_node", my_node)
-```
-
-**特点：** 精细控制，可自定义span
+- 在节点函数上使用 `@observe()` 装饰器
+- 精细控制每个节点的追踪
+- 可自定义span名称和元数据
+- **特点：** 精细控制，可自定义span
 
 #### 方式3：预配置图对象（Server模式）
-
-```python
-from langfuse.langchain import CallbackHandler
-
-langfuse_handler = CallbackHandler()
-
-# 编译时就配置callback
-graph = state_graph.compile().with_config(
-    {"callbacks": [langfuse_handler]}
-)
-
-# 之后的所有invoke都会自动追踪
-result = graph.invoke(initial_state)
-```
-
-**特点：** 适合生产环境，无需重复配置
+- 在编译时使用 `.with_config()` 预配置
+- 之后的所有 `invoke` 都会自动追踪
+- 无需每次传递callbacks参数
+- **特点：** 适合生产环境，无需重复配置
 
 ---
 
@@ -188,225 +119,49 @@ result = graph.invoke(initial_state)
 └─────────────────────────────────────┘
 ```
 
-### 📝 代码实现
+### 📝 实现步骤
 
 #### 步骤1：定义状态结构
-
-```python
-from typing import TypedDict, Optional, List, Dict, Any
-
-class EmailState(TypedDict):
-    """邮件处理状态"""
-    email: Dict[str, Any]           # 原始邮件
-    is_spam: Optional[bool]         # 是否垃圾邮件
-    spam_reason: Optional[str]      # 垃圾邮件原因
-    email_category: Optional[str]   # 邮件分类
-    draft_response: Optional[str]   # 回复草稿
-    messages: List[Dict[str, Any]]  # LLM对话历史
-```
+定义 `EmailState` 包含以下字段：
+- email：原始邮件数据
+- is_spam：是否垃圾邮件
+- spam_reason：垃圾邮件原因
+- email_category：邮件分类
+- draft_response：回复草稿
+- messages：LLM对话历史
 
 #### 步骤2：定义节点函数
-
-```python
-from langchain_openai import ChatOpenAI
-
-model = ChatOpenAI(model="gpt-4o", temperature=0)
-
-def read_email(state: EmailState):
-    """入口节点：读取邮件"""
-    email = state["email"]
-    print(f"📧 处理来自 {email['sender']} 的邮件")
-    print(f"📋 主题: {email['subject']}")
-    return {}  # 不修改状态
-
-def classify_email(state: EmailState):
-    """分类节点：使用LLM判断邮件类型"""
-    email = state["email"]
-    
-    # 构造提示词
-    prompt = f"""
-请分析以下邮件，判断是垃圾邮件（SPAM）还是正常邮件（HAM）。
-
-发件人：{email['sender']}
-主题：{email['subject']}
-正文：{email['body']}
-
-只返回一个单词：SPAM 或 HAM
-"""
-    
-    # 调用LLM
-    response = model.invoke([{"role": "user", "content": prompt}])
-    response_text = response.content.lower()
-    
-    # 判断结果
-    is_spam = "spam" in response_text and "ham" not in response_text
-    
-    return {
-        "is_spam": is_spam,
-        "messages": state.get("messages", []) + [
-            {"role": "user", "content": prompt},
-            {"role": "assistant", "content": response.content}
-        ]
-    }
-
-def handle_spam(state: EmailState):
-    """处理垃圾邮件"""
-    print("🚮 邮件已标记为垃圾邮件")
-    return {}
-
-def drafting_response(state: EmailState):
-    """起草回复"""
-    email = state["email"]
-    
-    prompt = f"""
-请以Alfred管家的口吻，为以下邮件起草回复。
-
-发件人：{email['sender']}
-主题：{email['subject']}
-正文：{email['body']}
-
-回复要求：礼貌、专业、简洁
-"""
-    
-    response = model.invoke([{"role": "user", "content": prompt}])
-    
-    return {
-        "draft_response": response.content,
-        "messages": state.get("messages", []) + [
-            {"role": "user", "content": prompt},
-            {"role": "assistant", "content": response.content}
-        ]
-    }
-
-def notify_mr_wayne(state: EmailState):
-    """通知主人"""
-    email = state["email"]
-    print("="*50)
-    print(f"Sir, you've received an email from {email['sender']}.")
-    print(f"Subject: {email['subject']}")
-    print("\nDraft response:")
-    print("-"*50)
-    print(state["draft_response"])
-    print("="*50)
-    return {}
-```
+创建5个节点函数：
+- **read_email**：读取邮件信息
+- **classify_email**：使用LLM判断邮件是否为垃圾邮件
+- **handle_spam**：处理垃圾邮件
+- **drafting_response**：起草回复内容
+- **notify_mr_wayne**：通知主人
 
 #### 步骤3：构建图结构
-
-```python
-from langgraph.graph import StateGraph, START, END
-
-# 创建状态图
-email_graph = StateGraph(EmailState)
-
-# 添加节点
-email_graph.add_node("read_email", read_email)
-email_graph.add_node("classify_email", classify_email)
-email_graph.add_node("handle_spam", handle_spam)
-email_graph.add_node("drafting_response", drafting_response)
-email_graph.add_node("notify_mr_wayne", notify_mr_wayne)
-
-# 定义路由逻辑
-def route_email(state: EmailState) -> str:
-    """根据分类结果选择下一步"""
-    if state["is_spam"]:
-        return "spam"
-    else:
-        return "legitimate"
-
-# 添加边
-email_graph.add_edge(START, "read_email")
-email_graph.add_edge("read_email", "classify_email")
-
-# 添加条件边
-email_graph.add_conditional_edges(
-    "classify_email",
-    route_email,
-    {
-        "spam": "handle_spam",
-        "legitimate": "drafting_response"
-    }
-)
-
-# 添加结束边
-email_graph.add_edge("handle_spam", END)
-email_graph.add_edge("drafting_response", "notify_mr_wayne")
-email_graph.add_edge("notify_mr_wayne", END)
-
-# 编译图
-compiled_graph = email_graph.compile()
-```
+- 创建 `StateGraph(EmailState)`
+- 添加所有节点
+- 定义路由逻辑：根据 `is_spam` 选择分支
+- 添加边：START → read_email → classify_email
+- 添加条件边：分为spam和legitimate两个分支
+- 结束边：最终到达END
 
 #### 步骤4：执行并追踪
-
-```python
-from langfuse.langchain import CallbackHandler
-
-langfuse_handler = CallbackHandler()
-
-# 准备测试邮件
-legitimate_email = {
-    "sender": "京东客服",
-    "subject": "关于你的订单发票",
-    "body": "尊敬的韦恩先生，你的发票已开具..."
-}
-
-spam_email = {
-    "sender": "某数字货币项目",
-    "subject": "限时暴涨100倍！",
-    "body": "立即加入，稳赚不赔..."
-}
-
-# 处理正常邮件
-print("处理正常邮件：")
-result1 = compiled_graph.invoke(
-    {
-        "email": legitimate_email,
-        "is_spam": None,
-        "draft_response": None,
-        "messages": []
-    },
-    config={"callbacks": [langfuse_handler]}
-)
-
-print("\n处理垃圾邮件：")
-result2 = compiled_graph.invoke(
-    {
-        "email": spam_email,
-        "is_spam": None,
-        "draft_response": None,
-        "messages": []
-    },
-    config={"callbacks": [langfuse_handler]}
-)
-```
+- 创建 `CallbackHandler` 实例
+- 准备测试邮件数据
+- 调用 `compiled_graph.invoke()` 执行
+- 通过config传递langfuse_handler进行追踪
 
 ### 📊 在Langfuse中的追踪结构
 
 ```
 Trace: email-processing
-├── Span: read_email
-│   ├── input: {email: {...}}
-│   └── latency: 0.001s
-├── Span: classify_email
-│   ├── Span: ChatOpenAI (Generation)
-│   │   ├── model: gpt-4o
-│   │   ├── tokens: 150
-│   │   ├── cost: $0.0008
-│   │   └── output: "HAM"
-│   └── latency: 1.2s
-├── Span: drafting_response
-│   ├── Span: ChatOpenAI (Generation)
-│   │   ├── model: gpt-4o
-│   │   ├── tokens: 300
-│   │   ├── cost: $0.0015
-│   │   └── output: "Dear..."
-│   └── latency: 2.3s
-└── Span: notify_mr_wayne
-    └── latency: 0.001s
+├── read_email (0.001s)
+├── classify_email (1.2s, $0.0008, 150 tokens)
+├── drafting_response (2.3s, $0.0015, 300 tokens)
+└── notify_mr_wayne (0.001s)
 
-Total Cost: $0.0023
-Total Latency: 3.5s
+Total: 3.5s, $0.0023
 ```
 
 ---
@@ -415,66 +170,18 @@ Total Latency: 3.5s
 
 ### 🤝 场景：主Agent调用子Agent
 
-```python
-from langfuse import get_client
+**实现方式：**
+- 生成共享的 `trace_id`
+- 子Agent封装为工具函数（使用 `@tool` 装饰器）
+- 在工具函数内使用 `start_as_current_span` 创建span
+- 传递共享的 `trace_context`
+- 主Agent使用 `create_react_agent` 创建，工具列表包含子Agent
+- 执行时传递callbacks进行追踪
 
-langfuse = get_client()
-
-# 生成共享的trace_id
-shared_trace_id = langfuse.create_trace_id()
-
-# 子Agent封装为工具
-@tool
-def research_agent(question: str):
-    """研究Agent：深度研究问题"""
-    with langfuse.start_as_current_span(
-        name="sub-research-agent",
-        trace_context={"trace_id": shared_trace_id}
-    ) as span:
-        span.update_trace(input=question)
-        
-        # 调用子Agent的图
-        result = sub_agent.invoke(
-            {"messages": [{"role": "user", "content": question}]},
-            config={"callbacks": [langfuse_handler]}
-        )
-        
-        span.update_trace(output=result)
-        return result
-
-# 主Agent使用工具
-main_agent = create_react_agent(
-    model=ChatOpenAI(model="gpt-4o"),
-    tools=[research_agent]  # 子Agent作为工具
-)
-
-# 执行主Agent
-with langfuse.start_as_current_span(
-    name="main-agent",
-    trace_context={"trace_id": shared_trace_id}
-) as span:
-    span.update_trace(input="什么是Langfuse？")
-    
-    result = main_agent.invoke(
-        {"messages": [{"role": "user", "content": "什么是Langfuse？"}]},
-        config={"callbacks": [langfuse_handler]}
-    )
-    
-    span.update_trace(output=result)
-```
-
-**Langfuse中的嵌套追踪：**
-```
-Trace (shared_trace_id)
-├── Span: main-agent
-│   ├── ReAct思考：需要调用研究工具
-│   ├── Tool Call: research_agent
-│   │   └── Span: sub-research-agent
-│   │       ├── 子图节点1
-│   │       ├── 子图节点2
-│   │       └── 子图节点3
-│   └── 最终回答
-```
+**追踪效果：**
+- main-agent → Tool Call (research_agent) → sub-agent (节点1, 2, 3) → 最终回答
+- 所有调用归入同一个Trace
+- 形成清晰的层级关系
 
 ---
 
