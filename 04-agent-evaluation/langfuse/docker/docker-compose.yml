@@ -853,9 +853,9 @@ services:
   # ==========================================================================
   clickhouse:
     # 容器镜像：使用官方 ClickHouse Server 镜像
-    # 版本选择：latest (最新版) 或指定版本如 24.1
+    # 版本选择：latest (最新版) 或指定版本如 25.9.4
     # 更新策略：定期检查新版本，评估后升级
-    image: docker.io/clickhouse/clickhouse-server
+    image: clickhouse/clickhouse-server:25.9.4
     
     # 重启策略：容器异常退出时自动重启
     restart: always
@@ -1007,8 +1007,8 @@ services:
   # ==========================================================================
   minio:
     # 容器镜像：使用官方 MinIO 镜像
-    # 版本选择：latest (最新版) 或指定版本如 RELEASE.2024-01-01T00-00-00Z
-    image: docker.io/minio/minio
+    # 版本选择：latest (最新版) 或指定版本如 RELEASE.2025-09-07T16-13-09Z
+    image: minio/minio:RELEASE.2025-09-07T16-13-09Z
     
     # 重启策略：容器异常退出时自动重启
     restart: always
@@ -1290,10 +1290,10 @@ services:
   # ==========================================================================
   postgres:
     # 容器镜像：使用官方 PostgreSQL 镜像
-    # 版本选择：17（默认，最新稳定版）或 15/16
+    # 版本选择：17.7
     # 说明：PostgreSQL 版本号格式为主版本.次版本
     # 更新策略：跨主版本升级需要 pg_upgrade 或逻辑备份恢复
-    image: docker.io/postgres:${POSTGRES_VERSION:-17}
+    image: docker.io/postgres:17.7
     
     # 重启策略：容器异常退出时自动重启
     restart: always
