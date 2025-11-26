@@ -107,14 +107,14 @@
 - 点击右下角的 **"Execute"** 按钮。
 - 系统将开始遍历数据集，将每一条的 `Expected output` 和对应的 Trace `Output` 填入你编写的 Prompt 中，调用大模型（Judge）进行 TP/FP/FN 的分类和打分。
 
-### 六、如何访问执行 Traces (调试评估过程)
+### 六、查看评估过程
 
 LLM-as-a-Judge 的每一次运行本身也是一条 Trace，您可以通过以下四种方式查看其详细执行过程（包括发送给裁判的 Prompt、Token 消耗、延迟等）：
 
-1. **Trace 视图气泡**：在 Trace 详情页，悬停在 Score 徽章上，点击 "View execution trace"。
-2. **Tracing 表格**：将 Environment 过滤为 `langfuse-llm-as-a-judge`，即可查看所有评估器的执行记录。
-3. **Scores 表格**：在 Scores 列表中启用 "Execution Trace" 列，点击 ID 跳转。
-4. **Evaluator Logs**：在评估器日志表中直接点击 Execution Trace ID。
+![image-20251126175814773](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202511261758011.png)
+
+- 在左侧导航栏中，点击 **"LLM-as-a-Judge"** 菜单项。
+- **操作**：在 "Logs"（日志）一列下，点击 **"View"** 按钮
 
 ### 七、理解执行状态
 
@@ -124,3 +124,5 @@ LLM-as-a-Judge 的每一次运行本身也是一条 Trace，您可以通过以�
 - **Error**：评估失败（点击 Execution trace ID 查看具体报错）。
 - **Delayed**：触发了 LLM 提供商的速率限制，系统正在进行指数退避重试。
 - **Pending**：评估任务已进入队列，等待运行。
+
+![image-20251126175931708](https://cdn.jsdelivr.net/gh/Fly0905/note-picture@main/imag/202511261759085.png)
