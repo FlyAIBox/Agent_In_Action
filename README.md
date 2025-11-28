@@ -327,6 +327,10 @@ inference/            # 推理服务
 
 ## 🛠️ 技术栈
 
+> 📋 **版本信息参考**:
+> - 🚀 [版本快速参考](./docs/版本快速参考.md) - 核心版本一览表和快速安装命令
+> - 📖 [完整版本依赖清单](./docs/版本依赖清单.md) - 所有组件的详细版本信息、说明和安装指南
+
 ### 🏗️ 系统架构图
 
 ```mermaid
@@ -369,14 +373,29 @@ graph TB
 | 技术领域 | 核心技术 | 版本 | 应用场景 |
 |---------|----------|------|----------|
 | **🧠 大语言模型** | OpenAI/DeepSeek/Anthropic | GPT-4/DeepSeek-R1/Claude | 核心推理引擎 |
-| **⚡ 推理框架** | vLLM | 0.6.2+ | 高性能推理服务 |
-| **🔗 智能体框架** | LangChain + LangGraph | 0.3.x | 多角色协作系统 |
-| **🌐 模型上下文协议** | MCP (Model Context Protocol) | 1.5.0 | 工具集成协议 |
-| **🎯 微调框架** | LlamaFactory | 0.9.2 | 模型个性化微调 |
-| **📊 评估平台** | Langfuse | 3.3.0 | 性能监控与评估 |
-| **📋 模型压测** | vLLM Benchmark | 0.6.2+ | 大模型推理服务压测 |
-| **🔄 工作流引擎** | LangGraph | 1.101.1 | 自动化流程编排 |
-| **🐍 运行环境** | Python/Docker/DockerCompose | 3.10+/20+ | 开发环境 |
+| **🐍 Python环境** | Python | 3.10.18 | 开发运行环境 |
+| **🔗 LangChain生态** | LangChain | 0.3.27 | 大语言模型应用框架 |
+| **🔗 LangChain核心** | langchain-core | 0.3.75 | LangChain基础抽象层 |
+| **🔗 LangChain社区** | langchain-community | 0.3.27 | 第三方集成工具集 |
+| **🔗 LangChain OpenAI** | langchain-openai | 0.3.31 | OpenAI接口适配器 |
+| **🔄 LangGraph** | LangGraph | 0.6.7 | 多智能体工作流编排 |
+| **🌐 MCP协议** | MCP (Model Context Protocol) | 1.17.0 | 模型上下文工具集成 |
+| **🌐 MCP适配器** | langchain-mcp-adapters | 0.1.11 | LangChain MCP集成 |
+| **📡 OpenAI SDK** | OpenAI | 1.107.0 | OpenAI官方SDK |
+| **🌐 HTTP客户端** | httpx | 0.28.1 | 异步HTTP请求 |
+| **📊 Langfuse平台** | Langfuse | 3.x (Docker镜像) | 性能监控与评估 |
+| **🎯 微调框架** | LlamaFactory | 基于transformers 4.45.0 | 模型个性化微调 |
+| **🤖 Transformers** | transformers | 4.45.0 | HuggingFace模型库 |
+| **⚡ PyTorch** | torch | 2.4.1 (DCU优化版) | 深度学习框架 |
+| **🚀 Web框架** | FastAPI | 0.116.1 / 0.115.12 | 高性能API服务 |
+| **🚀 Web服务器** | Uvicorn | 0.35.0 / 0.34.2 | 异步ASGI服务器 |
+| **📊 数据处理** | pandas | 2.2.2 / 2.2.3 | 数据分析处理 |
+| **🔍 网络搜索** | duckduckgo-search | 8.1.1 | 隐私搜索引擎 |
+| **📦 环境管理** | python-dotenv | 1.1.1 / 1.1.0 | 环境变量管理 |
+| **✅ 数据验证** | pydantic | 2.11.9 / 2.10.6 | 数据模型验证 |
+| **🧪 测试框架** | pytest | 8.4.1 / 8.3.5 | 单元测试工具 |
+| **🐳 容器化** | Docker | 20.0+ | 容器化部署 |
+| **🐳 容器编排** | Docker Compose | 3.8+ | 多容器管理 |
 
 
 ## 🚀 快速开始
