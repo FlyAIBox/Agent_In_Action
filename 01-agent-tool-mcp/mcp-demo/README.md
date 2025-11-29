@@ -418,7 +418,7 @@ npx @modelcontextprotocol/inspector python server/weather_server.py
 2. 分析每次调用的执行时间
 3. 识别性能瓶颈
 
-### 调试最佳实践
+### 调试优秀做法
 
 1. **先用 Inspector，再集成客户端**：
    - 在开发新工具时，先用 Inspector 测试和完善

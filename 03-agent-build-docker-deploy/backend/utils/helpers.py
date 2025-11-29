@@ -228,7 +228,7 @@ def save_to_file(content: str, filename: str) -> bool:
     返回：保存成功返回True，失败返回False
 
     适用于大模型技术初级用户：
-    这个函数展示了文件操作的最佳实践，
+    这个函数展示了文件操作的优秀做法，
     包括异常处理和资源管理。
     """
     try:
