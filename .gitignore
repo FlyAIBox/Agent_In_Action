@@ -106,7 +106,7 @@ pretrained/
 datasets/
 *.csv
 # *.json
-*.jsonl
+# *.jsonl
 *.parquet
 *.feather
 *.xlsx
