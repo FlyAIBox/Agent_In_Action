@@ -374,28 +374,33 @@ graph TB
 |---------|----------|------|----------|
 | **🧠 大语言模型** | OpenAI/DeepSeek/Anthropic | GPT-4/DeepSeek-R1/Claude | 核心推理引擎 |
 | **🐍 Python环境** | Python | 3.10.18 | 开发运行环境 |
-| **🔗 LangChain生态** | LangChain | 0.3.27 | 大语言模型应用框架 |
+| **🐍 包管理器** | Conda/Miniconda | 24.4.0 | Python环境管理 |
+| **🔗 LangChain生态** | langchain | 0.3.27 | 大语言模型应用框架 |
 | **🔗 LangChain核心** | langchain-core | 0.3.75 | LangChain基础抽象层 |
 | **🔗 LangChain社区** | langchain-community | 0.3.27 | 第三方集成工具集 |
 | **🔗 LangChain OpenAI** | langchain-openai | 0.3.31 | OpenAI接口适配器 |
-| **🔄 LangGraph** | LangGraph | 0.6.7 | 多智能体工作流编排 |
-| **🌐 MCP协议** | MCP (Model Context Protocol) | 1.17.0 | 模型上下文工具集成 |
+| **🔄 LangGraph** | langgraph | 0.6.7 | 多智能体工作流编排 |
+| **🌐 MCP协议** | mcp | 1.17.0 | 模型上下文工具集成 |
 | **🌐 MCP适配器** | langchain-mcp-adapters | 0.1.11 | LangChain MCP集成 |
-| **📡 OpenAI SDK** | OpenAI | 1.107.0 | OpenAI官方SDK |
-| **🌐 HTTP客户端** | httpx | 0.28.1 | 异步HTTP请求 |
-| **📊 Langfuse平台** | Langfuse | 3.x (Docker镜像) | 性能监控与评估 |
-| **🎯 微调框架** | LlamaFactory | 基于transformers 4.45.0 | 模型个性化微调 |
+| **📡 OpenAI SDK** | openai | 1.107.0 | OpenAI官方SDK |
 | **🤖 Transformers** | transformers | 4.45.0 | HuggingFace模型库 |
-| **⚡ PyTorch** | torch | 2.4.1 (DCU优化版) | 深度学习框架 |
-| **🚀 Web框架** | FastAPI | 0.116.1 / 0.115.12 | 高性能API服务 |
-| **🚀 Web服务器** | Uvicorn | 0.35.0 / 0.34.2 | 异步ASGI服务器 |
+| **🚀 Web框架** | fastapi | 0.116.1 / 0.115.12 | 高性能API服务 |
+| **🚀 Web服务器** | uvicorn | 0.35.0 / 0.34.2 | 异步ASGI服务器 |
 | **📊 数据处理** | pandas | 2.2.2 / 2.2.3 | 数据分析处理 |
+| **📊 数值计算** | numpy | 1.25.0 | 科学计算库 |
+| **✅ 数据验证** | pydantic | 2.11.9 / 2.10.6 | 数据模型验证 |
+| **🌐 HTTP客户端** | httpx | 0.28.1 | 异步HTTP请求 |
+| **🌐 HTTP库** | requests | 2.32.5 / 2.32.3 | 同步HTTP请求 |
+| **🔍 网页解析** | beautifulsoup4 | 4.13.4 | HTML/XML解析 |
 | **🔍 网络搜索** | duckduckgo-search | 8.1.1 | 隐私搜索引擎 |
 | **📦 环境管理** | python-dotenv | 1.1.1 / 1.1.0 | 环境变量管理 |
-| **✅ 数据验证** | pydantic | 2.11.9 / 2.10.6 | 数据模型验证 |
 | **🧪 测试框架** | pytest | 8.4.1 / 8.3.5 | 单元测试工具 |
-| **🐳 容器化** | Docker | 20.0+ | 容器化部署 |
-| **🐳 容器编排** | Docker Compose | 3.8+ | 多容器管理 |
+| **📊 监控平台** | Langfuse | 3.3.0 | 性能监控与评估 |
+| **🎯 数据集工具** | Easy Dataset | 1.6.1 | 数据集处理工具 |
+| **🎯 微调框架** | LLaMA Factory | v0.9.2 | 模型个性化微调 |
+| **⚡ 推理引擎** | vLLM | 0.8.5 | 高性能模型推理 |
+| **🐳 容器化** | Docker | 28.4.0 | 容器化部署 |
+| **🐳 容器编排** | Docker Compose | v2.39.4 | 多容器管理 |
 
 
 ## 🚀 快速开始
