@@ -1,0 +1,10 @@
+services:
+  easy-dataset:
+    image: ghcr.io/conardli/easy-dataset:1.6.0
+    container_name: easy-dataset
+    ports:
+      - '1717:1717'
+    volumes:
+      - ./local-db:/app/local-db
+      - ./prisma:/app/prisma
+    restart: unless-stopped
