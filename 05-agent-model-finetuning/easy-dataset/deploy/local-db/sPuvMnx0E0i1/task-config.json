@@ -1,0 +1,14 @@
+{
+  "textSplitMinLength": 2500,
+  "textSplitMaxLength": 4000,
+  "questionGenerationLength": 240,
+  "questionMaskRemovingProbability": 60,
+  "huggingfaceToken": "",
+  "concurrencyLimit": 5,
+  "visionConcurrencyLimit": 5,
+  "multiTurnSystemPrompt": "",
+  "multiTurnScenario": "",
+  "multiTurnRounds": 3,
+  "multiTurnRoleA": "",
+  "multiTurnRoleB": ""
+}

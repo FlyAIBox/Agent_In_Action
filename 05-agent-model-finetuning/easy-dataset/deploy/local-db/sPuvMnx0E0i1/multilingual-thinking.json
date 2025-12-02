@@ -1,0 +1,2976 @@
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "免疫双扩散实验中，中心孔加抗体血清，周围孔加抗原，观察到沉淀线交叉或融合说明什么？",
+  "analysis": null,
+  "final": "在免疫双扩散实验中，当中心孔加入含有抗体的血清，周围孔加入抗原后，如果观察到沉淀线出现交叉或融合的现象，这表明参与反应的抗原之间存在交叉反应。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "免疫双扩散实验中，中心孔加抗体血清，周围孔加抗原，观察到沉淀线交叉或融合说明什么？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "在免疫双扩散实验中，当中心孔加入含有抗体的血清，周围孔加入抗原后，如果观察到沉淀线出现交叉或融合的现象，这表明参与反应的抗原之间存在交叉反应。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "64岁男性表情迟钝、嗜睡，血糖17.6mmol/L、血钠210mmol/L、血浆渗透压470mmol/L，急诊静脉补液应选择什么溶液",
+  "analysis": null,
+  "final": "针对64岁男性患者出现表情迟钝、嗜睡，血糖17.6mmol/L、血钠210mmol/L、血浆渗透压470mmol/L的情况，急诊静脉补液应选择0.45%氯化钠溶液。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "64岁男性表情迟钝、嗜睡，血糖17.6mmol/L、血钠210mmol/L、血浆渗透压470mmol/L，急诊静脉补液应选择什么溶液",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "针对64岁男性患者出现表情迟钝、嗜睡，血糖17.6mmol/L、血钠210mmol/L、血浆渗透压470mmol/L的情况，急诊静脉补液应选择0.45%氯化钠溶液。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "心病10年患者ECG显示冠状动脉供血不足，准备进行胆囊手术，最合适的麻醉方法是什么？",
+  "analysis": null,
+  "final": "针对患有10年心病且心电图显示冠状动脉供血不足的患者，在准备进行胆囊切除加胆总管探查T形管引流术时，最合适的麻醉方法是全身麻醉配合气管内插管。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "心病10年患者ECG显示冠状动脉供血不足，准备进行胆囊手术，最合适的麻醉方法是什么？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "针对患有10年心病且心电图显示冠状动脉供血不足的患者，在准备进行胆囊切除加胆总管探查T形管引流术时，最合适的麻醉方法是全身麻醉配合气管内插管。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "76岁男性急起右侧肢体无力，体检左侧瞳孔大于右侧、对光反射消失、左眼内收障碍，病变部位可能位于哪里",
+  "analysis": null,
+  "final": "对于76岁男性患者，急起右侧肢体无力，体检发现左侧瞳孔大于右侧、左侧对光反射消失、左眼内收障碍，结合右侧鼻唇沟浅、伸舌偏右、右侧上下肢肌张力高、肌力Ⅲ级、右侧Babinski征阳性等体征，其病变部位可能位于中脑。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "76岁男性急起右侧肢体无力，体检左侧瞳孔大于右侧、对光反射消失、左眼内收障碍，病变部位可能位于哪里",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于76岁男性患者，急起右侧肢体无力，体检发现左侧瞳孔大于右侧、左侧对光反射消失、左眼内收障碍，结合右侧鼻唇沟浅、伸舌偏右、右侧上下肢肌张力高、肌力Ⅲ级、右侧Babinski征阳性等体征，其病变部位可能位于中脑。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "6个月婴儿发热5天伴咳嗽喘憋，胸片双下肺片状阴影，最适合使用什么药物治疗",
+  "analysis": null,
+  "final": "针对6个月婴儿发热5天伴咳嗽喘憋，胸片显示双下肺片状阴影的情况，最适合使用的药物是去甲肾上腺素，但需在治疗过程中密切监测患儿的生命体征。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "6个月婴儿发热5天伴咳嗽喘憋，胸片双下肺片状阴影，最适合使用什么药物治疗",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "针对6个月婴儿发热5天伴咳嗽喘憋，胸片显示双下肺片状阴影的情况，最适合使用的药物是去甲肾上腺素，但需在治疗过程中密切监测患儿的生命体征。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "疫苗预防效果观察研究中，研究者认为不能下结论的主要原因是什么",
+  "analysis": null,
+  "final": "在疫苗预防效果观察研究中，研究者认为不能下结论的主要原因是研究设计未设立对照组。该研究随机选择了5所幼儿园小班儿童进行某疫苗的预防效果观察，随访3年后结果显示85%的免疫接种者未发生该病。然而，由于缺乏未接种疫苗的对照组进行比较，无法确定85%的未发病率是疫苗的效果还是其他因素（如自然感染率低或群体免疫等）所致。因此，没有对照组的设置使得研究无法有效评估疫苗的真实预防效果，导致结论不可靠。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "疫苗预防效果观察研究中，研究者认为不能下结论的主要原因是什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "在疫苗预防效果观察研究中，研究者认为不能下结论的主要原因是研究设计未设立对照组。该研究随机选择了5所幼儿园小班儿童进行某疫苗的预防效果观察，随访3年后结果显示85%的免疫接种者未发生该病。然而，由于缺乏未接种疫苗的对照组进行比较，无法确定85%的未发病率是疫苗的效果还是其他因素（如自然感染率低或群体免疫等）所致。因此，没有对照组的设置使得研究无法有效评估疫苗的真实预防效果，导致结论不可靠。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "55岁男性左胸痛、胸闷气短、消瘦，CT显示广泛胸膜增厚及结节影，最可能与什么职业病相关",
+  "analysis": null,
+  "final": "55岁男性患者出现左胸痛、胸闷气短、消瘦，CT显示广泛胸膜增厚及左侧胸膜凹凸不平，可见胸膜结节影。该患者最可能与石棉相关的职业病有关。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "55岁男性左胸痛、胸闷气短、消瘦，CT显示广泛胸膜增厚及结节影，最可能与什么职业病相关",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "55岁男性患者出现左胸痛、胸闷气短、消瘦，CT显示广泛胸膜增厚及左侧胸膜凹凸不平，可见胸膜结节影。该患者最可能与石棉相关的职业病有关。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "上颌全口义齿修复多次断裂，应选用什么材料制作基托",
+  "analysis": null,
+  "final": "对于上颌全口义齿修复多次断裂的情况，应选用硬质钴铬合金作为制作基托的最佳材料。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "上颌全口义齿修复多次断裂，应选用什么材料制作基托",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于上颌全口义齿修复多次断裂的情况，应选用硬质钴铬合金作为制作基托的最佳材料。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "16岁男性胃脘胀满疼痛、嗳腐吞酸、大便不通、舌苔厚腻、脉滑，保和丸无效，现应考虑选用什么方剂？",
+  "analysis": null,
+  "final": "对于16岁男性患者出现胃脘胀满疼痛、嗳腐吞酸、大便不通、舌苔厚腻、脉滑的症状，若使用保和丸治疗无效，且当前胃脘胀痛伴有便闭，应考虑选用小承气汤加减进行治疗。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "16岁男性胃脘胀满疼痛、嗳腐吞酸、大便不通、舌苔厚腻、脉滑，保和丸无效，现应考虑选用什么方剂？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于16岁男性患者出现胃脘胀满疼痛、嗳腐吞酸、大便不通、舌苔厚腻、脉滑的症状，若使用保和丸治疗无效，且当前胃脘胀痛伴有便闭，应考虑选用小承气汤加减进行治疗。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "68岁女性高血压病史15年，突发剧烈头痛、恶心呕吐，逐渐出现右侧肢体无力和意识不清，最可能的诊断是什么",
+  "analysis": null,
+  "final": "68岁女性患者，有15年的高血压病史，她突然出现剧烈头痛、头晕、恶心、呕吐，并逐渐出现右侧肢体无力和意识不清的症状。最可能的诊断是脑出血。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "68岁女性高血压病史15年，突发剧烈头痛、恶心呕吐，逐渐出现右侧肢体无力和意识不清，最可能的诊断是什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "68岁女性患者，有15年的高血压病史，她突然出现剧烈头痛、头晕、恶心、呕吐，并逐渐出现右侧肢体无力和意识不清的症状。最可能的诊断是脑出血。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "miRNA缺失后，其靶基因中抑癌基因功能可能发生什么变化",
+  "analysis": null,
+  "final": "miRNA缺失后，其靶基因中具有抑癌作用的基因表达会发生变化。由于整体基因表达网络的动态变化，这些抑癌基因的功能可能被削弱，从而促进癌症的发生。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "miRNA缺失后，其靶基因中抑癌基因功能可能发生什么变化",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "miRNA缺失后，其靶基因中具有抑癌作用的基因表达会发生变化。由于整体基因表达网络的动态变化，这些抑癌基因的功能可能被削弱，从而促进癌症的发生。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "女性患者红细胞2.7×10^12/L，血红蛋白60g/L，检测什么指标最有助于指导贫血治疗方案？",
+  "analysis": null,
+  "final": "对于红细胞计数为2.7×10^12/L、血红蛋白为60g/L的女性患者，在制定贫血治疗方案时，最有助于指导治疗方案的检测指标是铁代谢相关指标。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "女性患者红细胞2.7×10^12/L，血红蛋白60g/L，检测什么指标最有助于指导贫血治疗方案？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于红细胞计数为2.7×10^12/L、血红蛋白为60g/L的女性患者，在制定贫血治疗方案时，最有助于指导治疗方案的检测指标是铁代谢相关指标。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "根据患者的临床表现，哪两类药物不适合用于治疗",
+  "analysis": null,
+  "final": "根据患者的临床表现，抗组胺药和抗抑郁药不适合用于治疗该患者的症状。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "根据患者的临床表现，哪两类药物不适合用于治疗",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "根据患者的临床表现，抗组胺药和抗抑郁药不适合用于治疗该患者的症状。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "17岁男性右股骨下端骨肉瘤，X线确诊后，治疗前应进行什么检查以排除肺部转移？",
+  "analysis": null,
+  "final": "对于17岁男性右股骨下端骨肉瘤患者，在X线确诊后，治疗前应进行胸部CT扫描以排除肺部转移。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "17岁男性右股骨下端骨肉瘤，X线确诊后，治疗前应进行什么检查以排除肺部转移？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于17岁男性右股骨下端骨肉瘤患者，在X线确诊后，治疗前应进行胸部CT扫描以排除肺部转移。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "身热、面红、口渴但饮水不多、下利清谷、舌淡苔白、脉浮大无力，最可能的临床诊断是什么",
+  "analysis": null,
+  "final": "根据患者的症状表现，包括身热、面红、口渴但饮水不多、下利清谷、舌淡苔白、脉浮大无力，最可能的临床诊断是太阴病，伴有虚阳外越导致的假热现象。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "身热、面红、口渴但饮水不多、下利清谷、舌淡苔白、脉浮大无力，最可能的临床诊断是什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "根据患者的症状表现，包括身热、面红、口渴但饮水不多、下利清谷、舌淡苔白、脉浮大无力，最可能的临床诊断是太阴病，伴有虚阳外越导致的假热现象。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "27岁男性右侧大腿畸形，CT显示股骨中段膨胀、皮质变薄、骨小梁粗大扭曲呈丝瓜瓤样，最可能的诊断是什么",
+  "analysis": null,
+  "final": "27岁男性右侧大腿畸形，CT检查显示右侧股骨中段膨胀增粗，皮质变薄，骨小梁粗大扭曲，表现为沿着纵轴方向走行的粗大骨纹，类似丝瓜瓤改变。根据这些影像学特征，最可能的诊断是骨纤维结构不良，也称为骨纤维异常增殖症。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "27岁男性右侧大腿畸形，CT显示股骨中段膨胀、皮质变薄、骨小梁粗大扭曲呈丝瓜瓤样，最可能的诊断是什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "27岁男性右侧大腿畸形，CT检查显示右侧股骨中段膨胀增粗，皮质变薄，骨小梁粗大扭曲，表现为沿着纵轴方向走行的粗大骨纹，类似丝瓜瓤改变。根据这些影像学特征，最可能的诊断是骨纤维结构不良，也称为骨纤维异常增殖症。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "壮热，胸痞，气粗烦躁，关节肿痛，口渴，舌红，苔白腻脉弦数，应选择什么作为主要药物治疗",
+  "analysis": null,
+  "final": "根据患者的症状表现，包括壮热、胸痞、气粗烦躁、关节肿痛、口渴、舌红、苔白腻、脉弦数，应选择石膏作为主要药物进行治疗。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "壮热，胸痞，气粗烦躁，关节肿痛，口渴，舌红，苔白腻脉弦数，应选择什么作为主要药物治疗",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "根据患者的症状表现，包括壮热、胸痞、气粗烦躁、关节肿痛、口渴、舌红、苔白腻、脉弦数，应选择石膏作为主要药物进行治疗。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "性乱与宫颈癌之间的联系被称为什么类型的因果关系",
+  "analysis": null,
+  "final": "性乱与宫颈癌之间的联系被称为间接因果关系。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "性乱与宫颈癌之间的联系被称为什么类型的因果关系",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "性乱与宫颈癌之间的联系被称为间接因果关系。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "21岁男性赛跑中左膝闻及撕裂声后不能主动伸直，X线片显示骨折，造成骨折的原因是什么？",
+  "analysis": null,
+  "final": "造成骨折的原因是肌肉拉力。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "21岁男性赛跑中左膝闻及撕裂声后不能主动伸直，X线片显示骨折，造成骨折的原因是什么？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "造成骨折的原因是肌肉拉力。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "发热5日，伴小便短少不利、无汗、口渴、心烦躁扰、舌红苔黄燥、脉细数，正确用方是什么",
+  "analysis": null,
+  "final": "对于发热5日，伴有小便短少不利、无汗、口渴、心烦躁扰、舌红苔黄燥、脉细数的症状，正确的用方是冬地三黄汤。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "发热5日，伴小便短少不利、无汗、口渴、心烦躁扰、舌红苔黄燥、脉细数，正确用方是什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于发热5日，伴有小便短少不利、无汗、口渴、心烦躁扰、舌红苔黄燥、脉细数的症状，正确的用方是冬地三黄汤。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "宫颈上有光滑舌状小指甲大小物质，镜下为肉芽组织覆以少许鳞状上皮，最可能的诊断是什么",
+  "analysis": null,
+  "final": "宫颈上有光滑舌状小指甲大小的物质，显微镜下大部分为肉芽组织，表面被覆少许鳞状上皮，最可能的诊断是宫颈炎性息肉。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "宫颈上有光滑舌状小指甲大小物质，镜下为肉芽组织覆以少许鳞状上皮，最可能的诊断是什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "宫颈上有光滑舌状小指甲大小的物质，显微镜下大部分为肉芽组织，表面被覆少许鳞状上皮，最可能的诊断是宫颈炎性息肉。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "腰酸胁痛、眩晕耳鸣、五心烦热、月经量少、舌红少苔、脉细，应诊断为什么证型",
+  "analysis": null,
+  "final": "根据患者出现的腰酸胁痛、眩晕耳鸣、五心烦热、月经量少、舌红少苔、脉细等症状，应诊断为肝肾阴虚证型。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "腰酸胁痛、眩晕耳鸣、五心烦热、月经量少、舌红少苔、脉细，应诊断为什么证型",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "根据患者出现的腰酸胁痛、眩晕耳鸣、五心烦热、月经量少、舌红少苔、脉细等症状，应诊断为肝肾阴虚证型。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "7岁患儿发热、神志昏迷、颈项强直，治疗的首选方剂是什么？",
+  "analysis": null,
+  "final": "对于7岁患儿出现发热、神志昏迷、颈项强直等症状，治疗的首选方剂是犀角地黄汤。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "7岁患儿发热、神志昏迷、颈项强直，治疗的首选方剂是什么？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于7岁患儿出现发热、神志昏迷、颈项强直等症状，治疗的首选方剂是犀角地黄汤。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "23岁女性停经42天，人工流产术未见绒毛，病理为“蜕膜组织”，应首先考虑什么",
+  "analysis": null,
+  "final": "对于23岁女性，停经42天，人工流产术中仅吸刮出少量组织且未见绒毛，病理报告显示为“蜕膜组织”的情况，应首先考虑宫外孕，即异位妊娠。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "23岁女性停经42天，人工流产术未见绒毛，病理为“蜕膜组织”，应首先考虑什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于23岁女性，停经42天，人工流产术中仅吸刮出少量组织且未见绒毛，病理报告显示为“蜕膜组织”的情况，应首先考虑宫外孕，即异位妊娠。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "胸部隐痛，严重时胸痛彻背，伴有喘息咳唾、短气、舌苔白腻、脉沉弦，应使用什么方剂治疗？",
+  "analysis": null,
+  "final": "针对胸部隐痛，严重时胸痛彻背，伴有喘息咳唾、短气、舌苔白腻、脉沉弦的症状，应使用枳实薤白桂枝汤进行治疗。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "胸部隐痛，严重时胸痛彻背，伴有喘息咳唾、短气、舌苔白腻、脉沉弦，应使用什么方剂治疗？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "针对胸部隐痛，严重时胸痛彻背，伴有喘息咳唾、短气、舌苔白腻、脉沉弦的症状，应使用枳实薤白桂枝汤进行治疗。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "术后可以自理但不能参加正常社会活动，其Karnofsky评分是多少分",
+  "analysis": null,
+  "final": "术后可以自理但不能参加正常社会活动的患者，其Karnofsky评分为70分。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "术后可以自理但不能参加正常社会活动，其Karnofsky评分是多少分",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "术后可以自理但不能参加正常社会活动的患者，其Karnofsky评分为70分。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "室温在30℃以上时，患者的不显性失水会如何变化",
+  "analysis": null,
+  "final": "当室温在30℃以上时，患者的不显性失水会随着室温的升高而增加。具体来说，室温每增高1℃，患者的不显性失水量会相应增加。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "室温在30℃以上时，患者的不显性失水会如何变化",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "当室温在30℃以上时，患者的不显性失水会随着室温的升高而增加。具体来说，室温每增高1℃，患者的不显性失水量会相应增加。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "阑尾切除术后第5天出现发热、腹泻、里急后重，考虑并发什么？最合适的初步检验方法是什么",
+  "analysis": null,
+  "final": "阑尾切除术后第5天出现发热、腹泻、里急后重，考虑并发盆腔脓肿。针对这种情况，最合适的初步检验方法是直肠指诊。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "阑尾切除术后第5天出现发热、腹泻、里急后重，考虑并发什么？最合适的初步检验方法是什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "阑尾切除术后第5天出现发热、腹泻、里急后重，考虑并发盆腔脓肿。针对这种情况，最合适的初步检验方法是直肠指诊。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "27岁男性左小腿上端肿痛，夜间加重，肿胀发热伴静脉怒张，最可能提示什么疾病",
+  "analysis": null,
+  "final": "27岁男性出现左小腿上端肿痛，疼痛最初为间歇性，后加剧为持续性，且夜间疼痛加重，同时伴有局部肿胀、发热和静脉怒张的症状。这些临床表现最可能提示的疾病是骨肉瘤。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "27岁男性左小腿上端肿痛，夜间加重，肿胀发热伴静脉怒张，最可能提示什么疾病",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "27岁男性出现左小腿上端肿痛，疼痛最初为间歇性，后加剧为持续性，且夜间疼痛加重，同时伴有局部肿胀、发热和静脉怒张的症状。这些临床表现最可能提示的疾病是骨肉瘤。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "55岁男性右上颌尖牙深龋伴右侧鼻侧、眶下肿胀，体温40℃，最可能的直接病因是什么",
+  "analysis": null,
+  "final": "55岁男性右上颌尖牙深龋伴右侧鼻侧、眶下肿胀，体温40℃，最可能的直接病因是右上颌尖牙的深龋导致的牙根尖周脓肿。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "55岁男性右上颌尖牙深龋伴右侧鼻侧、眶下肿胀，体温40℃，最可能的直接病因是什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "55岁男性右上颌尖牙深龋伴右侧鼻侧、眶下肿胀，体温40℃，最可能的直接病因是右上颌尖牙的深龋导致的牙根尖周脓肿。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "48岁男性咳嗽、咳血、潮热颧红、自汗盗汗、气短声怯、舌质光红、脉细数无力，宜诊断为什么证型",
+  "analysis": null,
+  "final": "根据患者症状，包括咳嗽、咳血、潮热颧红、自汗盗汗、气短声怯、舌质光红、脉细数无力，应诊断为气阴两虚型肺痨。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "48岁男性咳嗽、咳血、潮热颧红、自汗盗汗、气短声怯、舌质光红、脉细数无力，宜诊断为什么证型",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "根据患者症状，包括咳嗽、咳血、潮热颧红、自汗盗汗、气短声怯、舌质光红、脉细数无力，应诊断为气阴两虚型肺痨。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "新生儿生后第1天，血常规白细胞20×10⁹/L，中性粒细胞65%，淋巴细胞30%，通常提示什么状态",
+  "analysis": null,
+  "final": "新生儿生后第1天，血常规检查结果为白细胞计数20×10⁹/L，中性粒细胞占65%，淋巴细胞占30%，这些结果通常提示该新生儿的状态健康且稳定。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "新生儿生后第1天，血常规白细胞20×10⁹/L，中性粒细胞65%，淋巴细胞30%，通常提示什么状态",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "新生儿生后第1天，血常规检查结果为白细胞计数20×10⁹/L，中性粒细胞占65%，淋巴细胞占30%，这些结果通常提示该新生儿的状态健康且稳定。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "出现壮热烦躁、咽喉红肿腐烂、肌肤丹痧、舌赤苔黄燥、脉洪数，应选用什么方剂？",
+  "analysis": null,
+  "final": "根据症状描述，患者出现壮热烦躁、咽喉红肿腐烂、肌肤丹痧显露、舌赤苔黄燥、脉洪数，应选用余氏清心凉膈散进行治疗。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "出现壮热烦躁、咽喉红肿腐烂、肌肤丹痧、舌赤苔黄燥、脉洪数，应选用什么方剂？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "根据症状描述，患者出现壮热烦躁、咽喉红肿腐烂、肌肤丹痧显露、舌赤苔黄燥、脉洪数，应选用余氏清心凉膈散进行治疗。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "根据发病机制，木僵状态不包括以下哪种类型",
+  "analysis": null,
+  "final": "根据发病机制，木僵状态可分为紧张性木僵、心因性木僵、抑郁性木僵和器质性木僵。强制性木僵不属于木僵状态的公认分类类型。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "根据发病机制，木僵状态不包括以下哪种类型",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "根据发病机制，木僵状态可分为紧张性木僵、心因性木僵、抑郁性木僵和器质性木僵。强制性木僵不属于木僵状态的公认分类类型。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "55岁男性双膝关节疼痛，上楼梯加重，研磨试验阳性，X线正常，诊断是什么？",
+  "analysis": null,
+  "final": "55岁男性双膝关节疼痛3个月，上楼梯时疼痛加重，研磨试验呈阳性，X线检查未见异常，诊断为髌骨软化症。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "55岁男性双膝关节疼痛，上楼梯加重，研磨试验阳性，X线正常，诊断是什么？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "55岁男性双膝关节疼痛3个月，上楼梯时疼痛加重，研磨试验呈阳性，X线检查未见异常，诊断为髌骨软化症。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "痉咳发作时咳嗽末尾伴有高调鸡鸣样吼声，此时最重要的护理诊断是什么",
+  "analysis": null,
+  "final": "痉咳发作时，患者会突然出现数十声急促的咳嗽，并在呼气结束时伴有高调的鸡鸣样吼声。此时最重要的护理诊断是窒息的风险。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "痉咳发作时咳嗽末尾伴有高调鸡鸣样吼声，此时最重要的护理诊断是什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "痉咳发作时，患者会突然出现数十声急促的咳嗽，并在呼气结束时伴有高调的鸡鸣样吼声。此时最重要的护理诊断是窒息的风险。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "45岁女性患者，身高168cm，体重75kg，空腹血糖6.9mmol/L，首选药物最常见的严重不良反应是什么？",
+  "analysis": null,
+  "final": "对于45岁女性患者，身高168cm，体重75kg，近1年出现多饮、多尿和乏力症状，有糖尿病家族史，空腹血糖水平为6.9mmol/L的情况，首选药物最常见的严重不良反应是乳酸酸中毒。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "45岁女性患者，身高168cm，体重75kg，空腹血糖6.9mmol/L，首选药物最常见的严重不良反应是什么？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于45岁女性患者，身高168cm，体重75kg，近1年出现多饮、多尿和乏力症状，有糖尿病家族史，空腹血糖水平为6.9mmol/L的情况，首选药物最常见的严重不良反应是乳酸酸中毒。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "30岁男性出现大热烦躁、错语不眠、口燥咽干、舌红苔黄、脉数有力，适合选择哪个方剂治疗",
+  "analysis": null,
+  "final": "根据症状描述，30岁男性患者出现大热烦躁、错语不眠、口燥咽干、舌红苔黄、脉数有力，这些表现属于热毒炽盛、扰乱心神所致。针对此类证候，治疗应选择黄连解毒汤。该方剂具有清热泻火、解毒安神的功效，适用于热盛扰神、津液受损的病症。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "30岁男性出现大热烦躁、错语不眠、口燥咽干、舌红苔黄、脉数有力，适合选择哪个方剂治疗",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "根据症状描述，30岁男性患者出现大热烦躁、错语不眠、口燥咽干、舌红苔黄、脉数有力，这些表现属于热毒炽盛、扰乱心神所致。针对此类证候，治疗应选择黄连解毒汤。该方剂具有清热泻火、解毒安神的功效，适用于热盛扰神、津液受损的病症。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "术后三个月叩击臂中段沿尺神经走行出现放射痛，说明尺神经再生到了哪个位置",
+  "analysis": null,
+  "final": "术后三个月，当叩击患者臂中段沿尺神经走行时，出现右环指和小指处的放射痛，这表明尺神经再生已经到达了肘部或稍微进入前臂的部分位置，但尚未再生至手指。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "术后三个月叩击臂中段沿尺神经走行出现放射痛，说明尺神经再生到了哪个位置",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "术后三个月，当叩击患者臂中段沿尺神经走行时，出现右环指和小指处的放射痛，这表明尺神经再生已经到达了肘部或稍微进入前臂的部分位置，但尚未再生至手指。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "眼睑处反复发生局限性肿胀，微痒，1-3天消退，应诊断为什么",
+  "analysis": null,
+  "final": "眼睑处反复发生局限性肿胀，自觉微痒，持续1-3天消退，可在同一部位反复发生，应诊断为血管性水肿。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "眼睑处反复发生局限性肿胀，微痒，1-3天消退，应诊断为什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "眼睑处反复发生局限性肿胀，自觉微痒，持续1-3天消退，可在同一部位反复发生，应诊断为血管性水肿。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "病人认为人不该吃猪肉、蔬菜和站在地上，此症状属于什么思维障碍",
+  "analysis": null,
+  "final": "病人认为人不该吃猪肉、蔬菜和站在地上，这种症状属于逻辑倒错性思维。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "病人认为人不该吃猪肉、蔬菜和站在地上，此症状属于什么思维障碍",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "病人认为人不该吃猪肉、蔬菜和站在地上，这种症状属于逻辑倒错性思维。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "医疗机构使用不具备资质人员从事放射诊疗工作，可被处以多少元以下的罚款",
+  "analysis": null,
+  "final": "根据相关管理规定，医疗机构如果使用不具备相应资质的人员从事放射诊疗工作，县级以上卫生行政部门在责令其限期改正的同时，可以处以5000元以下的罚款。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "医疗机构使用不具备资质人员从事放射诊疗工作，可被处以多少元以下的罚款",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "根据相关管理规定，医疗机构如果使用不具备相应资质的人员从事放射诊疗工作，县级以上卫生行政部门在责令其限期改正的同时，可以处以5000元以下的罚款。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "夏季出现头痛、胸闷口渴、身热汗出、舌苔腻、脉滑，这些表现符合哪个方剂的治疗作用？",
+  "analysis": null,
+  "final": "夏季出现头痛、胸闷口渴、身热汗出、舌苔腻、脉滑等症状，这些表现符合羌活胜湿汤的治疗作用。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "夏季出现头痛、胸闷口渴、身热汗出、舌苔腻、脉滑，这些表现符合哪个方剂的治疗作用？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "夏季出现头痛、胸闷口渴、身热汗出、舌苔腻、脉滑等症状，这些表现符合羌活胜湿汤的治疗作用。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "右手被开水烫伤后局部红润无水泡，减轻疼痛应采取什么措施",
+  "analysis": null,
+  "final": "右手被开水烫伤后，如果局部皮肤呈现红润状态且没有水泡，为减轻疼痛，应立即将受伤部位放在流动的冷水下持续冲洗，或者将手浸泡在冷水中，时间应保持在15到20分钟。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "右手被开水烫伤后局部红润无水泡，减轻疼痛应采取什么措施",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "右手被开水烫伤后，如果局部皮肤呈现红润状态且没有水泡，为减轻疼痛，应立即将受伤部位放在流动的冷水下持续冲洗，或者将手浸泡在冷水中，时间应保持在15到20分钟。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "体重8公斤的小儿，需要补充多少毫升1.4%碳酸氢钠溶液才能将CO2-CP从8.98mmol/L提高到13.47mmol/L？",
+  "analysis": null,
+  "final": "对于体重8公斤的小儿，需要将CO2-CP从8.98mmol/L提高到13.47mmol/L，应补充约129毫升的1.4%碳酸氢钠溶液。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "体重8公斤的小儿，需要补充多少毫升1.4%碳酸氢钠溶液才能将CO2-CP从8.98mmol/L提高到13.47mmol/L？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于体重8公斤的小儿，需要将CO2-CP从8.98mmol/L提高到13.47mmol/L，应补充约129毫升的1.4%碳酸氢钠溶液。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "下腹壁皮肤表面有半圆形结节，切片显示与皮脂腺小叶相关，最可能的诊断是什么？",
+  "analysis": null,
+  "final": "下腹壁皮肤表面出现半圆形结节，边界清楚，有分叶、假膜，无浸润，切片显示上皮脂腺小叶与表皮相连，外周有增生的嗜碱性生发细胞，分化成鳞状上皮的导管上皮增生，最可能的诊断是皮脂腺腺瘤。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "下腹壁皮肤表面有半圆形结节，切片显示与皮脂腺小叶相关，最可能的诊断是什么？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "下腹壁皮肤表面出现半圆形结节，边界清楚，有分叶、假膜，无浸润，切片显示上皮脂腺小叶与表皮相连，外周有增生的嗜碱性生发细胞，分化成鳞状上皮的导管上皮增生，最可能的诊断是皮脂腺腺瘤。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "22岁男性出现短暂意识丧失和动作停止，首选治疗药物是什么？",
+  "analysis": null,
+  "final": "对于22岁男性出现短暂意识丧失和动作停止的情况，首选治疗药物是丙戊酸钠。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "22岁男性出现短暂意识丧失和动作停止，首选治疗药物是什么？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于22岁男性出现短暂意识丧失和动作停止的情况，首选治疗药物是丙戊酸钠。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "中医治疗黎明前腹痛肠鸣即泻、泻后则安、形寒肢冷腰膝酸软的患者，应首选何方",
+  "analysis": null,
+  "final": "中医治疗黎明前腹痛肠鸣即泻、泻后则安、形寒肢冷腰膝酸软的患者，应首选真人养脏汤。该方适用于脾肾阳虚所致的五更泻，症见泻泄多在黎明之前，腹部作痛，肠鸣即泻，泻后则安，同时伴有不思饮食、食不消化、形寒肢冷、腰膝酸软，舌淡苔白，脉沉迟无力。真人养脏汤具有温补脾肾、涩肠止泻的功效，是治疗此类证候的经典方剂。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "中医治疗黎明前腹痛肠鸣即泻、泻后则安、形寒肢冷腰膝酸软的患者，应首选何方",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "中医治疗黎明前腹痛肠鸣即泻、泻后则安、形寒肢冷腰膝酸软的患者，应首选真人养脏汤。该方适用于脾肾阳虚所致的五更泻，症见泻泄多在黎明之前，腹部作痛，肠鸣即泻，泻后则安，同时伴有不思饮食、食不消化、形寒肢冷、腰膝酸软，舌淡苔白，脉沉迟无力。真人养脏汤具有温补脾肾、涩肠止泻的功效，是治疗此类证候的经典方剂。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "为确诊异位妊娠，除了常规检查外，还应进行什么操作",
+  "analysis": null,
+  "final": "为确诊异位妊娠，除了常规检查外，还应进行腹腔穿刺。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "为确诊异位妊娠，除了常规检查外，还应进行什么操作",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "为确诊异位妊娠，除了常规检查外，还应进行腹腔穿刺。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "针对头痛恶寒、身重疼痛、胸闷不饥、午后身热等症状，治疗应首选什么方剂？",
+  "analysis": null,
+  "final": "针对头痛恶寒、身重疼痛、胸闷不饥、午后身热等症状，治疗应首选三仁汤。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "针对头痛恶寒、身重疼痛、胸闷不饥、午后身热等症状，治疗应首选什么方剂？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "针对头痛恶寒、身重疼痛、胸闷不饥、午后身热等症状，治疗应首选三仁汤。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "13岁男性患者因发热和咽痛就诊，护理中应首先考虑如何处理高热和疼痛",
+  "analysis": null,
+  "final": "对于13岁男性患者因发热和咽痛就诊的情况，护理中应首先考虑采用物理降温和解热镇痛药来处理高热和疼痛。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "13岁男性患者因发热和咽痛就诊，护理中应首先考虑如何处理高热和疼痛",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于13岁男性患者因发热和咽痛就诊的情况，护理中应首先考虑采用物理降温和解热镇痛药来处理高热和疼痛。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "该患儿可能受累的神经系统结构是什么？",
+  "analysis": null,
+  "final": "根据病历中描述的症状和体格检查结果，包括肌肉张力增高、整体屈曲运动模式及巴氏征阳性等特点，该患儿可能受累的神经系统结构是锥体束。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "该患儿可能受累的神经系统结构是什么？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "根据病历中描述的症状和体格检查结果，包括肌肉张力增高、整体屈曲运动模式及巴氏征阳性等特点，该患儿可能受累的神经系统结构是锥体束。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "54岁男性患者龋坏缺损，轴壁断位于龈上，X线显示根管治疗完善，龈距较小，最好的修复方式是什么",
+  "analysis": null,
+  "final": "对于54岁男性患者，龋坏导致牙体缺损，轴壁断端位于牙龈以上，X线检查显示根管治疗已完善，且龈距较小的情况，最好的修复方式是采用全瓷嵌体。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "54岁男性患者龋坏缺损，轴壁断位于龈上，X线显示根管治疗完善，龈距较小，最好的修复方式是什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于54岁男性患者，龋坏导致牙体缺损，轴壁断端位于牙龈以上，X线检查显示根管治疗已完善，且龈距较小的情况，最好的修复方式是采用全瓷嵌体。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "某地某年伤寒发病率为10/10万，与往年相比，这一年伤寒被描述为什么",
+  "analysis": null,
+  "final": "某地某年伤寒发病率为10/10万，与往年每年大约10例的发病情况相比，这一年伤寒的发病情况被描述为流行病或疫情爆发。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "某地某年伤寒发病率为10/10万，与往年相比，这一年伤寒被描述为什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "某地某年伤寒发病率为10/10万，与往年每年大约10例的发病情况相比，这一年伤寒的发病情况被描述为流行病或疫情爆发。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "41岁女性外阴奇痒，活检为VIN III级分化型，应选择何种下一步处理？",
+  "analysis": null,
+  "final": "对于41岁女性患者，主诉外阴奇痒5年，应用皮炎平效果逐渐下降，近1年伴有烦躁和失眠。查体发现左侧大阴唇局部皮肤色素减退和萎缩，以及多角性略高扁平丘疹。经过2年治疗后，病情反复且加重，活检结果为VIN III级分化型。下一步应选择局部切除手术进行处理。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "41岁女性外阴奇痒，活检为VIN III级分化型，应选择何种下一步处理？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于41岁女性患者，主诉外阴奇痒5年，应用皮炎平效果逐渐下降，近1年伴有烦躁和失眠。查体发现左侧大阴唇局部皮肤色素减退和萎缩，以及多角性略高扁平丘疹。经过2年治疗后，病情反复且加重，活检结果为VIN III级分化型。下一步应选择局部切除手术进行处理。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "32岁男性尿道流脓，涂片发现多形核白细胞内革兰阴性双球菌，首选何种药物治疗？",
+  "analysis": null,
+  "final": "对于32岁男性出现尿道流脓，涂片检查发现多形核白细胞内存在革兰阴性双球菌的情况，首选的治疗药物是大观霉素。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "32岁男性尿道流脓，涂片发现多形核白细胞内革兰阴性双球菌，首选何种药物治疗？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于32岁男性出现尿道流脓，涂片检查发现多形核白细胞内存在革兰阴性双球菌的情况，首选的治疗药物是大观霉素。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "患者肝功能检查显示总胆红素19.2μmol/L，白蛋白35g/L，凝血酶原时间12秒，其预后情况如何",
+  "analysis": null,
+  "final": "根据患者的肝功能检查结果，总胆红素19.2μmol/L，白蛋白35g/L，凝血酶原时间12秒，患者的预后情况相对良好。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "患者肝功能检查显示总胆红素19.2μmol/L，白蛋白35g/L，凝血酶原时间12秒，其预后情况如何",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "根据患者的肝功能检查结果，总胆红素19.2μmol/L，白蛋白35g/L，凝血酶原时间12秒，患者的预后情况相对良好。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "6岁患儿高热、躯干四肢红色丘疹、口渴烦躁、咽部红肿烂、舌红起刺脉数有力，首选何方剂？",
+  "analysis": null,
+  "final": "对于6岁患儿出现高热、躯干及四肢红色丘疹、口渴烦躁、咽部红肿烂、舌红起刺、脉数有力的症状，首选的中医方剂是凉营汤。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "6岁患儿高热、躯干四肢红色丘疹、口渴烦躁、咽部红肿烂、舌红起刺脉数有力，首选何方剂？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于6岁患儿出现高热、躯干及四肢红色丘疹、口渴烦躁、咽部红肿烂、舌红起刺、脉数有力的症状，首选的中医方剂是凉营汤。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "38岁男子颅脑外伤后出现头痛、抽搐、流涎苔腻，治疗时应加入哪几类药物？",
+  "analysis": null,
+  "final": "针对38岁男子颅脑外伤后出现头痛、抽搐、流涎、苔腻等症状，治疗时应加入以下三类药物：\n\n1. **化痰祛湿类药物**：例如半夏、胆南星等，用于化解痰湿、改善流涎和苔腻的症状。\n2. **平肝息风类药物**：例如天麻、钩藤等，用于平息肝风、控制抽搐、缓解头痛。\n3. **潜阳安神类药物**：例如珍珠母、石决明等，用于潜镇肝阳、安定神志、辅助改善整体状况。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "38岁男子颅脑外伤后出现头痛、抽搐、流涎苔腻，治疗时应加入哪几类药物？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "针对38岁男子颅脑外伤后出现头痛、抽搐、流涎、苔腻等症状，治疗时应加入以下三类药物：\n\n1. **化痰祛湿类药物**：例如半夏、胆南星等，用于化解痰湿、改善流涎和苔腻的症状。\n2. **平肝息风类药物**：例如天麻、钩藤等，用于平息肝风、控制抽搐、缓解头痛。\n3. **潜阳安神类药物**：例如珍珠母、石决明等，用于潜镇肝阳、安定神志、辅助改善整体状况。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "3岁男孩站立时双膝内侧间距大于5厘米，双下肢呈括弧状，最可能的诊断是什么",
+  "analysis": null,
+  "final": "3岁男孩在站立位时，双足靠拢后双膝内侧间距加大，双下肢呈括弧状，测量双膝间距大于5厘米。最可能的诊断是生理性O型腿，但也需排除佝偻病等病理因素。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "3岁男孩站立时双膝内侧间距大于5厘米，双下肢呈括弧状，最可能的诊断是什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "3岁男孩在站立位时，双足靠拢后双膝内侧间距加大，双下肢呈括弧状，测量双膝间距大于5厘米。最可能的诊断是生理性O型腿，但也需排除佝偻病等病理因素。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "患者颈前结块肿大、弥漫对称、胸闷咳嗽吞咽困难、苔薄腻脉弦，中医治疗应选用何方？",
+  "analysis": null,
+  "final": "患者颈前结块肿大、弥漫对称、不疼痛，伴有胸闷、咳嗽、吞咽困难，舌苔薄腻，脉弦。根据中医辨证，此证属气郁痰阻，结于颈前。治疗应选用四海舒郁丸，以理气舒郁、化痰散结。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "患者颈前结块肿大、弥漫对称、胸闷咳嗽吞咽困难、苔薄腻脉弦，中医治疗应选用何方？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "患者颈前结块肿大、弥漫对称、不疼痛，伴有胸闷、咳嗽、吞咽困难，舌苔薄腻，脉弦。根据中医辨证，此证属气郁痰阻，结于颈前。治疗应选用四海舒郁丸，以理气舒郁、化痰散结。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "属于促凝血因子活性的药物有哪些",
+  "analysis": null,
+  "final": "属于促凝血因子活性的药物包括重组凝血因子VIIa、凝血酶原复合物浓缩剂、重组因子VIII和因子IX等。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "属于促凝血因子活性的药物有哪些",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "属于促凝血因子活性的药物包括重组凝血因子VIIa、凝血酶原复合物浓缩剂、重组因子VIII和因子IX等。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "胃空肠Roux-en-Y吻合术中，空肠近端应在何处与空肠远端吻合？",
+  "analysis": null,
+  "final": "在胃空肠Roux-en-Y吻合术中，空肠近端在关闭十二指肠残端后，应在Treitz韧带下方约25-50厘米的位置与空肠远端进行吻合。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "胃空肠Roux-en-Y吻合术中，空肠近端应在何处与空肠远端吻合？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "在胃空肠Roux-en-Y吻合术中，空肠近端在关闭十二指肠残端后，应在Treitz韧带下方约25-50厘米的位置与空肠远端进行吻合。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "24岁男性吸入烟雾后出现呼吸窘迫并发ARDS，建立人工气道时最优先的措施是什么？",
+  "analysis": null,
+  "final": "对于24岁男性吸入烟雾后出现呼吸窘迫并考虑并发急性呼吸窘迫综合征（ARDS）的患者，在需要建立人工气道进行机械通气时，最优先选择的措施是进行气管插管。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "24岁男性吸入烟雾后出现呼吸窘迫并发ARDS，建立人工气道时最优先的措施是什么？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于24岁男性吸入烟雾后出现呼吸窘迫并考虑并发急性呼吸窘迫综合征（ARDS）的患者，在需要建立人工气道进行机械通气时，最优先选择的措施是进行气管插管。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "30岁女性低热乏力盗汗干咳两月，X线示右肺片状阴影伴空洞，痰涂片找到抗酸杆菌，应诊断为何病？",
+  "analysis": null,
+  "final": "该患者应诊断为活动性肺结核。患者为30岁女性，临床表现为低热、乏力、盗汗、干咳两月，X线胸片检查显示右肺片状阴影伴空洞，且痰涂片找到抗酸杆菌，这些典型症状、影像学特征及病原学证据均符合活动性肺结核的诊断标准。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "30岁女性低热乏力盗汗干咳两月，X线示右肺片状阴影伴空洞，痰涂片找到抗酸杆菌，应诊断为何病？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "该患者应诊断为活动性肺结核。患者为30岁女性，临床表现为低热、乏力、盗汗、干咳两月，X线胸片检查显示右肺片状阴影伴空洞，且痰涂片找到抗酸杆菌，这些典型症状、影像学特征及病原学证据均符合活动性肺结核的诊断标准。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "针对田某病例，为警惕急性重症胆管炎，病情观察中应特别注意什么？",
+  "analysis": null,
+  "final": "针对田某病例，为警惕急性重症胆管炎，在病情观察中应特别注意观察黄疸的变化、腹痛的变化、体温及发热情况、意识状态等。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "针对田某病例，为警惕急性重症胆管炎，病情观察中应特别注意什么？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "针对田某病例，为警惕急性重症胆管炎，在病情观察中应特别注意观察黄疸的变化、腹痛的变化、体温及发热情况、意识状态等。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "患者高热头痛呕吐、四肢抽搐颈项强直角弓反张，结合脑脊液结果，中医辨证为何证型？",
+  "analysis": null,
+  "final": "患者出现高热、头痛、呕吐、四肢抽搐、颈项强直、角弓反张等症状，结合脑脊液检查结果，中医辨证为“急惊风”证型。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "患者高热头痛呕吐、四肢抽搐颈项强直角弓反张，结合脑脊液结果，中医辨证为何证型？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "患者出现高热、头痛、呕吐、四肢抽搐、颈项强直、角弓反张等症状，结合脑脊液检查结果，中医辨证为“急惊风”证型。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "64岁男性突发胸痛伴大汗1小时，既往有高血压史，下一步治疗应首先考虑何种药物？",
+  "analysis": null,
+  "final": "对于64岁男性突发胸痛伴大汗1小时，既往有高血压史的情况，下一步治疗应首先考虑使用阿司匹林。该药物是急性胸痛发作时早期处理的关键药物之一，有助于抑制血小板聚集、防止血栓进一步形成，为后续的进一步诊断和治疗争取时间。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "64岁男性突发胸痛伴大汗1小时，既往有高血压史，下一步治疗应首先考虑何种药物？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于64岁男性突发胸痛伴大汗1小时，既往有高血压史的情况，下一步治疗应首先考虑使用阿司匹林。该药物是急性胸痛发作时早期处理的关键药物之一，有助于抑制血小板聚集、防止血栓进一步形成，为后续的进一步诊断和治疗争取时间。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "47岁女性食后脘腹胀满、朝食暮吐、吐出宿食、神疲乏力，治疗主方是什么？",
+  "analysis": null,
+  "final": "对于47岁女性出现食后脘腹胀满、朝食暮吐、吐出宿食、神疲乏力等症状，治疗的主方是丁香透膈散。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "47岁女性食后脘腹胀满、朝食暮吐、吐出宿食、神疲乏力，治疗主方是什么？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于47岁女性出现食后脘腹胀满、朝食暮吐、吐出宿食、神疲乏力等症状，治疗的主方是丁香透膈散。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "患者经行巅顶掣痛，伴口苦咽干、烦躁易怒、舌红苔黄脉弦细数，宜选用何方",
+  "analysis": null,
+  "final": "患者出现经行巅顶掣痛，伴有头晕目眩、口苦咽干、烦躁易怒的症状，舌质红，苔黄，脉象弦细数。根据中医辨证，此证属肝经郁热、肝火上炎所致。针对这一证型，宜选用龙胆泻肝汤进行治疗。该方具有清泻肝火、疏肝解郁的功效，适用于肝经实热或肝火上扰引起的头痛、眩晕、口苦、烦躁等症状。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "患者经行巅顶掣痛，伴口苦咽干、烦躁易怒、舌红苔黄脉弦细数，宜选用何方",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "患者出现经行巅顶掣痛，伴有头晕目眩、口苦咽干、烦躁易怒的症状，舌质红，苔黄，脉象弦细数。根据中医辨证，此证属肝经郁热、肝火上炎所致。针对这一证型，宜选用龙胆泻肝汤进行治疗。该方具有清泻肝火、疏肝解郁的功效，适用于肝经实热或肝火上扰引起的头痛、眩晕、口苦、烦躁等症状。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "患者倦怠乏力、食少便溏、四肢不温、皮下淡暗瘀斑，建议在何方基础上加入补气药",
+  "analysis": null,
+  "final": "患者倦怠乏力、食少便溏、四肢不温、皮下瘀斑、色淡暗、舌淡苔薄白、脉沉迟，建议在犀角地黄汤的基础上，加入补气的药材进行调理。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "患者倦怠乏力、食少便溏、四肢不温、皮下淡暗瘀斑，建议在何方基础上加入补气药",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "患者倦怠乏力、食少便溏、四肢不温、皮下瘀斑、色淡暗、舌淡苔薄白、脉沉迟，建议在犀角地黄汤的基础上，加入补气的药材进行调理。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "3个月早产儿牛奶喂养，出现腹泻、苍白、食欲差及贫血，最有确诊价值的检查是什么",
+  "analysis": null,
+  "final": "对于3个月早产的婴儿，其主要喂养方式为牛奶，最近1个月出现腹泻、肤色苍白且食欲减退，并且血液检验显示血红蛋白为70g／L，红细胞计数为2.8×10^12/L。在这种情况下，最有确诊价值的检查是血清铁蛋白测定。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "3个月早产儿牛奶喂养，出现腹泻、苍白、食欲差及贫血，最有确诊价值的检查是什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于3个月早产的婴儿，其主要喂养方式为牛奶，最近1个月出现腹泻、肤色苍白且食欲减退，并且血液检验显示血红蛋白为70g／L，红细胞计数为2.8×10^12/L。在这种情况下，最有确诊价值的检查是血清铁蛋白测定。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "患者耳道红肿，牵拉耳郭及压迫耳屏时疼痛加重，建议首先如何处理",
+  "analysis": null,
+  "final": "患者耳道局部红肿疼痛，牵拉耳郭及压迫耳屏时疼痛加重，建议先去医院或耳鼻喉科进行全面检查，确定感染类型后使用抗生素或抗真菌药物治疗。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "患者耳道红肿，牵拉耳郭及压迫耳屏时疼痛加重，建议首先如何处理",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "患者耳道局部红肿疼痛，牵拉耳郭及压迫耳屏时疼痛加重，建议先去医院或耳鼻喉科进行全面检查，确定感染类型后使用抗生素或抗真菌药物治疗。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "8岁患者恶寒发热后头面红肿掀痛、咽痛、舌红苔黄脉浮数，应选用何方治疗",
+  "analysis": null,
+  "final": "对于8岁患者出现恶寒发热1天后，伴有头面红肿掀痛、咽痛、口渴舌燥、舌红苔黄、脉浮数等症状，应选用普济消毒饮进行治疗。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "8岁患者恶寒发热后头面红肿掀痛、咽痛、舌红苔黄脉浮数，应选用何方治疗",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于8岁患者出现恶寒发热1天后，伴有头面红肿掀痛、咽痛、口渴舌燥、舌红苔黄、脉浮数等症状，应选用普济消毒饮进行治疗。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "17岁女生在特定场合出现紧张、害怕和喷射性呕吐，最可能的诊断是什么？",
+  "analysis": null,
+  "final": "17岁女生在特定场合出现紧张、害怕和喷射性呕吐，最可能的诊断是特定恐惧症或社会焦虑症。这是由于特定场合给她带来了极大的心理压力和焦虑，从而引发了一系列生理和心理反应，包括紧张、害怕以及喷射性呕吐等症状。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "17岁女生在特定场合出现紧张、害怕和喷射性呕吐，最可能的诊断是什么？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "17岁女生在特定场合出现紧张、害怕和喷射性呕吐，最可能的诊断是特定恐惧症或社会焦虑症。这是由于特定场合给她带来了极大的心理压力和焦虑，从而引发了一系列生理和心理反应，包括紧张、害怕以及喷射性呕吐等症状。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "10岁患儿诊断为急性肾小球肾炎，正确的护理措施是什么",
+  "analysis": null,
+  "final": "对于诊断为急性肾小球肾炎的10岁患儿，正确的护理措施是严格卧床休息1～2周。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "10岁患儿诊断为急性肾小球肾炎，正确的护理措施是什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于诊断为急性肾小球肾炎的10岁患儿，正确的护理措施是严格卧床休息1～2周。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "61岁消渴病患者症见多食易饥、口渴尿多、形体消瘦、苔黄脉滑实有力，宜选用何方",
+  "analysis": null,
+  "final": "对于61岁消渴病患者出现多食易饥、口渴尿多、形体消瘦、苔黄脉滑实有力等症状，宜选用玉女煎进行治疗。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "61岁消渴病患者症见多食易饥、口渴尿多、形体消瘦、苔黄脉滑实有力，宜选用何方",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于61岁消渴病患者出现多食易饥、口渴尿多、形体消瘦、苔黄脉滑实有力等症状，宜选用玉女煎进行治疗。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "59岁女性右外耳道肉芽伴剧烈出血和面瘫，X线片显示鼓窦乳突区模糊，可以排除哪种疾病？",
+  "analysis": null,
+  "final": "59岁女性患者出现右外耳道肉芽，病理报告显示炎性改变，并在取病理时出现剧烈出血，需要通过填塞止血。患者伴随右侧面瘫及耳后骨膜下肿胀，X线片显示鼓窦及乳突区影像模糊。根据这些临床表现和影像学特征，可以排除耳硬化症。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "59岁女性右外耳道肉芽伴剧烈出血和面瘫，X线片显示鼓窦乳突区模糊，可以排除哪种疾病？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "59岁女性患者出现右外耳道肉芽，病理报告显示炎性改变，并在取病理时出现剧烈出血，需要通过填塞止血。患者伴随右侧面瘫及耳后骨膜下肿胀，X线片显示鼓窦及乳突区影像模糊。根据这些临床表现和影像学特征，可以排除耳硬化症。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "48岁男性患者腹水检查显示渗出液特征，其形成机制主要是什么",
+  "analysis": null,
+  "final": "48岁男性患者腹水检查显示渗出液特征，其形成机制主要是由于炎症、感染或肿瘤等因素导致腹膜毛细血管通透性增加，使血液中的大分子物质如蛋白质和细胞成分渗出到腹腔内，从而形成渗出液。渗出液通常表现为Rivalta试验阳性、白细胞计数升高（如800×10⁹/L）和蛋白定量较高（如30g/L），这些特征与漏出液有明显区别，后者多因门静脉高压、低蛋白血症等非炎症性因素引起。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "48岁男性患者腹水检查显示渗出液特征，其形成机制主要是什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "48岁男性患者腹水检查显示渗出液特征，其形成机制主要是由于炎症、感染或肿瘤等因素导致腹膜毛细血管通透性增加，使血液中的大分子物质如蛋白质和细胞成分渗出到腹腔内，从而形成渗出液。渗出液通常表现为Rivalta试验阳性、白细胞计数升高（如800×10⁹/L）和蛋白定量较高（如30g/L），这些特征与漏出液有明显区别，后者多因门静脉高压、低蛋白血症等非炎症性因素引起。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "30岁慢性肾炎男性患者出现肾功能不全和贫血，综合治疗包括哪些方面",
+  "analysis": null,
+  "final": "对于30岁患有慢性肾炎6年的男性患者，出现肾功能不全和贫血的情况，综合治疗应涵盖以下几个方面：\n\n1. **肾功能管理**：针对血液化验中尿素氮（BUN）和血肌酐（SCr）升高的指标，需积极进行肾功能保护与管理，控制疾病进展。\n\n2. **贫血治疗**：患者血红蛋白为80g/L，提示存在贫血，应予以纠正，可能包括补充铁剂、使用促红细胞生成素等措施。\n\n3. **蛋白尿控制**：尿蛋白检测为100mg/dl，需通过药物（如ACEI或ARB类）及生活方式干预减少蛋白尿，以减轻肾脏负担。\n\n4. **血压管理**：结合慢性肾炎和肾功能不全的常见并发症，严格控制血压对延缓肾功能恶化至关重要。\n\n5. **饮食管理**：实施合理的饮食调整，如限制蛋白质、钠盐及磷的摄入，以配合药物治疗并维持内环境稳定。\n\n通过以上多方面的综合干预，旨在改善患者症状、延缓肾功能衰退并提升生活质量。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "30岁慢性肾炎男性患者出现肾功能不全和贫血，综合治疗包括哪些方面",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于30岁患有慢性肾炎6年的男性患者，出现肾功能不全和贫血的情况，综合治疗应涵盖以下几个方面：\n\n1. **肾功能管理**：针对血液化验中尿素氮（BUN）和血肌酐（SCr）升高的指标，需积极进行肾功能保护与管理，控制疾病进展。\n\n2. **贫血治疗**：患者血红蛋白为80g/L，提示存在贫血，应予以纠正，可能包括补充铁剂、使用促红细胞生成素等措施。\n\n3. **蛋白尿控制**：尿蛋白检测为100mg/dl，需通过药物（如ACEI或ARB类）及生活方式干预减少蛋白尿，以减轻肾脏负担。\n\n4. **血压管理**：结合慢性肾炎和肾功能不全的常见并发症，严格控制血压对延缓肾功能恶化至关重要。\n\n5. **饮食管理**：实施合理的饮食调整，如限制蛋白质、钠盐及磷的摄入，以配合药物治疗并维持内环境稳定。\n\n通过以上多方面的综合干预，旨在改善患者症状、延缓肾功能衰退并提升生活质量。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "妊娠26周女性出现甲状腺Ⅲ度肿大伴气管偏移，首选治疗方法是什么",
+  "analysis": null,
+  "final": "对于妊娠26周出现甲状腺Ⅲ度肿大伴气管偏移的女性，首选的治疗方法是进行甲状腺手术。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "妊娠26周女性出现甲状腺Ⅲ度肿大伴气管偏移，首选治疗方法是什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于妊娠26周出现甲状腺Ⅲ度肿大伴气管偏移的女性，首选的治疗方法是进行甲状腺手术。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "研究糖尿病患者血糖水平对胰岛素水平的数量依存关系，应采用何种统计分析方法？",
+  "analysis": null,
+  "final": "要研究糖尿病患者血糖水平对胰岛素水平的数量依存关系，应采用线性回归分析。这种方法适用于分析一个变量（血糖水平）对另一个变量（胰岛素水平）的依存关系，以确定两者之间的数量变化规律。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "研究糖尿病患者血糖水平对胰岛素水平的数量依存关系，应采用何种统计分析方法？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "要研究糖尿病患者血糖水平对胰岛素水平的数量依存关系，应采用线性回归分析。这种方法适用于分析一个变量（血糖水平）对另一个变量（胰岛素水平）的依存关系，以确定两者之间的数量变化规律。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "《金匮要略》中'日晡所'具体指一天中的哪个时段",
+  "analysis": null,
+  "final": "《金匮要略·痉湿喝病脉证治》中提到的“日晡所”具体指的是下午的3点到5点之间的时段。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "《金匮要略》中'日晡所'具体指一天中的哪个时段",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "《金匮要略·痉湿喝病脉证治》中提到的“日晡所”具体指的是下午的3点到5点之间的时段。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "5个月足月顺产婴儿按程序接种，此时尚未接种哪种疫苗",
+  "analysis": null,
+  "final": "5个月大的婴儿，生长发育良好，足月顺产，母乳喂养，并按照预防接种程序进行接种，此时他尚未接种过麻疹疫苗。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "5个月足月顺产婴儿按程序接种，此时尚未接种哪种疫苗",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "5个月大的婴儿，生长发育良好，足月顺产，母乳喂养，并按照预防接种程序进行接种，此时他尚未接种过麻疹疫苗。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "8个月女婴突发发热后出现肉眼血尿，首先应进行何种检查？",
+  "analysis": null,
+  "final": "对于8个月大的女婴，在突发发热一天后出现肉眼血尿，且无尿频或排尿时哭吵等典型尿路刺激症状时，首先应进行的检查是尿细菌培养。这一检查有助于明确是否存在细菌感染，从而协助诊断。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "8个月女婴突发发热后出现肉眼血尿，首先应进行何种检查？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于8个月大的女婴，在突发发热一天后出现肉眼血尿，且无尿频或排尿时哭吵等典型尿路刺激症状时，首先应进行的检查是尿细菌培养。这一检查有助于明确是否存在细菌感染，从而协助诊断。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "25岁女性摔倒后出现前牙开颌、后牙早接触，最可能发生了哪种骨折",
+  "analysis": null,
+  "final": "25岁女性摔倒后出现前牙开颌、后牙早接触，最可能发生了下颌骨髁突骨折。这种情况通常发生在颏部受到外力撞击时，力量传导至下颌骨髁突导致骨折，临床表现为前牙无法正常闭合（开颌），而后牙却过早接触。检查时牙齿可能无明显松动，也未触及明显的骨台阶或异常动度，但咬合关系的改变是典型特征。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "25岁女性摔倒后出现前牙开颌、后牙早接触，最可能发生了哪种骨折",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "25岁女性摔倒后出现前牙开颌、后牙早接触，最可能发生了下颌骨髁突骨折。这种情况通常发生在颏部受到外力撞击时，力量传导至下颌骨髁突导致骨折，临床表现为前牙无法正常闭合（开颌），而后牙却过早接触。检查时牙齿可能无明显松动，也未触及明显的骨台阶或异常动度，但咬合关系的改变是典型特征。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "《中国药典》采用银量法测定苯巴比妥含量时，使用何种方法指示终点",
+  "analysis": null,
+  "final": "《中国药典》（2010年版）采用银量法测定苯巴比妥含量时，使用电位法来指示滴定终点。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "《中国药典》采用银量法测定苯巴比妥含量时，使用何种方法指示终点",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "《中国药典》（2010年版）采用银量法测定苯巴比妥含量时，使用电位法来指示滴定终点。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "患者剧烈疼痛，在哪个阶段疼痛最为剧烈？",
+  "analysis": null,
+  "final": "患者剧烈疼痛时，疼痛最为剧烈的阶段是骨膜下脓肿形成的急性期。在这一阶段，由于局部压力迅速增加，对骨膜产生强烈刺激，从而引发剧烈的疼痛。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "患者剧烈疼痛，在哪个阶段疼痛最为剧烈？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "患者剧烈疼痛时，疼痛最为剧烈的阶段是骨膜下脓肿形成的急性期。在这一阶段，由于局部压力迅速增加，对骨膜产生强烈刺激，从而引发剧烈的疼痛。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "32岁初产妇活跃期停滞，胎位为LOP，宫口开大6cm，应选择何种分娩方式？",
+  "analysis": null,
+  "final": "对于32岁初产妇，在孕40周、活跃期已持续10小时的情况下，出现宫缩转弱、宫口停滞在6cm、胎位为LOP（左枕后位），且胎先露在坐骨棘平面上1cm、坐骨棘间距离小于10cm，此时存在活跃期停滞和头盆不称的迹象。为降低母婴风险，应选择剖宫产作为分娩方式。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "32岁初产妇活跃期停滞，胎位为LOP，宫口开大6cm，应选择何种分娩方式？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于32岁初产妇，在孕40周、活跃期已持续10小时的情况下，出现宫缩转弱、宫口停滞在6cm、胎位为LOP（左枕后位），且胎先露在坐骨棘平面上1cm、坐骨棘间距离小于10cm，此时存在活跃期停滞和头盆不称的迹象。为降低母婴风险，应选择剖宫产作为分娩方式。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "上颌骨骨折线从鼻额缝扩展至蝶骨翼突，属于Le Fort分型的哪一型",
+  "analysis": null,
+  "final": "上颌骨骨折线从鼻额缝向两侧扩展，穿过鼻根、泪骨、眶内侧壁、眶底至颧上颌缝，并沿上颌骨侧壁到达蝶骨翼突的骨折属于Le Fort II型骨折。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "上颌骨骨折线从鼻额缝扩展至蝶骨翼突，属于Le Fort分型的哪一型",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "上颌骨骨折线从鼻额缝向两侧扩展，穿过鼻根、泪骨、眶内侧壁、眶底至颧上颌缝，并沿上颌骨侧壁到达蝶骨翼突的骨折属于Le Fort II型骨折。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "为昏迷患者插胃管时，胃管插入的长度应如何测量？",
+  "analysis": null,
+  "final": "为昏迷患者插胃管时，胃管插入的长度应测量为从患者的鼻尖至耳垂，再至剑突的长度。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "为昏迷患者插胃管时，胃管插入的长度应如何测量？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "为昏迷患者插胃管时，胃管插入的长度应测量为从患者的鼻尖至耳垂，再至剑突的长度。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "药物丙磺舒如何延长青霉素在体内的作用时间",
+  "analysis": null,
+  "final": "药物丙磺舒通过竞争性占据肾小管的酸性转运系统位点，从而抑制了青霉素在肾小管的分泌过程。这一机制导致青霉素的肾小管分泌速度降低，使其在体内的清除减慢，因此延长了青霉素在体内的作用时间。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "药物丙磺舒如何延长青霉素在体内的作用时间",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "药物丙磺舒通过竞争性占据肾小管的酸性转运系统位点，从而抑制了青霉素在肾小管的分泌过程。这一机制导致青霉素的肾小管分泌速度降低，使其在体内的清除减慢，因此延长了青霉素在体内的作用时间。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "24岁孕妇羊膜腔注射引产时突发气急、呼吸困难、血压骤降，最可能发生了什么并发症",
+  "analysis": null,
+  "final": "24岁孕妇在26周妊娠时进行雷佛奴尔羊膜腔注射引产过程中，突然出现气急、呼吸困难、神志不清，且血压降至5.3/0kPa，最可能发生了羊水栓塞。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "24岁孕妇羊膜腔注射引产时突发气急、呼吸困难、血压骤降，最可能发生了什么并发症",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "24岁孕妇在26周妊娠时进行雷佛奴尔羊膜腔注射引产过程中，突然出现气急、呼吸困难、神志不清，且血压降至5.3/0kPa，最可能发生了羊水栓塞。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "患者月经延后、量少色黯有块、小腹冷痛拒按，中医诊断为何种证型",
+  "analysis": null,
+  "final": "患者月经延后、量少色黯有块、小腹冷痛拒按，中医诊断为实寒型月经后期。该证型因寒邪内盛，阻滞气血运行所致，临床表现为月经推迟、经量减少、经色黯黑且有血块，并伴有小腹冷痛、拒按、得热痛减、畏寒肢冷等症状。舌质黯淡、苔白、脉沉紧也是该证型的典型舌脉特征。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "患者月经延后、量少色黯有块、小腹冷痛拒按，中医诊断为何种证型",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "患者月经延后、量少色黯有块、小腹冷痛拒按，中医诊断为实寒型月经后期。该证型因寒邪内盛，阻滞气血运行所致，临床表现为月经推迟、经量减少、经色黯黑且有血块，并伴有小腹冷痛、拒按、得热痛减、畏寒肢冷等症状。舌质黯淡、苔白、脉沉紧也是该证型的典型舌脉特征。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "住院患者使用特殊使用级抗菌药物前，微生物合格标本送检率应达到多少？",
+  "analysis": null,
+  "final": "住院患者在使用特殊使用级抗菌药物之前，微生物合格标本的送检率应大于80%。这一要求旨在通过明确感染病原体来指导临床合理用药，确保抗菌药物的有效性和安全性。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "住院患者使用特殊使用级抗菌药物前，微生物合格标本送检率应达到多少？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "住院患者在使用特殊使用级抗菌药物之前，微生物合格标本的送检率应大于80%。这一要求旨在通过明确感染病原体来指导临床合理用药，确保抗菌药物的有效性和安全性。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "82岁男性头摇不止、肢体震颤，面色淡白、气短乏力，中医首选何方治疗？",
+  "analysis": null,
+  "final": "对于82岁男性出现头摇不止、肢体震颤，面色淡白、气短乏力、健忘眩晕，舌淡红苔薄白滑、脉沉濡无力的症状，中医辨证属于气血亏虚、心神失养所致。治疗应以益气养血、健脾安神为主，首选方剂为人参养荣汤。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "82岁男性头摇不止、肢体震颤，面色淡白、气短乏力，中医首选何方治疗？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于82岁男性出现头摇不止、肢体震颤，面色淡白、气短乏力、健忘眩晕，舌淡红苔薄白滑、脉沉濡无力的症状，中医辨证属于气血亏虚、心神失养所致。治疗应以益气养血、健脾安神为主，首选方剂为人参养荣汤。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "患者出现左胸背痛和左下肢无力，确诊应首选何种影像学检查",
+  "analysis": null,
+  "final": "对于出现左胸背痛和左下肢无力症状的患者，确诊时应首选脊柱MRI检查。这项检查能够优先评估脊髓是否存在受压或占位性病变，从而明确病因。在必要时，可以再行CT检查以进一步评估骨性结构的改变。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "患者出现左胸背痛和左下肢无力，确诊应首选何种影像学检查",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于出现左胸背痛和左下肢无力症状的患者，确诊时应首选脊柱MRI检查。这项检查能够优先评估脊髓是否存在受压或占位性病变，从而明确病因。在必要时，可以再行CT检查以进一步评估骨性结构的改变。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "20岁男性胸部刀刺伤后闭式引流出血量进行性增多，下一步应如何处理",
+  "analysis": null,
+  "final": "对于20岁男性胸部刀刺伤后闭式引流出血量进行性增多的情况，下一步应进行开胸探查止血。具体处理措施包括：在积极进行液体复苏与输血的同时，果断采取手术干预，通过开胸探查来明确出血点并进行有效止血，以控制进行性出血并稳定患者生命体征。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "20岁男性胸部刀刺伤后闭式引流出血量进行性增多，下一步应如何处理",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于20岁男性胸部刀刺伤后闭式引流出血量进行性增多的情况，下一步应进行开胸探查止血。具体处理措施包括：在积极进行液体复苏与输血的同时，果断采取手术干预，通过开胸探查来明确出血点并进行有效止血，以控制进行性出血并稳定患者生命体征。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "先天性心脏病X线检查出现肺门舞蹈征和梨形心影，最可能提示哪种心脏缺损？",
+  "analysis": null,
+  "final": "先天性心脏病X线检查出现肺门舞蹈征和梨形心影，最可能提示房间隔缺损。肺门舞蹈征是由于肺血增多导致的影像学表现，而梨形心影则是心脏形态的典型改变，这些特征共同指向房间隔缺损。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "先天性心脏病X线检查出现肺门舞蹈征和梨形心影，最可能提示哪种心脏缺损？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "先天性心脏病X线检查出现肺门舞蹈征和梨形心影，最可能提示房间隔缺损。肺门舞蹈征是由于肺血增多导致的影像学表现，而梨形心影则是心脏形态的典型改变，这些特征共同指向房间隔缺损。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "51岁女性出现围绝经期样症状伴阴道持续出血，临床首先应进行何种检查",
+  "analysis": null,
+  "final": "对于51岁女性出现围绝经期样症状伴阴道持续出血的情况，临床首先应进行诊断性刮宫或宫腔镜下子宫内膜活检。这项检查的目的是明确子宫内膜的病理性质，同时也能起到一定的止血作用。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "51岁女性出现围绝经期样症状伴阴道持续出血，临床首先应进行何种检查",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于51岁女性出现围绝经期样症状伴阴道持续出血的情况，临床首先应进行诊断性刮宫或宫腔镜下子宫内膜活检。这项检查的目的是明确子宫内膜的病理性质，同时也能起到一定的止血作用。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "如何计算某工厂职业病的平均患病率？",
+  "analysis": null,
+  "final": "要计算某工厂职业病的平均患病率，需要先统计出全厂工人的总人数和患病的总病例数，然后将总病例数除以总工人数，再乘以100%即可得出百分比形式的平均患病率。\n\n具体到该工厂的情况：工龄5年以内的工人有50人，其中病例3例；工龄5至10年的工人有100人，其中病例10例；工龄超过10年的工人有50人，其中病例9例。首先，计算全厂工人总数为50 + 100 + 50 = 200人。然后，计算总病例数为3 + 10 + 9 = 22例。最后，计算平均患病率为 (22 / 200) × 100% = 11%。因此，该工厂职业病的平均患病率为11%。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "如何计算某工厂职业病的平均患病率？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "要计算某工厂职业病的平均患病率，需要先统计出全厂工人的总人数和患病的总病例数，然后将总病例数除以总工人数，再乘以100%即可得出百分比形式的平均患病率。\n\n具体到该工厂的情况：工龄5年以内的工人有50人，其中病例3例；工龄5至10年的工人有100人，其中病例10例；工龄超过10年的工人有50人，其中病例9例。首先，计算全厂工人总数为50 + 100 + 50 = 200人。然后，计算总病例数为3 + 10 + 9 = 22例。最后，计算平均患病率为 (22 / 200) × 100% = 11%。因此，该工厂职业病的平均患病率为11%。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "37岁女性闭经2月且孕激素试验阴性，最可能的诊断是什么",
+  "analysis": null,
+  "final": "37岁已婚、月经规律的女性，在无明显诱因的情况下出现闭经2个月，孕激素试验结果为阴性。最可能的诊断是卵巢功能减退或卵巢早衰。这种情况提示卵巢可能无法正常产生足够的雌激素，导致子宫内膜缺乏足够的刺激而无法对孕激素产生撤退性出血反应。在临床处理中，应在首先排除妊娠可能性的基础上，进一步评估患者的卵泡刺激素、雌二醇、泌乳素及甲状腺功能等指标，以明确诊断并指导后续治疗。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "37岁女性闭经2月且孕激素试验阴性，最可能的诊断是什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "37岁已婚、月经规律的女性，在无明显诱因的情况下出现闭经2个月，孕激素试验结果为阴性。最可能的诊断是卵巢功能减退或卵巢早衰。这种情况提示卵巢可能无法正常产生足够的雌激素，导致子宫内膜缺乏足够的刺激而无法对孕激素产生撤退性出血反应。在临床处理中，应在首先排除妊娠可能性的基础上，进一步评估患者的卵泡刺激素、雌二醇、泌乳素及甲状腺功能等指标，以明确诊断并指导后续治疗。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "初产妇第二产程延长后出现持续鲜红色阴道出血，最可能的原因是什么",
+  "analysis": null,
+  "final": "初产妇第二产程延长后出现持续鲜红色阴道出血，最可能的原因是软产道裂伤，具体为阴道或宫颈撕裂。这种情况通常发生在胎儿较大（如体重约4000克）或分娩过程中使用器械助产（如胎吸）后，由于产道组织在分娩过程中受到过度牵拉或损伤，导致血管破裂，从而引起鲜红色、持续性的阴道出血，并可能伴有凝血块。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "初产妇第二产程延长后出现持续鲜红色阴道出血，最可能的原因是什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "初产妇第二产程延长后出现持续鲜红色阴道出血，最可能的原因是软产道裂伤，具体为阴道或宫颈撕裂。这种情况通常发生在胎儿较大（如体重约4000克）或分娩过程中使用器械助产（如胎吸）后，由于产道组织在分娩过程中受到过度牵拉或损伤，导致血管破裂，从而引起鲜红色、持续性的阴道出血，并可能伴有凝血块。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "18岁女性出现血性胸腔积液且ADA显著升高，最可能诊断为何种疾病",
+  "analysis": null,
+  "final": "18岁女性出现低热半月，右侧血性胸腔积液，积液检查显示比重1.021、蛋白35 g/L、LDH 250 U/L，尤其是ADA显著升高至70 U/L。根据这些特征，最可能的诊断是结核性胸膜炎。该病表现为渗出液特征，且腺苷脱氨酶（ADA）水平显著升高是结核性胸膜炎的重要实验室指标。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "18岁女性出现血性胸腔积液且ADA显著升高，最可能诊断为何种疾病",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "18岁女性出现低热半月，右侧血性胸腔积液，积液检查显示比重1.021、蛋白35 g/L、LDH 250 U/L，尤其是ADA显著升高至70 U/L。根据这些特征，最可能的诊断是结核性胸膜炎。该病表现为渗出液特征，且腺苷脱氨酶（ADA）水平显著升高是结核性胸膜炎的重要实验室指标。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "老年男性输液时突发急性肺水肿，首选的治疗方案是什么",
+  "analysis": null,
+  "final": "老年男性在输液过程中突发不能平卧、严重气促，咳粉红色泡沫痰，考虑为急性肺水肿。首选的治疗方案是快速降低心脏前后负荷的血管扩张治疗，具体可使用硝普钠或静脉硝酸甘油。同时，应联合使用利尿剂（如呋塞米）以及氧疗，以迅速缓解症状、减轻肺水肿。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "老年男性输液时突发急性肺水肿，首选的治疗方案是什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "老年男性在输液过程中突发不能平卧、严重气促，咳粉红色泡沫痰，考虑为急性肺水肿。首选的治疗方案是快速降低心脏前后负荷的血管扩张治疗，具体可使用硝普钠或静脉硝酸甘油。同时，应联合使用利尿剂（如呋塞米）以及氧疗，以迅速缓解症状、减轻肺水肿。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "锥体束受累的典型神经系统体征有哪些",
+  "analysis": null,
+  "final": "锥体束受累的典型神经系统体征包括肌肉张力增高、整体屈曲运动模式以及巴氏征阳性。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "锥体束受累的典型神经系统体征有哪些",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "锥体束受累的典型神经系统体征包括肌肉张力增高、整体屈曲运动模式以及巴氏征阳性。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "妊娠合并慢性肾炎的诊断依据有哪些",
+  "analysis": null,
+  "final": "妊娠合并慢性肾炎的诊断依据包括：患者为25岁孕妇，孕15周时血压升高至150/90mmHg；尿液检查显示尿蛋白（+++）并伴有颗粒管型；出现全身水肿；血尿素氮（BUN）为5.3mmol/L；患者有明确的慢性肾炎病史，即10岁时曾患急性肾炎。这些临床表现和病史共同支持妊娠合并慢性肾炎的诊断。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "妊娠合并慢性肾炎的诊断依据有哪些",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "妊娠合并慢性肾炎的诊断依据包括：患者为25岁孕妇，孕15周时血压升高至150/90mmHg；尿液检查显示尿蛋白（+++）并伴有颗粒管型；出现全身水肿；血尿素氮（BUN）为5.3mmol/L；患者有明确的慢性肾炎病史，即10岁时曾患急性肾炎。这些临床表现和病史共同支持妊娠合并慢性肾炎的诊断。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "支气管哮喘患者病室的适宜相对湿度范围是多少",
+  "analysis": null,
+  "final": "支气管哮喘患者病室的适宜相对湿度范围应控制在40%到60%之间。这一湿度水平有助于维持呼吸道黏膜的湿润，减少干燥空气对气道的刺激，从而有利于缓解患者的呼气性呼吸困难症状，是管理支气管哮喘病情的重要环境调节措施之一。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "支气管哮喘患者病室的适宜相对湿度范围是多少",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "支气管哮喘患者病室的适宜相对湿度范围应控制在40%到60%之间。这一湿度水平有助于维持呼吸道黏膜的湿润，减少干燥空气对气道的刺激，从而有利于缓解患者的呼气性呼吸困难症状，是管理支气管哮喘病情的重要环境调节措施之一。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "Reynolds五联征的典型表现包括哪些",
+  "analysis": null,
+  "final": "Reynolds五联征的典型表现包括：腹痛、寒战高热、黄疸、休克以及神志改变。具体来说，患者会出现上腹部疼痛、尿黄，并伴有寒战和高热（体温可达39.5℃以上）。体格检查可见皮肤和巩膜黄染，右上腹部有压痛。同时，患者可能出现血压下降（如96/82 mmHg）、脉搏增快（120次/分）等休克表现，以及神志淡漠等中枢神经系统受抑制的征象。这些症状和体征共同构成了Reynolds五联征，提示急性梗阻性化脓性胆管炎等危重情况。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "Reynolds五联征的典型表现包括哪些",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "Reynolds五联征的典型表现包括：腹痛、寒战高热、黄疸、休克以及神志改变。具体来说，患者会出现上腹部疼痛、尿黄，并伴有寒战和高热（体温可达39.5℃以上）。体格检查可见皮肤和巩膜黄染，右上腹部有压痛。同时，患者可能出现血压下降（如96/82 mmHg）、脉搏增快（120次/分）等休克表现，以及神志淡漠等中枢神经系统受抑制的征象。这些症状和体征共同构成了Reynolds五联征，提示急性梗阻性化脓性胆管炎等危重情况。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "急性心肌梗死后出现发热和心包摩擦音可能提示什么综合征？",
+  "analysis": null,
+  "final": "急性心肌梗死后出现发热和心包摩擦音，这种临床表现最有可能提示Dressler综合征。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "急性心肌梗死后出现发热和心包摩擦音可能提示什么综合征？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "急性心肌梗死后出现发热和心包摩擦音，这种临床表现最有可能提示Dressler综合征。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "小蓟饮子适用于治疗哪种证候的小便异常",
+  "analysis": null,
+  "final": "小蓟饮子适用于治疗小便灼热刺痛、尿色如洗肉水色、少腹拘急满痛，并伴有舌红苔黄、脉滑数等热结下焦、损伤血络证候的小便异常。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "小蓟饮子适用于治疗哪种证候的小便异常",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "小蓟饮子适用于治疗小便灼热刺痛、尿色如洗肉水色、少腹拘急满痛，并伴有舌红苔黄、脉滑数等热结下焦、损伤血络证候的小便异常。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "托马斯试验主要用于评估哪个关节的功能",
+  "analysis": null,
+  "final": "托马斯试验主要用于评估髋关节的屈曲功能。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "托马斯试验主要用于评估哪个关节的功能",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "托马斯试验主要用于评估髋关节的屈曲功能。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "小头畸形的诊断标准包括哪些临床指标",
+  "analysis": null,
+  "final": "小头畸形的诊断标准包括以下临床指标：  \n1. **头围测量**：头围明显小于同龄、同性别儿童的平均值。例如，1岁小儿头围40cm，低于正常范围。  \n2. **生长发育评估**：身高、体重等指标可能低于正常水平，但需注意上下肢比例是否正常（如小头畸形患儿上下肢比例通常正常）。  \n3. **前囟闭合情况**：前囟过早闭合是重要指征之一，如1岁小儿前囟已闭。  \n4. **神经发育里程碑延迟**：例如，患儿能独坐但不会扶站，提示运动发育可能滞后。  \n5. **面容特征**：面容常显得较幼稚，但需结合其他指标综合判断。  \n6. **辅助检查**：必要时可通过影像学检查（如头颅CT或MRI）评估脑部发育情况，但参考内容中未直接提及。  \n\n以上指标需结合年龄、性别和整体发育情况综合评估，以明确诊断。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "小头畸形的诊断标准包括哪些临床指标",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "小头畸形的诊断标准包括以下临床指标：  \n1. **头围测量**：头围明显小于同龄、同性别儿童的平均值。例如，1岁小儿头围40cm，低于正常范围。  \n2. **生长发育评估**：身高、体重等指标可能低于正常水平，但需注意上下肢比例是否正常（如小头畸形患儿上下肢比例通常正常）。  \n3. **前囟闭合情况**：前囟过早闭合是重要指征之一，如1岁小儿前囟已闭。  \n4. **神经发育里程碑延迟**：例如，患儿能独坐但不会扶站，提示运动发育可能滞后。  \n5. **面容特征**：面容常显得较幼稚，但需结合其他指标综合判断。  \n6. **辅助检查**：必要时可通过影像学检查（如头颅CT或MRI）评估脑部发育情况，但参考内容中未直接提及。  \n\n以上指标需结合年龄、性别和整体发育情况综合评估，以明确诊断。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "热入血室的辨证要点是什么",
+  "analysis": null,
+  "final": "热入血室的辨证要点是：患者在中风后出现发热恶寒的症状，且正值月经来潮期间。经过七、八日后，虽然发热已退，脉象转为缓慢，身体感觉凉和，但出现胸部满闷如结胸状的典型表现，并伴有谵语。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "热入血室的辨证要点是什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "热入血室的辨证要点是：患者在中风后出现发热恶寒的症状，且正值月经来潮期间。经过七、八日后，虽然发热已退，脉象转为缓慢，身体感觉凉和，但出现胸部满闷如结胸状的典型表现，并伴有谵语。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "对于乳腺癌术后出现进行性腰痛的患者，最有价值的检查方法是什么？",
+  "analysis": null,
+  "final": "对于乳腺癌术后出现进行性腰痛的患者，特别是当疼痛在夜间加重时，为了明确腰痛的原因，最有价值的检查方法是核素骨扫描。这项检查对于评估是否存在骨转移具有重要的诊断价值。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "对于乳腺癌术后出现进行性腰痛的患者，最有价值的检查方法是什么？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "对于乳腺癌术后出现进行性腰痛的患者，特别是当疼痛在夜间加重时，为了明确腰痛的原因，最有价值的检查方法是核素骨扫描。这项检查对于评估是否存在骨转移具有重要的诊断价值。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "拉氧头孢临床应用受限的主要原因是什么",
+  "analysis": null,
+  "final": "拉氧头孢临床应用受限的主要原因是其N-甲基四氮唑侧链可能导致一系列严重不良反应，包括凝血酶原缺乏、血小板减少、血小板功能障碍以及戒酒硫样反应。这些潜在风险严重限制了该药物在临床上的广泛使用。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "拉氧头孢临床应用受限的主要原因是什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "拉氧头孢临床应用受限的主要原因是其N-甲基四氮唑侧链可能导致一系列严重不良反应，包括凝血酶原缺乏、血小板减少、血小板功能障碍以及戒酒硫样反应。这些潜在风险严重限制了该药物在临床上的广泛使用。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "吸烟与肺癌之间存在怎样的关联",
+  "analysis": null,
+  "final": "吸烟与肺癌之间存在密切的关联。可靠的科学数据和研究结论表明，吸烟是导致肺癌的重要危险因素。尽管有些人可能认为即使吸烟也不会得肺癌，但医学证据明确指出，吸烟会显著增加患肺癌的风险。因此，对于吸烟者，尤其是长期吸烟的人群，医生通常会提供戒烟建议，以降低肺癌及其他相关健康问题的发生概率。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "吸烟与肺癌之间存在怎样的关联",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "吸烟与肺癌之间存在密切的关联。可靠的科学数据和研究结论表明，吸烟是导致肺癌的重要危险因素。尽管有些人可能认为即使吸烟也不会得肺癌，但医学证据明确指出，吸烟会显著增加患肺癌的风险。因此，对于吸烟者，尤其是长期吸烟的人群，医生通常会提供戒烟建议，以降低肺癌及其他相关健康问题的发生概率。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "支气管扩张症在何种情况下需要考虑手术治疗",
+  "analysis": null,
+  "final": "支气管扩张症在以下情况下需要考虑手术治疗：当患者经过药物及保守治疗后，病情仍然无效且持续不缓解时，手术治疗可能成为必要的选择。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "支气管扩张症在何种情况下需要考虑手术治疗",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "支气管扩张症在以下情况下需要考虑手术治疗：当患者经过药物及保守治疗后，病情仍然无效且持续不缓解时，手术治疗可能成为必要的选择。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "普通型流脑的脑脊液检查结果有何特点",
+  "analysis": null,
+  "final": "普通型流脑的脑脊液检查结果具有以下典型特点：腰穿检查显示颅压升高，脑脊液外观混浊。细胞数显著增高，可达2000×10⁶/L。生化检查可见糖和氯化物含量明显降低，而蛋白含量则明显升高。此外，脑脊液直接涂片检查可发现病原菌，结果为阳性。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "普通型流脑的脑脊液检查结果有何特点",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "普通型流脑的脑脊液检查结果具有以下典型特点：腰穿检查显示颅压升高，脑脊液外观混浊。细胞数显著增高，可达2000×10⁶/L。生化检查可见糖和氯化物含量明显降低，而蛋白含量则明显升高。此外，脑脊液直接涂片检查可发现病原菌，结果为阳性。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "大黄黄连泻心汤适用于治疗哪种证候",
+  "analysis": null,
+  "final": "大黄黄连泻心汤适用于治疗心下痞满、按之濡软而不痛，并伴有心烦、口渴、小便黄赤、舌红苔黄、脉关上浮等热邪内结、气机壅滞的证候。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "大黄黄连泻心汤适用于治疗哪种证候",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "大黄黄连泻心汤适用于治疗心下痞满、按之濡软而不痛，并伴有心烦、口渴、小便黄赤、舌红苔黄、脉关上浮等热邪内结、气机壅滞的证候。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "生长激素缺乏症的典型临床表现有哪些？",
+  "analysis": null,
+  "final": "生长激素缺乏症的典型临床表现包括：身材矮小，但上下肢比例正常；面容较幼稚；腹部皮下脂肪丰满；手腕骨X线片显示骨龄明显落后于实际年龄，例如实际年龄为8岁的患儿，其骨龄可能仅为5岁。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "生长激素缺乏症的典型临床表现有哪些？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "生长激素缺乏症的典型临床表现包括：身材矮小，但上下肢比例正常；面容较幼稚；腹部皮下脂肪丰满；手腕骨X线片显示骨龄明显落后于实际年龄，例如实际年龄为8岁的患儿，其骨龄可能仅为5岁。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "人流术后出现感染症状时，首选的医疗处理措施是什么",
+  "analysis": null,
+  "final": "人流术后出现感染症状时，首选的医疗处理措施是立即给予广谱抗生素以控制感染，同时尽快进行超声检查。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "人流术后出现感染症状时，首选的医疗处理措施是什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "人流术后出现感染症状时，首选的医疗处理措施是立即给予广谱抗生素以控制感染，同时尽快进行超声检查。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "霍奇金淋巴瘤的典型细胞学特征是什么",
+  "analysis": null,
+  "final": "霍奇金淋巴瘤的典型细胞学特征是在穿刺涂片中观察到“镜影状”细胞。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "霍奇金淋巴瘤的典型细胞学特征是什么",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "霍奇金淋巴瘤的典型细胞学特征是在穿刺涂片中观察到“镜影状”细胞。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}
+{
+  "reasoning_language": "English",
+  "developer": "",
+  "user": "黄体功能不全的基础体温曲线呈现什么特征？",
+  "analysis": null,
+  "final": "黄体功能不全的基础体温曲线呈现双相型特征。",
+  "messages": [
+    {
+      "content": "",
+      "role": "system",
+      "thinking": null
+    },
+    {
+      "content": "黄体功能不全的基础体温曲线呈现什么特征？",
+      "role": "user",
+      "thinking": null
+    },
+    {
+      "content": "黄体功能不全的基础体温曲线呈现双相型特征。",
+      "role": "assistant",
+      "thinking": null
+    }
+  ]
+}

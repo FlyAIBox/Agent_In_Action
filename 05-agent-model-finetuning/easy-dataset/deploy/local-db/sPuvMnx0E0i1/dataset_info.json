@@ -1,0 +1,39 @@
+{
+  "[Easy Dataset] [sPuvMnx0E0i1] Alpaca": {
+    "file_name": "alpaca.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output",
+      "system": "system"
+    }
+  },
+  "[Easy Dataset] [sPuvMnx0E0i1] ShareGPT": {
+    "file_name": "sharegpt.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  },
+  "[Easy Dataset] [sPuvMnx0E0i1] multilingual-thinking": {
+    "file_name": "multilingual-thinking.json",
+    "formatting": "multilingual-thinking",
+    "columns": {
+      "messages": "messages"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
+    }
+  }
+}

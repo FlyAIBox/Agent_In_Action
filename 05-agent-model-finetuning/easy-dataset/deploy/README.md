@@ -1,18 +1,5 @@
 # Easy Dataset 部署指南
 
-## 📋 目录
-
-- [项目简介](#项目简介)
-- [前置要求](#前置要求)
-- [快速开始](#快速开始)
-- [详细部署步骤](#详细部署步骤)
-- [配置说明](#配置说明)
-- [常用命令](#常用命令)
-- [数据管理](#数据管理)
-- [常见问题](#常见问题)
-- [故障排查](#故障排查)
-- [升级指南](#升级指南)
-
 ---
 
 ## 项目简介
@@ -37,9 +24,9 @@
 ### 1. 系统要求
 
 - **操作系统**：Linux、macOS 或 Windows（推荐 Linux）
-- **内存**：至少 2GB RAM（推荐 4GB 或更多）
-- **磁盘空间**：至少 5GB 可用空间
-- **网络**：能够访问 Docker Hub 或 GitHub Container Registry
+- **内存**：至少 8GB RAM
+- **磁盘空间**：至少 20GB 可用空间
+- **网络**：能够访问 GitHub Container Registry
 
 ### 2. 软件依赖
 
@@ -62,7 +49,7 @@ docker compose version
 
 ```bash
 # 1. 进入部署目录
-cd deploy
+cd 05-agent-model-finetuning/easy-dataset/deploy
 
 # 2. 启动服务（后台运行）
 docker compose up -d
@@ -79,77 +66,6 @@ docker compose logs -f
 
 ---
 
-## 详细部署步骤
-
-### 步骤 1：准备部署目录
-
-```bash
-# 进入项目目录
-cd 05-agent-model-finetuning/easy-dataset/deploy
-
-# 确认 docker-compose.yml 文件存在
-ls -la docker-compose.yml
-```
-
-### 步骤 2：检查目录结构
-
-确保以下目录存在（如果不存在，Docker 会自动创建）：
-
-```
-deploy/
-├── docker-compose.yml    # Docker Compose 配置文件
-├── local-db/             # 数据库文件存储目录（自动创建）
-└── prisma/               # Prisma 配置文件目录（自动创建）
-```
-
-### 步骤 3：启动服务
-
-```bash
-# 启动服务（前台运行，可以看到实时日志）
-docker compose up
-
-# 或后台运行（推荐）
-docker compose up -d
-```
-
-**首次启动说明**：
-- 首次启动会自动下载 Docker 镜像（约 500MB-1GB，取决于网络速度）
-- 数据库会在首次启动时自动初始化
-- 无需手动执行 `npm run db:push` 或其他数据库初始化命令
-
-### 步骤 4：验证部署
-
-```bash
-# 1. 检查容器状态
-docker compose ps
-
-# 应该看到类似输出：
-# NAME              IMAGE                                    STATUS
-# easy-dataset      ghcr.io/conardli/easy-dataset:1.6.0     Up X minutes
-
-# 2. 检查容器日志
-docker compose logs easy-dataset
-
-# 3. 检查端口是否监听
-netstat -tlnp | grep 1717
-# 或
-ss -tlnp | grep 1717
-
-# 4. 测试 HTTP 访问
-curl http://localhost:1717
-```
-
-### 步骤 5：访问应用
-
-打开浏览器，访问：
-
-```
-http://localhost:1717
-```
-
-如果一切正常，您应该能看到 Easy Dataset 的欢迎页面。
-
----
 
 ## 配置说明
 
@@ -174,7 +90,6 @@ docker compose up -d
 数据存储在以下位置：
 
 - **数据库文件**：`./local-db/` 目录
-- **Prisma 配置**：`./prisma/` 目录
 
 **重要提示**：
 - 这些目录中的数据会持久化保存
@@ -183,7 +98,7 @@ docker compose up -d
 
 ### 镜像版本
 
-当前使用的镜像版本为 `1.6.0`。如需使用其他版本：
+当前使用的镜像版本为 `1.6.1`。如需使用其他版本：
 
 ```yaml
 image: ghcr.io/conardli/easy-dataset:latest  # 使用最新版本
@@ -194,78 +109,5 @@ image: ghcr.io/conardli/easy-dataset:1.5.0   # 使用特定版本
 查看可用版本：
 - [GitHub Releases](https://github.com/ConardLi/easy-dataset/releases)
 - [Docker Image](https://github.com/conardli/easy-dataset/pkgs/container/easy-dataset)
-
----
-
-## 常用命令
-
-### 服务管理
-
-```bash
-# 启动服务（后台运行）
-docker compose up -d
-
-# 启动服务（前台运行，查看日志）
-docker compose up
-
-# 停止服务
-docker compose stop
-
-# 停止并删除容器
-docker compose down
-
-# 重启服务
-docker compose restart
-
-# 查看服务状态
-docker compose ps
-```
-
-### 日志管理
-
-```bash
-# 查看所有服务日志
-docker compose logs
-
-# 查看特定服务日志
-docker compose logs easy-dataset
-
-# 实时跟踪日志（类似 tail -f）
-docker compose logs -f
-
-# 查看最近 100 行日志
-docker compose logs --tail=100
-
-# 查看带时间戳的日志
-docker compose logs -t
-```
-
-### 容器管理
-
-```bash
-# 进入容器内部（调试用）
-docker compose exec easy-dataset sh
-# 或
-docker compose exec easy-dataset bash
-
-# 查看容器资源使用情况
-docker stats easy-dataset
-
-# 查看容器详细信息
-docker inspect easy-dataset
-```
-
-### 镜像管理
-
-```bash
-# 拉取最新镜像
-docker compose pull
-
-# 查看本地镜像
-docker images | grep easy-dataset
-
-# 删除旧镜像（释放空间）
-docker image prune -a
-```
 
 ---

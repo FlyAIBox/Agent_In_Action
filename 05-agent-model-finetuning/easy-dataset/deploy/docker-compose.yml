@@ -21,10 +21,10 @@ services:
   # Easy Dataset 服务定义
   easy-dataset:
     # 使用的 Docker 镜像
-    # ghcr.io/conardli/easy-dataset:1.6.0 是官方提供的预构建镜像
-    # 版本号 1.6.0 可以根据需要修改为其他版本
+    # ghcr.io/conardli/easy-dataset:1.6.1 是官方提供的预构建镜像
+    # 版本号 1.6.1 可以根据需要修改为其他版本
     # 如果不指定版本号，将使用 latest 标签（最新版本）
-    image: ghcr.io/conardli/easy-dataset:1.6.0
+    image: ghcr.io/conardli/easy-dataset:1.6.1
     
     # 容器名称
     # 用于标识和管理容器，可以通过 docker ps 查看
@@ -53,7 +53,7 @@ services:
       # Prisma 是一个现代化的数据库 ORM 工具
       # ./prisma 包含数据库模式和迁移文件
       # 挂载此目录可以确保数据库配置与本地开发环境一致
-      - ./prisma:/app/prisma
+      # - ./prisma:/app/prisma
     
     # 容器重启策略
     # unless-stopped 表示：
