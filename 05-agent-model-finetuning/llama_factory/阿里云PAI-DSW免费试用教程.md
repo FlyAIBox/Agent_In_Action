@@ -317,6 +317,92 @@
 3. **月度额度用超了**：本月跑了超过 36 小时（A10显卡），超出的部分开始计费。
 4. **EAS/DLC 没关**：如果您尝试了 EAS（模型在线部署），那个非常贵，一定要去 EAS 页面把它也删掉。
 
+## 常见问题
+
+### 1. 无法访问`modelscope.cn`
+
+- **问题原因**：你的云服务器（阿里云 DSW）把 `modelscope.cn` 解析到了内网 IP `10.224.157.146`，但这个内网线路不通（Packet Loss 100%）。
+- **解决方法**：强制让服务器走你测试通过的公网 IP `39.99.133.195`。
+
+在 Ubuntu 中，我们可以通过修改 `/etc/hosts` 文件来实现这个“强制指定”。
+
+#### 方法一：在终端（Terminal）中执行命令（推荐）
+
+现在你的本地访问`www.modelscope.cn`，获取可访问的IP地址
+
+```bash
+C:\Users\FLY>ping www.modelscope.cn
+
+正在 Ping www.modelscope.cn [39.99.133.195] 具有 32 字节的数据:
+来自 39.99.133.195 的回复: 字节=32 时间=21ms TTL=88
+来自 39.99.133.195 的回复: 字节=32 时间=21ms TTL=88
+来自 39.99.133.195 的回复: 字节=32 时间=21ms TTL=88
+
+39.99.133.195 的 Ping 统计信息:
+    数据包: 已发送 = 3，已接收 = 3，丢失 = 0 (0% 丢失)，
+往返行程的估计时间(以毫秒为单位):
+    最短 = 21ms，最长 = 21ms，平均 = 21ms
+Control-C
+^C
+C:\Users\FLY>
+```
+
+直接复制以下两条命令在终端运行，这会将正确的 IP（如上获取的`39.99.133.195 `） 写入 hosts 文件：
+
+```Bash
+# 1. 强制将 modelscope.cn 指向公网 IP
+echo "39.99.133.195 modelscope.cn" >> /etc/hosts
+
+# 2. 为了保险，把带 www 的也指过去
+echo "39.99.133.195 www.modelscope.cn" >> /etc/hosts
+```
+
+------
+
+#### 方法二：在 Jupyter Notebook 中执行（如果你不方便开终端）
+
+在你的 Notebook 代码单元格中运行以下 Python 代码：
+
+```Python
+import os
+
+# 定义要写入的内容
+lines_to_add = [
+    "\n",
+    "# Manually fix ModelScope IP connectivity issues\n",
+    "39.99.133.195 modelscope.cn\n",
+    "39.99.133.195 www.modelscope.cn\n"
+]
+
+# 追加到 /etc/hosts 文件
+try:
+    with open("/etc/hosts", "a") as f:
+        f.writelines(lines_to_add)
+    print("✅ 成功！已修改 /etc/hosts 文件。")
+except PermissionError:
+    print("❌ 失败：没有权限。请确保你是以 root 用户运行（DSW默认通常是root）。")
+```
+
+------
+
+#### 验证修改是否生效
+
+修改完成后，再次在终端运行 Ping 命令，确认 IP 已经变了：
+
+```Bash
+ping modelscope.cn
+```
+
+**预期的正确输出**（应该能通了）：
+
+```Bash
+PING modelscope.cn (39.99.133.195) 56(84) bytes of data.
+64 bytes from 39.99.133.195: icmp_seq=1 ttl=92 time=6.55 ms
+...
+```
+
+一旦 Ping 通，你之前失败的 LLaMA-Factory 下载任务就可以重新开始了！
+
 ## 参考链接
 
 [阿里云DSW免费试用领取、使用和释放](https://help.aliyun.com/zh/pai/getting-started/free-trial-guide?spm=5176.smartservice_service_robot_chat_new.0.0.1d3d3a98uBTWjJ&__dialog_id=525566971&__url_role=2&scm=20140722.S_help%40%40%E6%96%87%E6%A1%A3%40%402858359._.ID_help%40%40%E6%96%87%E6%A1%A3%40%402858359-RL_PAI~DAS~DSW%E5%85%8D%E8%B4%B9%E8%AF%95%E7%94%A8-LOC_2024SPAllResult-OR_ser-PAR1_2150419e17640402225065487e191b-V_4-PAR3_o-RE_new5-P0_0-P1_0)
