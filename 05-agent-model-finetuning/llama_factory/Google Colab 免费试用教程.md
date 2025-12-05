@@ -82,6 +82,9 @@ Google Colab（Colaboratory）是 Google 提供的一个免费的云端 Jupyter 
    方法三：使用徽章链接
    - 点击 README 中的 "Open in Colab" 徽章
    - 自动跳转到 Colab 并加载笔记本
+   
+   方法三：Chrome插件
+   `Open in Colab`： https://chromewebstore.google.com/detail/open-in-colab/iogfkhleblhcpcekbiedikdehleodpjo?hl=zh-CN&utm_source=ext_sidebar
    ```
 
 ### 第三步：创建和配置笔记本
