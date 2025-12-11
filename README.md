@@ -375,32 +375,32 @@ graph TB
 | **🧠 大语言模型** | OpenAI/DeepSeek/Anthropic | GPT-4/DeepSeek-R1/Claude | 核心推理引擎 |
 | **🐍 Python环境** | Python | 3.10.18 | 开发运行环境 |
 | **🐍 包管理器** | Conda/Miniconda | 24.4.0 | Python环境管理 |
-| **🔗 LangChain生态** | langchain | 1.0.5 / 0.3.27 | 大语言模型应用框架 |
-| **🔗 LangChain核心** | langchain-core | 1.0.4 / 0.3.75 | LangChain基础抽象层 |
-| **🔗 LangChain社区** | langchain-community | 1.0.0a1 / 0.3.27 | 第三方集成工具集 |
-| **🔗 LangChain OpenAI** | langchain-openai | 1.0.2 / 0.3.31 | OpenAI接口适配器 |
-| **🔄 LangGraph** | langgraph | 1.0.3 / 0.6.7 | 多智能体工作流编排 |
-| **🔄 LangGraph预构建** | langgraph-prebuilt | 1.0.2 | 预构建智能体组件 |
-| **🔄 LangGraph检查点** | langgraph-checkpoint-sqlite | 3.0.0 | SQLite状态持久化 |
-| **🔄 LangGraph CLI** | langgraph-cli | 0.4.7 | 命令行工具集 |
-| **🔄 LangGraph SDK** | langgraph-sdk | 0.2.9 | SDK开发工具包 |
+| **🔗 LangChain生态** | langchain | 1.1.3  / 0.3.27 | 大语言模型应用框架 |
+| **🔗 LangChain核心** | langchain-core | 1.1.3  / 0.3.75 | LangChain基础抽象层 |
+| **🔗 LangChain社区** | langchain-community | 0.4.1  / 0.3.27 | 第三方集成工具集 |
+| **🔗 LangChain OpenAI** | langchain-openai | 1.1.1  / 0.3.31 | OpenAI接口适配器 |
+| **🔄 LangGraph** | langgraph | 1.0.4  / 0.6.7 | 多智能体工作流编排 |
+| **🔄 LangGraph预构建** | langgraph-prebuilt | 1.0.5  | 预构建智能体组件 |
+| **🔄 LangGraph检查点** | langgraph-checkpoint-sqlite | 3.0.1  | SQLite状态持久化 |
+| **🔄 LangGraph CLI** | langgraph-cli | 0.4.9  | 命令行工具集 |
+| **🔄 LangGraph SDK** | langgraph-sdk | 0.2.15  | SDK开发工具包 |
 | **🌐 MCP协议** | mcp | 1.17.0 | 模型上下文工具集成 |
 | **🌐 MCP适配器** | langchain-mcp-adapters | 0.1.11 | LangChain MCP集成 |
 | **📡 OpenAI SDK** | openai | 1.107.0 | OpenAI官方SDK |
 | **🤖 Transformers** | transformers | 4.45.0 | HuggingFace模型库 |
-| **🚀 Web框架** | fastapi | 0.116.1 / 0.115.12 | 高性能API服务 |
-| **🚀 Web服务器** | uvicorn | 0.35.0 / 0.34.2 | 异步ASGI服务器 |
-| **📊 数据处理** | pandas | 2.2.2 / 2.2.3 | 数据分析处理 |
+| **🚀 Web框架** | fastapi | 0.116.1  | 高性能API服务 |
+| **🚀 Web服务器** | uvicorn | 0.35.0  | 异步ASGI服务器 |
+| **📊 数据处理** | pandas | 2.2.2 | 数据分析处理 |
 | **📊 数值计算** | numpy | 1.25.0 | 科学计算库 |
-| **✅ 数据验证** | pydantic | 2.11.9 / 2.10.6 | 数据模型验证 |
+| **✅ 数据验证** | pydantic | 2.11.9  | 数据模型验证 |
 | **🌐 HTTP客户端** | httpx | 0.28.1 | 异步HTTP请求 |
-| **🌐 HTTP库** | requests | 2.32.5 / 2.32.3 | 同步HTTP请求 |
-| **🔍 网页解析** | beautifulsoup4 | 4.14.2 / 4.13.4 | HTML/XML解析 |
+| **🌐 HTTP库** | requests | 2.32.5  | 同步HTTP请求 |
+| **🔍 网页解析** | beautifulsoup4 | 4.14.3  | HTML/XML解析 |
 | **🔍 网络搜索** | duckduckgo-search | 8.1.1 | 隐私搜索引擎 |
-| **🔍 AI搜索** | tavily-python | 0.7.12 | AI驱动的实时搜索 |
+| **🔍 AI搜索** | tavily-python | 0.7.14  | AI驱动的实时搜索 |
 | **📚 知识库** | wikipedia | 1.4.0 | Wikipedia数据访问 |
-| **📦 环境管理** | python-dotenv | 1.1.1 / 1.1.0 | 环境变量管理 |
-| **🧪 测试框架** | pytest | 8.4.1 / 8.3.5 | 单元测试工具 |
+| **📦 环境管理** | python-dotenv | 1.1.1  | 环境变量管理 |
+| **🧪 测试框架** | pytest | 8.4.1  | 单元测试工具 |
 | **📊 监控平台** | Langfuse | 3.3.0 | 性能监控与评估 |
 | **🎯 数据集工具** | Easy Dataset | 1.6.1 | 数据集处理工具 |
 | **🎯 微调框架** | LLaMA Factory | v0.9.3 | 模型个性化微调 |
