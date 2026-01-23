@@ -4,7 +4,7 @@
 
 ![AI Agent Logo](https://img.shields.io/badge/AI-Agent-brightgreen?style=for-the-badge&logo=robot)
 ![Python](https://img.shields.io/badge/Python-blue?style=for-the-badge&logo=python)
-![LangChain](https://img.shields.io/badge/LangChain-0.3.x-orange?style=for-the-badge&logo=langchain)
+![LangChain](https://img.shields.io/badge/LangChain-1.x-orange?style=for-the-badge&logo=langchain)
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
 **企业级AI智能体实战课程 · 6个完整项目 · 从底层原理到生产部署**
